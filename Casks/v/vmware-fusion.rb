@@ -1,6 +1,6 @@
 cask "vmware-fusion" do
-  version "13.5.2,23775688"
-  sha256 "4d470e2160acb5da7d52d478f6ef12829c5ebe3c04e3154652466ba0bfeed3f6"
+  version "13.6.1,24319021"
+  sha256 "8fbc16ac3c8ff6075c785cc899fba3af0362974e49e2e64198a44179d8a7e41b"
 
   url "https://softwareupdate.vmware.com/cds/vmw-desktop/fusion/#{version.csv.first}/#{version.csv.second}/universal/core/com.vmware.fusion.zip.tar"
   name "VMware Fusion"
@@ -17,7 +17,7 @@ cask "vmware-fusion" do
 
   auto_updates true
   conflicts_with cask: "vmware-fusion@preview"
-  depends_on macos: ">= :monterey"
+  depends_on macos: ">= :ventura"
   container nested: "com.vmware.fusion.zip"
 
   app "#{staged_path}/payload/VMware Fusion.app"
@@ -29,6 +29,7 @@ cask "vmware-fusion" do
   binary "#{appdir}/VMware Fusion.app/Contents/Library/vmnet-natd"
   binary "#{appdir}/VMware Fusion.app/Contents/Library/vmnet-netifup"
   binary "#{appdir}/VMware Fusion.app/Contents/Library/vmnet-sniffer"
+  binary "#{appdir}/VMware Fusion.app/Contents/Library/vmcli"
   binary "#{appdir}/VMware Fusion.app/Contents/Library/vmrest"
   binary "#{appdir}/VMware Fusion.app/Contents/Library/vmrun"
   binary "#{appdir}/VMware Fusion.app/Contents/Library/vmss2core"

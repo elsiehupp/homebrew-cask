@@ -1,6 +1,6 @@
 cask "dockdoor" do
-  version "1.1.5"
-  sha256 "d1c07e74a554bd2b4379457069ead45a33a91cda5667f17cd7a64efd4fad211e"
+  version "1.2.9"
+  sha256 "e0df15a2d9eee92b92c7c40e8702d9802f19e7be243dd598bd43951cf7555cfe"
 
   url "https://github.com/ejbills/DockDoor/releases/download/v#{version}/DockDoor.dmg"
   name "DockDoor"
@@ -8,7 +8,7 @@ cask "dockdoor" do
   homepage "https://github.com/ejbills/DockDoor"
 
   auto_updates true
-  depends_on macos: ">= :sonoma"
+  depends_on macos: ">= :ventura"
 
   app "DockDoor.app"
 

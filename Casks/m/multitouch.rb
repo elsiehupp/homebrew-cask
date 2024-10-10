@@ -1,6 +1,6 @@
 cask "multitouch" do
-  version "1.27.35"
-  sha256 "a06b3e74e0438fd3790149d84dd7242ad54408ecea831226715a7a2a809a050f"
+  version "1.27.40"
+  sha256 "38768bb24b3066119a3f62f6111c92d052a5fc63bc163af651ec0ef30abac5e7"
 
   url "https://multitouch.app/downloads/multitouch#{version}.dmg"
   name "Multitouch"

@@ -8,8 +8,8 @@ cask "nextcloud" do
     end
   end
   on_monterey :or_newer do
-    version "3.13.3"
-    sha256 "96f14105002874fccd3733391524fb10f0f0cf8236a4ea919c12232ade2590bc"
+    version "3.14.1"
+    sha256 "4c1d4489a1d9792225babbfc56b8aa559a8ff09cf6c1efa9abaeca48a3928402"
 
     # Upstream publishes releases for multiple different minor versions and the
     # "latest" release is sometimes a lower version. Until the "latest" release

@@ -39,13 +39,25 @@ cask "sip" do
       skip "Legacy version"
     end
   end
-  on_monterey :or_newer do
+  on_monterey do
     version "3.5.1"
-    sha256 "59f69f6c73dfc3a2984ee4ff869d8086781dbe45c30c73c260f848a2d1561fc0"
+    sha256 "8dd74db34c925c9712c5b383bae43dc9cb2339ed3af2ad0a8677e0a22815f35f"
 
     livecheck do
-      url "https://sipapp.io/updates/"
-      regex(%r{href=.*?/sip[._-]v?(\d+(?:\.\d+)*)\.dmg}i)
+      skip "Legacy version"
+    end
+  end
+  on_ventura :or_newer do
+    version "3.6"
+    sha256 "dd13b765993963e2b6088d57c06d597b06ff732aaea42002420a2206a984e854"
+
+    # Some older items in the Sparkle feed have a more recent pubDate, so it's necessary to
+    # work with all of the items in the feed (not just the newest one).
+    livecheck do
+      url "https://sipapp.fra1.digitaloceanspaces.com/updates/v#{version.major}/sip.xml"
+      strategy :sparkle do |items|
+        items.map(&:short_version)
+      end
     end
   end
 

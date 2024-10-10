@@ -2,12 +2,12 @@ cask "microsoft-edge@beta" do
   linkid = on_arch_conditional arm: "2099618", intel: "2069439"
 
   on_arm do
-    version "128.0.2739.42,e204f250-991a-4795-bb8d-5393ccfab53a"
-    sha256 "f6b0aaabdc5d0dfa08dfe4eaa7fb240e40c913a5e0ccceda2d6e88a3b2d9cfa4"
+    version "130.0.2849.27,6d0a427a-4742-45e5-8d71-b01ec280b36b"
+    sha256 "9cd87ecc6fba3949e8e87c0ba98ae29e32808f01934a904426bd38f093f24835"
   end
   on_intel do
-    version "128.0.2739.42,be8e3c8d-b861-4425-8750-30df651db34a"
-    sha256 "d60ac0ec7c6765f40facff3b1b6aa48b84f6bc11a144fd5879e182f3718588c4"
+    version "130.0.2849.27,f187f906-68fd-46fe-a472-689b97808df5"
+    sha256 "3a996b334fab0481885218623e95fae976e9e11063286bfc80f4bd3c0f36657e"
   end
 
   url "https://msedge.sf.dl.delivery.mp.microsoft.com/filestreamingservice/files/#{version.csv.second}/MicrosoftEdgeBeta-#{version.csv.first}.pkg"
@@ -24,6 +24,7 @@ cask "microsoft-edge@beta" do
   end
 
   auto_updates true
+  depends_on macos: ">= :big_sur"
 
   pkg "MicrosoftEdgeBeta-#{version.csv.first}.pkg",
       choices: [
@@ -37,15 +38,26 @@ cask "microsoft-edge@beta" do
   uninstall launchctl: [
               "com.microsoft.EdgeUpdater.update-internal.109.0.1518.89.system",
               "com.microsoft.EdgeUpdater.update.system",
-              "com.microsoft.EdgeUpdater.wake.109.0.1518.89.system",
               "com.microsoft.EdgeUpdater.wake.system",
             ],
             pkgutil:   "com.microsoft.edgemac.Beta"
 
-  zap trash: [
-    "~/Library/Application Support/Microsoft Edge Beta",
-    "~/Library/Caches/Microsoft Edge Beta",
-    "~/Library/Preferences/com.microsoft.edgemac.Beta.plist",
-    "~/Library/Saved Application State/com.microsoft.edgemac.Beta.savedState",
-  ]
+  zap delete: "/Library/Application Support/Microsoft/EdgeUpdater",
+      trash:  [
+        "~/Library/Application Scripts/com.microsoft.edgemac.wdgExtension.Beta",
+        "~/Library/Application Support/Microsoft Edge Beta",
+        "~/Library/Caches/com.microsoft.edgemac.Beta",
+        "~/Library/Caches/Microsoft Edge Beta",
+        "~/Library/Containers/com.microsoft.edgemac.wdgExtension.Beta",
+        "~/Library/HTTPStorages/com.microsoft.edgemac.Beta",
+        "~/Library/LaunchAgents/com.microsoft.EdgeUpdater.*.plist",
+        "~/Library/Microsoft/MicrosoftSoftwareUpdate/Actives/com.microsoft.edgemac.Beta",
+        "~/Library/Preferences/com.microsoft.edgemac.Beta.plist",
+        "~/Library/Saved Application State/com.microsoft.edgemac.Beta.savedState",
+        "~/Library/WebKit/com.microsoft.edgemac.Beta",
+      ],
+      rmdir:  [
+        "/Library/Application Support/Microsoft",
+        "~/Library/Microsoft",
+      ]
 end

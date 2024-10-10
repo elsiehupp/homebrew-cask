@@ -2,12 +2,12 @@ cask "librewolf" do
   arch arm: "arm64", intel: "x86_64"
 
   on_arm do
-    version "129.0.2,1"
-    sha256 "e317f830f0824a166ff81e92eeafddc0a8767c3659d61369dac6b877f12ca9e5"
+    version "131.0.2,1"
+    sha256 "35eea27dff26d082dec0a69f12e45524fe7607b4ee0579901ac218b6df48d179"
   end
   on_intel do
-    version "129.0.2,1"
-    sha256 "3e1fd7eebde352b244999c807695ca4630e2313bb772b2e48b4185f8778c95d5"
+    version "131.0.2,1"
+    sha256 "fa8fb8a6136607aa41332f6140ff49e8f36cf0df8da4a3b58a9e20614190afd3"
   end
 
   url "https://gitlab.com/api/v4/projects/44042130/packages/generic/librewolf/#{version.csv.first}-#{version.csv.second}/librewolf-#{version.csv.first}-#{version.csv.second}-macos-#{arch}-package.dmg",
@@ -25,6 +25,8 @@ cask "librewolf" do
       end
     end
   end
+
+  depends_on macos: ">= :catalina"
 
   app "LibreWolf.app"
   # shim script (https://github.com/Homebrew/homebrew-cask/issues/18809)

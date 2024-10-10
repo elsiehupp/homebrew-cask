@@ -1,11 +1,11 @@
 cask "persepolis-download-manager" do
-  version "4.3.0"
-  sha256 "343286a5972c8added71af90177e1a45cb19a18691314b958ba2edff2dd44564"
+  version "5.0.1"
+  sha256 "a2b178da461c1095c6f897fd243663483a1ec09ec3f5a41158fae6043a195240"
 
   url "https://github.com/persepolisdm/persepolis/releases/download/#{version}/persepolis_#{version}_macos.dmg",
       verified: "github.com/persepolisdm/persepolis/"
   name "Persepolis"
-  desc "GUI for aria2"
+  desc "Download manager"
   homepage "https://persepolisdm.github.io/"
 
   livecheck do

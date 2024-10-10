@@ -2,17 +2,17 @@ cask "microsoft-edge" do
   linkid = on_arch_conditional arm: "2093504", intel: "2069148"
 
   on_arm do
-    version "128.0.2739.42,a0405b5e-b043-4a22-bc5a-34c762d62c1e"
-    sha256 "091c611cd1920e93cf6998309d54f35843d4217b1d3f548ab258692150a5cbe6"
+    version "129.0.2792.89,263922bf-6f0b-45d1-9660-8a3184689798"
+    sha256 "85e72099fc3ab6def368ecdb9fca364160bf0371e69f7737341335cec63b30dd"
   end
   on_intel do
-    version "128.0.2739.42,dd31ef83-bae7-46af-817c-04f010abc9ff"
-    sha256 "82475bb6ffaba17a7fb2630440aa462ed75d1876f093e0ef72ce946dff72153b"
+    version "129.0.2792.89,904a5e9a-2ced-4362-9c8d-5a78f731744a"
+    sha256 "2cfaa729180176de6cb42f176fadfb33211c7c810ad4674e5f271512352b9e29"
   end
 
   url "https://msedge.sf.dl.delivery.mp.microsoft.com/filestreamingservice/files/#{version.csv.second}/MicrosoftEdge-#{version.csv.first}.pkg"
   name "Microsoft Edge"
-  desc "Web browser"
+  desc "Multi-platform web browser"
   homepage "https://www.microsoft.com/en-us/edge?form="
 
   livecheck do
@@ -24,6 +24,7 @@ cask "microsoft-edge" do
   end
 
   auto_updates true
+  depends_on macos: ">= :big_sur"
 
   pkg "MicrosoftEdge-#{version.csv.first}.pkg",
       choices: [
@@ -45,17 +46,18 @@ cask "microsoft-edge" do
       trash:  [
         "~/Library/Application Scripts/com.microsoft.edgemac.wdgExtension",
         "~/Library/Application Support/Microsoft Edge",
-        "~/Library/Application Support/Microsoft/EdgeUpdater",
         "~/Library/Caches/com.microsoft.edgemac",
-        "~/Library/Caches/com.microsoft.EdgeUpdater",
         "~/Library/Caches/Microsoft Edge",
         "~/Library/Containers/com.microsoft.edgemac.wdgExtension",
-        "~/Library/HTTPStorages/com.microsoft.edge*",
+        "~/Library/HTTPStorages/com.microsoft.edgemac",
         "~/Library/LaunchAgents/com.microsoft.EdgeUpdater.*.plist",
-        "~/Library/Microsoft/EdgeUpdater",
+        "~/Library/Microsoft/MicrosoftSoftwareUpdate/Actives/com.microsoft.edgemac",
         "~/Library/Preferences/com.microsoft.edgemac.plist",
-        "~/Library/Saved Application State/com.microsoft.edgemac.*",
+        "~/Library/Saved Application State/com.microsoft.edgemac.savedState",
         "~/Library/WebKit/com.microsoft.edgemac",
       ],
-      rmdir:  "/Library/Application Support/Microsoft"
+      rmdir:  [
+        "/Library/Application Support/Microsoft",
+        "~/Library/Microsoft",
+      ]
 end

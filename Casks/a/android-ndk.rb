@@ -1,6 +1,6 @@
 cask "android-ndk" do
-  version "27"
-  sha256 "fedc21f8ec973e5d41630536b5a5ac1d2888632cafb6e1f2aa79f0db3eaeda75"
+  version "27b"
+  sha256 "cc4855aa847bedc69bab461da8f5400a90b02f8d259fb0a1407a20cd7a791a19"
 
   url "https://dl.google.com/android/repository/android-ndk-r#{version}-darwin.dmg",
       verified: "dl.google.com/android/repository/"
@@ -10,7 +10,7 @@ cask "android-ndk" do
 
   livecheck do
     url "https://developer.android.com/ndk/downloads"
-    regex(/Latest\b(?!\s+Beta).*?r(\d+[a-z]?)/i)
+    regex(/Latest\b(?!\s+Beta|\s+Pre-Release).*?r(\d+[a-z]?)/i)
   end
 
   # shim script (https://github.com/Homebrew/homebrew-cask/issues/18809)

@@ -1,23 +1,24 @@
 cask "pieces-cli" do
-  version "1.2.4"
-  sha256 "8c3f210254221b5dcef1a0f0798e0a1f3883758089b1017d4495e7181ef20781"
+  arch arm: "arm64", intel: "x86_64"
 
-  url "https://storage.googleapis.com/app-releases-59612ba/pieces-cli/release/pieces-mac-#{version}.tar.gz",
-      verified: "storage.googleapis.com/app-releases-59612ba/pieces-cli/release/"
+  version "1.7.1"
+  sha256 arm:   "3db039d32f65af8bf212f842720aabd88b047262fc932a2cd661a8222aa46e3d",
+         intel: "ac3549da37f968071e3264a9a856cbe5052e00c544defaeb491720720b10f7d5"
+
+  url "https://storage.googleapis.com/app-releases-production/pieces_cli/release/pieces-cli-mac_#{arch}-#{version}.zip",
+      verified: "storage.googleapis.com/app-releases-production/pieces_cli/release/"
   name "Pieces CLI"
   desc "Command-line tool for Pieces.app"
-  homepage "https://code.pieces.app/"
+  homepage "https://pieces.app/"
 
   livecheck do
-    url "https://code.pieces.app/cli-version"
-    regex(/pieces[._-]cli[._-]v?(\d+(?:\.\d+)+)/i)
+    url "https://builds.pieces.app/stages/production/pieces_cli/version"
+    strategy :json do |json|
+      json["version"]
+    end
   end
 
   binary "pieces"
 
-  zap trash: "~/Library/.piecescli-cache"
-
-  caveats do
-    requires_rosetta
-  end
+  zap trash: "~/Library/Application Support/cli-agent"
 end

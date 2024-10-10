@@ -1,9 +1,9 @@
 cask "bruno" do
   arch arm: "arm64", intel: "x64"
 
-  version "1.27.0"
-  sha256 arm:   "a986a98939e8727f01ce08d888767ea301e7aa49213fb428625348657306615a",
-         intel: "945995e4e1ccfcddd2e51f4402d477e538c0088e7c870676f11b14bcca19b04a"
+  version "1.33.0"
+  sha256 arm:   "624a804a5cf1fada49dc3a2ba44927b2b43cbc2cea241480dcbdfe8d2cad59de",
+         intel: "43c48c7d37471b71a71eb7b1ebc6f429059ecd52cc20c0a837ae13abe336caa6"
 
   url "https://github.com/usebruno/bruno/releases/download/v#{version}/bruno_#{version}_#{arch}_mac.dmg",
       verified: "github.com/usebruno/bruno/"

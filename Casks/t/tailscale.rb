@@ -1,6 +1,6 @@
 cask "tailscale" do
-  version "1.72.2"
-  sha256 "8915dbfc6133111673a79c4ac168da25637e65705f3b0f50cbbd01156292f78d"
+  version "1.76.0"
+  sha256 "c9b45e6ee999da260ad6af2b6c94c3b639487d1eb4864f6484185483ccbcaf88"
 
   url "https://pkgs.tailscale.com/stable/Tailscale-#{version}-macos.pkg"
   name "Tailscale"

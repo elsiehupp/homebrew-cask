@@ -1,13 +1,19 @@
 cask "dolphin@dev" do
-  version :latest
-  sha256 :no_check
+  version "2409-117,fe,1c"
+  sha256 "48933ad1868a820d4dd4b35267272f706be84a8e876bfb691a4c2847db459bdc"
 
-  url "https://dolphin-emu.org/download/list/master/1/" do |page|
-    page[/href="([^"]+\.dmg)"/, 1]
-  end
+  url "https://dl.dolphin-emu.org/builds/#{version.csv.second}/#{version.csv.third}/dolphin-master-#{version.csv.first}-universal.dmg"
   name "Dolphin Dev"
   desc "Emulator to play GameCube and Wii games"
   homepage "https://dolphin-emu.org/"
+
+  livecheck do
+    url "https://dolphin-emu.org/download/"
+    regex(%r{href=.*?/builds/([^/]+?)/([^/]+?)/dolphin[._-]master[._-]v?(\d+(?:[.-]\d+)+)-universal\.dmg}i)
+    strategy :page_match do |page, regex|
+      page.scan(regex).map { |match| "#{match[2]},#{match[0]},#{match[1]}" }
+    end
+  end
 
   conflicts_with cask: [
     "dolphin",

@@ -1,6 +1,6 @@
 cask "microsoft-remote-desktop" do
   version "10.9.10"
-  sha256 "45a712aa20c9bb1c1e511b94d79d30bcc9941d884b588e8bcf47e1ee9c6a4711"
+  sha256 "732cf7f5f74f67032455907cb29743e53b6733770e0a92ebc6243e75e5fd99af"
 
   url "https://officecdn-microsoft-com.akamaized.net/pr/C1297A47-86C4-4C1F-97FA-950631F94777/MacAutoupdate/Microsoft_Remote_Desktop_#{version}_installer.pkg",
       verified: "officecdn-microsoft-com.akamaized.net/pr/C1297A47-86C4-4C1F-97FA-950631F94777/MacAutoupdate/"
@@ -8,12 +8,10 @@ cask "microsoft-remote-desktop" do
   desc "Remote desktop client"
   homepage "https://docs.microsoft.com/en-us/windows-server/remote/remote-desktop-services/clients/remote-desktop-mac"
 
-  livecheck do
-    url "https://go.microsoft.com/fwlink/?linkid=868963"
-    strategy :header_match
-  end
+  deprecate! date: "2024-09-30", because: "has been replaced by windows-app"
 
   auto_updates true
+  conflicts_with cask: "windows-app"
   depends_on macos: ">= :high_sierra"
 
   pkg "Microsoft_Remote_Desktop_#{version}_installer.pkg"

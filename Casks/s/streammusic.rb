@@ -1,20 +1,20 @@
 cask "streammusic" do
-  version "1.3.0"
-  sha256 "b140a38fc7108d1511580ad4b71e264f09fbefdb211da128106b000d7cf2237c"
+  version "1.3.2"
+  sha256 "56ce9dbf0300369b2c30f021362c7ff85fbb485482577ae203449db170e7464c"
 
-  url "https://oss.aqzscn.cn/stream-music/versions/#{version}/%E9%9F%B3%E6%B5%81v#{version}.dmg"
+  url "https://oss.aqzscn.cn/stream-music/versions/#{version}/StreamMusic_#{version}.dmg"
   name "StreamMusic"
   desc "Music client compatible with self-hosted music services"
   homepage "https://www.aqzscn.cn/"
 
   livecheck do
-    url "https://music.aqzscn.cn/docs/versions/latest"
+    url "https://music.aqzscn.cn/docs/versions/latest/"
     regex(/href=.*v?(\d+(?:\.\d+)+(?:\.\d+)+)\.dmg/i)
   end
 
   depends_on macos: ">= :catalina"
 
-  app "音流.app"
+  app "StreamMusic.app"
 
   zap trash: [
     "~/Library/Application Scripts/cn.aqzscn.streamMusic",

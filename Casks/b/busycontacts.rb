@@ -1,6 +1,13 @@
 cask "busycontacts" do
-  version "2024.1.2"
-  sha256 "54f1a92915549416da37e5ce6e7bad51dd78a54cf4f6439664f6873af8f36018"
+  version "2024.3.1"
+  # The `bct-2024.3.1.zip` URL redirects to a file with a date at the end
+  # (e.g. `bct-2024.3.1-2024-09-19-12-11.zip`) and this changes over time.
+  # Upstream appears to delete the previous file when switching to a file with
+  # a newer date, so we can't use the full URL with the date (the file may
+  # eventually disappear and break cask installation) but we also can't use a
+  # `sha256` with the redirecting version-only URL because the checksum will
+  # change when the redirected date/file changes.
+  sha256 :no_check
 
   url "https://www.busymac.com/download/bct-#{version}.zip"
   name "BusyContacts"
@@ -8,10 +15,9 @@ cask "busycontacts" do
   homepage "https://www.busymac.com/busycontacts/index.html"
 
   livecheck do
-    url "https://versioncheck.busymac.com/busycontacts/news.plist"
-    strategy :xml do |xml|
-      xml.elements["//dict/key[text()='current']"]&.next_element&.text&.strip
-    end
+    url "https://www.busymac.com/download/BusyContacts.zip"
+    regex(/bct[._-]v?(\d+(?:\.\d+)+)/i)
+    strategy :header_match
   end
 
   auto_updates true

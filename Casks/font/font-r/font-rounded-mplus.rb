@@ -1,4 +1,4 @@
-cask "font-rounded-m+" do
+cask "font-rounded-mplus" do
   version "20150529"
   sha256 "e746736c8ded99fe9a9dd72a241ec59435eaa282a18e7ac33a26dc0578c06ff7"
 

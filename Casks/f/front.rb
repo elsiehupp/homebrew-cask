@@ -1,9 +1,9 @@
 cask "front" do
   arch arm: "arm64", intel: "x64"
 
-  version "3.57.5"
-  sha256 arm:   "dfafa3d827865b6545db512d5a85985fb0c2ab7f4f0627e330606b593276db39",
-         intel: "964a9863453a788aefb7ad55905a5af23840d611f41ea729d3674f661b7941a2"
+  version "3.60.4"
+  sha256 arm:   "cc80ffeebb0f477ca68752af4fe4820ed0acfed3f9b5316498ddfe3a45323ab1",
+         intel: "f4cfd52c41a4e297b28aa997343266630fe0ba32fb3b368d8f5ea8fab2b72ab3"
 
   url "https://dl.frontapp.com/desktop/builds/#{version}/Front-#{version}-#{arch}.zip",
       verified: "dl.frontapp.com/desktop/builds/"

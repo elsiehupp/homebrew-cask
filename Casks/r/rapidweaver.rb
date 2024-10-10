@@ -1,6 +1,6 @@
 cask "rapidweaver" do
-  version "9.2.1,21062"
-  sha256 "2806ea53b0cc6df1609d8f4af1a8162bb8bafa796c1ab068e1ee304a57ff0179"
+  version "9.3.2,21076"
+  sha256 "45774b20d29557efa63e84b85420f5e3856459822bed3e5263667ac764b4bccf"
 
   url "https://dl.devant.io/v1/3c53887f-427a-4af7-9144-ee16178c62f4/#{version.csv.second}/RapidWeaver.zip",
       verified: "dl.devant.io/v1/3c53887f-427a-4af7-9144-ee16178c62f4/"
@@ -16,4 +16,10 @@ cask "rapidweaver" do
   depends_on macos: ">= :mojave"
 
   app "RapidWeaver.app"
+
+  zap trash: [
+    "~/Library/Application Scripts/*.com.realmacsoftware.rapidweaver*",
+    "~/Library/Containers/com.realmacsoftware.rapidweaver*",
+    "~/Library/Group Containers/*.com.realmacsoftware.rapidweaver*",
+  ]
 end

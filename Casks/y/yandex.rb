@@ -1,7 +1,7 @@
 cask "yandex" do
   arch arm: "&arch=arm64"
 
-  version "24.7.1"
+  version "24.7.6"
   sha256 :no_check
 
   url "https://browser.yandex.ru/download/?os=mac#{arch}&full=1",
@@ -21,6 +21,7 @@ cask "yandex" do
   end
 
   auto_updates true
+  depends_on macos: ">= :catalina"
 
   app "Yandex.app"
 

@@ -2,12 +2,12 @@ cask "automattic-texts" do
   arch arm: "arm64", intel: "x64"
 
   on_arm do
-    version "0.83.21,d3340bd6d2"
-    sha256 "bd537855e17d51fa6a25db783df9c9f36062203bd5705087a49592ee78529e3e"
+    version "0.84.0,8d3e5d6cdf"
+    sha256 "126c49d072baa0f2f0c975dcd48a92808dd670f7208fddecf04a5891e2430ee6"
   end
   on_intel do
-    version "0.83.21,48b6770142"
-    sha256 "1148f0c5f9cbe37cb59718046b0cee81acd896e5bff4a1c1cdbb62137d3a7966"
+    version "0.84.0,2805a1297d"
+    sha256 "e794b5b4c35f4af06abc6cd3fcb2302d8b8db5887ff56de1e6b730e1d8390ca7"
   end
 
   url "https://texts-binaries.texts.com/builds/Texts-macOS-#{arch}-v#{version.csv.first}-#{version.csv.second}.zip"
@@ -16,10 +16,10 @@ cask "automattic-texts" do
   homepage "https://texts.com/"
 
   livecheck do
-    url "https://texts.com/api/install/macos/#{arch}/latest.zip"
+    url "https://texts.com/api/update-feed/latest-mac.yml?arch=#{arch}"
     regex(/Texts[._-]macOS[._-]#{arch}[._-]v?(\d+(?:\.\d+)+)[._-](\h+)\.zip/i)
-    strategy :header_match do |headers, regex|
-      match = headers["location"].match(regex)
+    strategy :electron_builder do |item, regex|
+      match = item["path"]&.match(regex)
       next if match.blank?
 
       "#{match[1]},#{match[2]}"

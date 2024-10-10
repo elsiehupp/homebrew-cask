@@ -1,15 +1,18 @@
 cask "mailspring" do
-  version "1.13.3"
-  sha256 "99f7bb841b4b559b6a9ad28c044179907f8e1238797fa0c9979a410017605204"
+  arch arm: "-AppleSilicon"
 
-  url "https://github.com/Foundry376/Mailspring/releases/download/#{version}/Mailspring.zip",
+  version "1.14.0"
+  sha256 arm:   "e5fd23b503f0c27905342b70d0a7f601a2db207a0eb5301cf7ecf4d34813b81a",
+         intel: "712316db58ebdfa515ac67eb175baf85249f9efd3f6103f1d37d97e438cc834d"
+
+  url "https://github.com/Foundry376/Mailspring/releases/download/#{version}/Mailspring#{arch}.zip",
       verified: "github.com/Foundry376/Mailspring/"
   name "Mailspring"
   desc "Fork of Nylas Mail"
   homepage "https://getmailspring.com/"
 
   auto_updates true
-  depends_on macos: ">= :high_sierra"
+  depends_on macos: ">= :catalina"
 
   app "Mailspring.app"
 
@@ -20,8 +23,4 @@ cask "mailspring" do
     "~/Library/Preferences/com.mailspring.*",
     "~/Library/Saved Application State/com.mailspring.*",
   ]
-
-  caveats do
-    requires_rosetta
-  end
 end

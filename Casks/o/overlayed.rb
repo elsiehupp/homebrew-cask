@@ -1,6 +1,6 @@
 cask "overlayed" do
-  version "0.5.0"
-  sha256 "73e7d3d0f946a0624045793e8f762e52ef7729c64589b42cc28a0c2cc70ccf3f"
+  version "0.6.2"
+  sha256 "b47a390708350d98e524bdc87a06d7e634bdc95e0c4092d06b9f92702b7ed946"
 
   url "https://github.com/overlayeddev/overlayed/releases/download/v#{version}/overlayed_#{version}_universal.dmg",
       verified: "github.com/overlayeddev/overlayed/"

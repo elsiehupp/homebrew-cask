@@ -4,8 +4,8 @@ cask "bartender" do
     sha256 "f1a2ecf300cf56aaf531324cba646442026cb0b63b4f90f46a1aee5b0804688a"
   end
   on_sonoma :or_newer do
-    version "5.1.1"
-    sha256 "3d3ed9bff770c1a77d0f3803d292dc77f90cb8b50928117bd6e1c5c98b27e8a2"
+    version "5.1.8"
+    sha256 "b12e70958052e51b60821e9fa524ee9af30ba257272d7a619d8cd1828eccebb8"
   end
 
   url "https://macbartender.com/B2/updates/#{version.dots_to_hyphens}/Bartender%20#{version.major}.zip"

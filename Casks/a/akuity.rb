@@ -1,9 +1,9 @@
 cask "akuity" do
   arch arm: "arm64", intel: "amd64"
 
-  version "0.16.1"
-  sha256 arm:   "285c2334c370503118b59d92deb8eb581f0a5e7d3f2b39de4ee64531245d1ce2",
-         intel: "bce8328429213a0b149560d7ff7f2140c1061921c0f908194afc177a44f32235"
+  version "0.17.1"
+  sha256 arm:   "73ff93014c6dfc33b0eee019985eb0a00e7d0e47064a7ec7eeec08ec7ad84b46",
+         intel: "73db18e6389caee464618687318df56ad8bf2d2dfd80ce32b41500e8c415e8b9"
 
   url "https://dl.akuity.io/akuity-cli/v#{version}/darwin/#{arch}/akuity"
   name "Akuity"

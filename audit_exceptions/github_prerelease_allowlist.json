@@ -1,8 +1,8 @@
 {
   "aerial@beta": "all",
-  "alcom": "all",
   "altdeploy": "all",
   "bitbar": "all",
+  "calibrite-profiler": "all",
   "cleartext": "all",
   "comma-chameleon": "all",
   "crypter": "all",
@@ -25,7 +25,6 @@
   "keka@beta": "all",
   "kitty@nightly": "all",
   "macfuse@dev": "all",
-  "majsoul-plus": "all",
   "messenger-native": "all",
   "mongotron": "all",
   "mullvadvpn@beta": "all",
@@ -51,6 +50,7 @@
   "themeengine": "all",
   "tunnelblick@beta": "all",
   "universal-android-debloater": "all",
+  "utm@beta": "all",
   "wezterm@nightly": "all",
   "xit": "all"
 }

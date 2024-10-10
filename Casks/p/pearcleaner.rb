@@ -1,6 +1,6 @@
 cask "pearcleaner" do
-  version "3.8.5"
-  sha256 "4b699860a5e8cf2d577ec923b9e025416a8259f407718537aaffd375163df981"
+  version "3.9.1"
+  sha256 "9f53164c1271b7516733aa89acafab1a27550dcc3a360e4426e49351047f0b9e"
 
   url "https://github.com/alienator88/Pearcleaner/releases/download/#{version}/Pearcleaner.zip",
       verified: "github.com/alienator88/Pearcleaner/"

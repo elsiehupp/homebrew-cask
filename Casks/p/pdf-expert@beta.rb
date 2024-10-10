@@ -1,6 +1,6 @@
 cask "pdf-expert@beta" do
-  version "3.10.6,1071"
-  sha256 "bfd625f12871eea6ab9234590207b0c57339001d3dac95f9f36c4444c9be28c4"
+  version "3.10.9,1076"
+  sha256 "cbdc9b16b413c57faf8e3a2e4cf74105c7b03d1ab4ab88f2acff47b7932d7097"
 
   url "https://downloads.pdfexpert.com/pem#{version.major}/versions/#{version.csv.second}/PDFExpert.zip"
   name "PDF Expert"

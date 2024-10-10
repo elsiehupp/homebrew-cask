@@ -1,9 +1,9 @@
 cask "anytype" do
   arch arm: "arm64", intel: "x64"
 
-  version "0.42.4"
-  sha256 arm:   "e86b9c9285cc4c0eaf3aaad7f1ba868df5b64a8829a33e83e785b9f919d570ba",
-         intel: "b3dc14756f01e9dd0de8bca0d7352b441f46d5e5b369b060de8952182076b64b"
+  version "0.42.8"
+  sha256 arm:   "0326e67888b32f49e14d381cda36801ed04c5258792a46509150f537067299b6",
+         intel: "5dbe971a2b749cc83d0e2f05187cbefa0507d82e844672240203fc590f172aad"
 
   url "https://anytype-release.fra1.cdn.digitaloceanspaces.com/Anytype-#{version}-mac-#{arch}.dmg",
       verified: "anytype-release.fra1.cdn.digitaloceanspaces.com/"
@@ -17,6 +17,11 @@ cask "anytype" do
   end
 
   auto_updates true
+  conflicts_with cask: [
+    "anytype@alpha",
+    "anytype@beta",
+  ]
+  depends_on macos: ">= :catalina"
 
   app "Anytype.app"
 

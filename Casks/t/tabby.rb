@@ -1,9 +1,9 @@
 cask "tabby" do
   arch arm: "arm64", intel: "x86_64"
 
-  version "1.0.211"
-  sha256 arm:   "4cd46ad9d9a0a856a0b41e48a9466e190cf48f197019cebe2ca14a52add25149",
-         intel: "ce46751727761c7222df2f0616c9ae246d9f429c5c1ace95226758ec05828cf8"
+  version "1.0.215"
+  sha256 arm:   "d725d3f1723e5155392d8f3fce22027e88e511fe5074458f30a71210c5e5d2a1",
+         intel: "409be3dbce51338b766adb40127adab953fa1aac233c32c1d2390800499edc9f"
 
   url "https://github.com/Eugeny/tabby/releases/download/v#{version}/tabby-#{version}-macos-#{arch}.zip",
       verified: "github.com/Eugeny/tabby/"

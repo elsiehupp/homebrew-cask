@@ -1,8 +1,11 @@
 cask "tableau" do
-  version "2024.2.1"
-  sha256 "0818b61e084d148c58e65773249f62aa70f94840f5a630d150e1710000ce9bbf"
+  arch arm: "-arm64"
 
-  url "https://downloads.tableau.com/tssoftware/TableauDesktop-#{version.dots_to_hyphens}.dmg",
+  version "2024.2.3"
+  sha256 arm:   "4aff8bb2626858299248f65de152ede5945a3b52ac3ea0ca80fb09ec57c6bf00",
+         intel: "b61a8b0b9ba15aafcd360e88ffccede44d4c15ec9c78e648269d0e2bdc23974a"
+
+  url "https://downloads.tableau.com/esdalt/#{version}/TableauDesktop-#{version.dots_to_hyphens}#{arch}.dmg",
       user_agent: "curl/8.7.1"
   name "Tableau Desktop"
   desc "Data visualization software"
