@@ -1,6 +1,6 @@
 cask "typora" do
-  version "1.9.4"
-  sha256 "ffcbf15e22828f8b2263bcefd587736a23be8e3f3743d4a5c533aec1ef24657a"
+  version "1.12.6"
+  sha256 "249996e3941ac8c9626baae739e716f893df14f1228e13a4a9c8191736974b88"
 
   url "https://download.typora.io/mac/Typora-#{version}.dmg"
   name "Typora"
@@ -8,13 +8,13 @@ cask "typora" do
   homepage "https://typora.io/"
 
   livecheck do
-    url "https://www.typora.io/download/dev_update.xml"
+    url "https://typora.io/releases/macos.xml"
     strategy :sparkle, &:short_version
   end
 
   auto_updates true
   conflicts_with cask: "typora@dev"
-  depends_on macos: ">= :catalina"
+  depends_on macos: ">= :big_sur"
 
   app "Typora.app"
 
@@ -24,6 +24,7 @@ cask "typora" do
     "~/Library/Application Support/Typora",
     "~/Library/Caches/abnerworks.Typora",
     "~/Library/Cookies/abnerworks.Typora.binarycookies",
+    "~/Library/HTTPStorages/abnerworks.Typora",
     "~/Library/Preferences/abnerworks.Typora.plist",
     "~/Library/Saved Application State/abnerworks.Typora.savedState",
     "~/Library/WebKit/abnerworks.Typora",

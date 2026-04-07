@@ -10,12 +10,11 @@ cask "paragon-extfs@11" do
   livecheck do
     url :url
     strategy :extract_plist do |items|
-      items["com.paragon-software.filesystems.extfs"].short_version
+      items["com.paragon-software.filesystems.extfs"]&.short_version
     end
   end
 
   conflicts_with cask: "paragon-extfs"
-  depends_on macos: ">= :sierra"
 
   installer manual: "FSInstaller.app"
 

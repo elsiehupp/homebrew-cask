@@ -1,8 +1,8 @@
 cask "lyx" do
-  version "2.4.1"
-  sha256 "978498962f281d47264581027dc033e05a88c200970c3847ed99bd650af5d62f"
+  version "2.5.0,6"
+  sha256 "62149418cdb14b2f3dbebbec13e20c5252f3e2ce1bb0ad8914a4e75b86a41917"
 
-  url "https://ftp.lip6.fr/pub/lyx/bin/#{version.major_minor_patch}/LyX-#{version}+qt5-x86_64-arm64-cocoa.dmg",
+  url "https://ftp.lip6.fr/pub/lyx/bin/#{version.csv.first.major_minor_patch}/LyX-#{version.csv.first}+qt#{version.csv.second}-x86_64-arm64-cocoa.dmg",
       verified: "ftp.lip6.fr/pub/lyx/bin/"
   name "LyX"
   desc "GUI document processor based on the LaTeX typesetting system"
@@ -10,10 +10,15 @@ cask "lyx" do
 
   livecheck do
     url "https://www.lyx.org/Download"
-    regex(/LyX[._-]v?(\d+(?:\.\d+)+)\+qt5/i)
+    regex(/LyX[._-]v?(\d+(?:\.\d+)+)\+qt(\d+)/i)
+    strategy :page_match do |page, regex|
+      page.scan(regex).map { |match| "#{match[0]},#{match[1]}" }
+    end
   end
 
-  depends_on macos: ">= :mojave"
+  disable! date: "2026-09-01", because: :fails_gatekeeper_check
+
+  depends_on macos: ">= :monterey"
 
   app "LyX.app"
   binary "#{appdir}/LyX.app/Contents/MacOS/inkscape", target: "lyx-inkscape"

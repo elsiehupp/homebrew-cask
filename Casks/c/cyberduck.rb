@@ -1,6 +1,6 @@
 cask "cyberduck" do
-  version "9.0.1,41941"
-  sha256 "e95498c5f676564d15b0e151e429be2fe8370e12dc8626e97aed99f253cb57e2"
+  version "9.4.1,44384"
+  sha256 "b733be43f89a668a86ab3f2933ca25c9f799959491533d59e77978cdba74b1e2"
 
   url "https://update.cyberduck.io/Cyberduck-#{version.csv.first}.#{version.csv.second}.zip"
   name "Cyberduck"
@@ -13,7 +13,6 @@ cask "cyberduck" do
   end
 
   auto_updates true
-  depends_on macos: ">= :high_sierra"
 
   app "Cyberduck.app"
 
@@ -21,6 +20,7 @@ cask "cyberduck" do
     "~/Library/Application Support/Cyberduck",
     "~/Library/Caches/ch.sudo.cyberduck",
     "~/Library/Group Containers/G69SCX94XU.duck",
+    "~/Library/HTTPStorages/ch.sudo.cyberduck",
     "~/Library/Logs/Cyberduck",
     "~/Library/Preferences/ch.sudo.cyberduck.plist",
     "~/Library/Saved Application State/ch.sudo.cyberduck.savedState",

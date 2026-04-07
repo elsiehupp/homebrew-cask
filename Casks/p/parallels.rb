@@ -1,6 +1,6 @@
 cask "parallels" do
-  version "19.4.1-54985"
-  sha256 "5411c2b3168c23a99f99cfe24388495bfe7ddab29c93d1e29535f61eaec76f9b"
+  version "26.3.0-57392"
+  sha256 "a554e51976556ff43febf8bb074eca59bdca83ee4b9b4ebebf8111c548e85bba"
 
   url "https://download.parallels.com/desktop/v#{version.major}/#{version}/ParallelsDesktop-#{version}.dmg"
   name "Parallels Desktop"
@@ -8,24 +8,28 @@ cask "parallels" do
   homepage "https://www.parallels.com/products/desktop/"
 
   livecheck do
-    url "https://kb.parallels.com/129860"
-    regex(/<h2[^>]*?>[^<]*?(\d+(?:\.\d+)+)(?:\s*|&nbsp;)\((\d+)\)/i)
-    strategy :page_match do |page, regex|
-      page.scan(regex).map { |match| "#{match[0]}-#{match[1]}" }
+    url "https://update.parallels.com/desktop/v#{version.major}/parallels/parallels_updates.xml"
+    regex(/ParallelsDesktop[._-]v?(\d+(?:[.-]\d+)+)\.dmg/i)
+    strategy :xml do |xml, regex|
+      url = xml.elements["//FilePath"]&.text&.strip
+      match = url.match(regex) if url
+      next if match.blank?
+
+      match[1]
     end
   end
 
   auto_updates true
   conflicts_with cask: [
-    "parallels@12",
-    "parallels@13",
     "parallels@14",
     "parallels@15",
     "parallels@16",
     "parallels@17",
     "parallels@18",
+    "parallels@19",
+    "parallels@20",
   ]
-  depends_on macos: ">= :monterey"
+  depends_on macos: ">= :ventura"
 
   app "Parallels Desktop.app"
 
@@ -47,6 +51,13 @@ cask "parallels" do
   end
 
   uninstall signal: ["TERM", "com.parallels.desktop.console"],
+            # This will stop parallels desktop if running in background.
+            # 'TERM' signal and 'quit:' does not work if parallels desktop is running in background.
+            script: {
+              executable:   "/usr/bin/pkill",
+              args:         ["-TERM", "prl_client_app"],
+              must_succeed: false,
+            },
             delete: [
               "/Library/Preferences/Parallels",
               "/usr/local/bin/prl_convert",
@@ -71,6 +82,7 @@ cask "parallels" do
         "~/Library/Group Containers/*.com.parallels.Desktop",
         "~/Library/Logs/parallels.log",
         "~/Library/Parallels/Applications Menus",
+        "~/Library/Parallels/Downloads",
         "~/Library/Parallels/Parallels Desktop",
         "~/Library/Preferences/com.parallels.desktop.console.LSSharedFileList.plist",
         "~/Library/Preferences/com.parallels.desktop.console.plist",

@@ -6,12 +6,13 @@ cask "data-integration" do
       verified: "privatefilesbucket-community-edition.s3.amazonaws.com/"
   name "Pentaho Data Integration"
   desc "End to end data integration and analytics platform"
-  homepage "https://www.hitachivantara.com/en-us/products/pentaho-platform/data-integration-analytics/pentaho-community-edition.html"
+  homepage "https://pentaho.com/products/pentaho-data-integration/"
 
-  livecheck do
-    url :homepage
-    regex(/href=.*?pdi-ce[._-]v?(\d+(?:[.-]\d+)+)\.zip/i)
-  end
+  disable! date: "2025-08-24", because: "the download now requires a login"
 
   app "data-integration/Data Integration.app"
+
+  caveats do
+    requires_rosetta
+  end
 end

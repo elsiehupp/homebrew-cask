@@ -1,9 +1,9 @@
 cask "adobe-creative-cloud" do
   arch arm: "macarm64", intel: "osx10"
 
-  version "6.3.0.207"
-  sha256 arm:   "36ad3312fb683a3e00f2aa8dd0454933e9af77d8481a94c0363a6b3d9122f1ab",
-         intel: "512ff046b025a8e0ba4f8c11b6d3092b0ddfe9c6c5a62d40758ccf896b1c9ca5"
+  version "6.8.1.865"
+  sha256 arm:   "bedbaf48288b5d09cd86450f13d91b311411b4e535eee414c9f50c161f3765ec",
+         intel: "235f15c69e1734ad7178703089301d243be731cb3519558c04c1b9d409c338e2"
 
   # If url breaks you can find the latest static urls - https://helpx.adobe.com/download-install/kb/creative-cloud-desktop-app-download.html
   url "https://ccmdls.adobe.com/AdobeProducts/StandaloneBuilds/ACCC/ESD/#{version.major_minor_patch}/#{version.split(".").fourth}/#{arch}/ACCCx#{version.dots_to_underscores}.dmg"
@@ -13,7 +13,13 @@ cask "adobe-creative-cloud" do
 
   livecheck do
     url "https://ffc-static-cdn.oobesaas.adobe.com/features/v3/#{arch}/ccdConfig.xml"
-    regex(/ccd\.fw\.update\.greenline\.latest.*?"version".*?"(\d+(?:\.\d+)+)"/i)
+    strategy :xml do |xml|
+      item = xml.elements["//feature-entry[@id='ccd.fw.update.greenline.latest']/data"]&.text&.strip
+      next if item.blank?
+
+      json = Homebrew::Livecheck::Strategy::Json.parse_json(item)
+      json["version"]
+    end
   end
 
   auto_updates true
@@ -24,10 +30,6 @@ cask "adobe-creative-cloud" do
     sudo:         true,
     print_stderr: false,
   }
-
-  uninstall_preflight do
-    set_ownership "/Library/Application Support/Adobe"
-  end
 
   uninstall_postflight do
     stdout, * = system_command "/bin/launchctl", args: ["print", "gui/#{Process.uid}"]
@@ -48,6 +50,7 @@ cask "adobe-creative-cloud" do
               "com.adobe.acc.installer",
               "com.adobe.acc.installer.v2",
               "com.adobe.AdobeCreativeCloud",
+              "com.adobe.AdobeDesktopService",
               "com.adobe.ccxprocess",
             ],
             quit:         "com.adobe.acc.AdobeCreativeCloud",
@@ -130,8 +133,4 @@ cask "adobe-creative-cloud" do
         "~/Library/Application Support/Adobe",
         "~/Library/Logs/Adobe",
       ]
-
-  caveats do
-    requires_rosetta
-  end
 end

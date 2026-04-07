@@ -8,6 +8,7 @@ cask "opera-neon" do
   homepage "https://www.opera.com/computer/neon"
 
   deprecate! date: "2024-07-29", because: :unmaintained
+  disable! date: "2025-07-29", because: :unmaintained
 
   app "Opera Neon.app"
 

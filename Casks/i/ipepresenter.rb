@@ -16,5 +16,12 @@ cask "ipepresenter" do
     regex(/href=.*?ipepresenter[._-](\d+(?:\.\d+)+)[._-]mac[._-]#{arch}\.dmg/i)
   end
 
+  disable! date: "2026-09-01", because: :fails_gatekeeper_check
+
   app "IpePresenter.app"
+
+  zap trash: [
+    "~/Library/Preferences/org.otfried.ipe.IpePresenter.plist",
+    "~/Library/Saved Application State/org.otfried.ipe.IpePresenter.savedState",
+  ]
 end

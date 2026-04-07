@@ -8,6 +8,7 @@ cask "wewechat" do
   homepage "https://github.com/trazyn/weweChat"
 
   deprecate! date: "2024-07-07", because: :discontinued
+  disable! date: "2025-07-07", because: :discontinued
 
   app "wewechat.app"
 

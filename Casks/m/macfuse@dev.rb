@@ -1,15 +1,15 @@
 cask "macfuse@dev" do
-  version "4.7.2"
-  sha256 "cd85131f1329c3f5d8bc2324bd51cb25dbf38125feb298693f9278f2872f2dd2"
+  version "5.1.3"
+  sha256 "e5f80ff8c3df826e997fb786b35125a0c6a672f4bba2770b0def6ba63ca4ef81"
 
-  url "https://github.com/osxfuse/osxfuse/releases/download/macfuse-#{version}/macfuse-#{version}.dmg",
-      verified: "github.com/osxfuse/osxfuse/"
+  url "https://github.com/macfuse/macfuse/releases/download/macfuse-#{version}/macfuse-#{version}.dmg",
+      verified: "github.com/macfuse/macfuse/"
   name "macFUSE"
   desc "File system integration"
-  homepage "https://osxfuse.github.io/"
+  homepage "https://macfuse.github.io/"
 
   livecheck do
-    url "https://osxfuse.github.io/releases/DeveloperRelease.plist"
+    url "https://macfuse.github.io/releases/DeveloperRelease.plist"
     strategy :xml do |xml|
       xml.get_elements("//key[text()='Version']").map { |item| item.next_element&.text&.strip }
     end
@@ -17,7 +17,6 @@ cask "macfuse@dev" do
 
   auto_updates true
   conflicts_with cask: "macfuse"
-  depends_on macos: ">= :sierra"
 
   pkg "Extras/macFUSE #{version}.pkg"
 
@@ -25,10 +24,14 @@ cask "macfuse@dev" do
     set_ownership ["/usr/local/include", "/usr/local/lib"]
   end
 
-  uninstall pkgutil: [
-    "io.macfuse.installer.components.core",
-    "io.macfuse.installer.components.preferencepane",
-  ]
+  uninstall launchctl: [
+              "io.macfuse.app.launchservice.broker",
+              "io.macfuse.app.launchservice.daemon",
+            ],
+            pkgutil:   [
+              "io.macfuse.installer.components.core",
+              "io.macfuse.installer.components.preferencepane",
+            ]
 
   zap trash: "/Library/PreferencePanes/macFUSE.prefPane"
 

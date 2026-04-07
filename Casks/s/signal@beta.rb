@@ -1,22 +1,22 @@
 cask "signal@beta" do
   arch arm: "arm64", intel: "x64"
 
-  version "7.23.0-beta.1"
-  sha256 arm:   "7026446d5a33d9437a9f1906e6797b3b92e360c262893c924feb640adb72ee27",
-         intel: "924b4d72c8d5c9656d862820b6f6ec70bfdb7beeaf2507c3e3d0c6e1869240bb"
+  version "8.6.0-beta.1"
+  sha256 arm:   "270a07efc4742a65c4d139800d8fe26baf6fbbfbfe1578ec9a5203730b45c25b",
+         intel: "b1afdd6b7bca3d7321dfcbed9bfd3930a747a17294f4262f5a226ff43a83dd6b"
 
-  url "https://updates.signal.org/desktop/signal-desktop-beta-mac-#{arch}-#{version}.dmg"
+  url "https://updates.signal.org/desktop/signal-desktop-beta-mac-#{arch}-#{version}.zip"
   name "Signal Beta"
   desc "Instant messaging application focusing on security"
   homepage "https://signal.org/"
 
   livecheck do
-    url "https://github.com/signalapp/Signal-Desktop"
-    regex(/^v?(\d+(?:\.\d+)+[._-]beta\.\d+)$/i)
+    url "https://updates.signal.org/desktop/beta-mac.yml"
+    strategy :electron_builder
   end
 
   auto_updates true
-  depends_on macos: ">= :catalina"
+  depends_on macos: ">= :monterey"
 
   app "Signal Beta.app"
 

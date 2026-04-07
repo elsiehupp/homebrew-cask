@@ -1,17 +1,19 @@
 cask "persepolis-download-manager" do
-  version "4.3.0"
-  sha256 "343286a5972c8added71af90177e1a45cb19a18691314b958ba2edff2dd44564"
+  version "5.2.0"
+  sha256 "548b4b07904f8ec57d7f5d746459bf32a1bd0e0ae710e58108a37e3f17043895"
 
   url "https://github.com/persepolisdm/persepolis/releases/download/#{version}/persepolis_#{version}_macos.dmg",
       verified: "github.com/persepolisdm/persepolis/"
   name "Persepolis"
-  desc "GUI for aria2"
+  desc "Download manager"
   homepage "https://persepolisdm.github.io/"
 
   livecheck do
     url :url
     strategy :github_latest
   end
+
+  disable! date: "2026-09-01", because: :fails_gatekeeper_check
 
   app "Persepolis Download Manager.app"
 

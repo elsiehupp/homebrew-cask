@@ -1,59 +1,49 @@
 cask "deepl" do
-  on_catalina :or_older do
-    version "3.7.292629"
-    sha256 "efcac4988a606d9793a3bdb8e7e73dce8e3d06ed2249a4434eb54c1624b40b87"
+  on_ventura :or_older do
+    on_catalina :or_older do
+      version "3.7.292629"
+      sha256 "efcac4988a606d9793a3bdb8e7e73dce8e3d06ed2249a4434eb54c1624b40b87"
 
-    url "https://www.deepl.com/macos/download/old/#{version.major_minor}/#{version.patch}/DeepL.zip"
-
-    livecheck do
-      url "https://appdownload.deepl.com/macos/"
-      regex(%r{^old/v?(\d+(?:\.\d+)+)/(\d+(?:\.\d+)*)/DeepL\.(?:zip|tar\.gz)$}i)
-      strategy :xml do |xml|
-        xml.get_elements("//Contents/Key").map do |item|
-          match = item.text&.match(regex)
-          next if match.blank?
-
-          "#{match[1]}.#{match[2]}"
-        end
-      end
+      url "https://www.deepl.com/macos/download/old/#{version.major_minor}/#{version.patch}/DeepL.zip"
     end
-  end
-  on_big_sur do
-    version "24.2.1798840"
-    sha256 "dacbf3dbd42eab3b1d3c4b48e0f0672146d07d94627b7ad073985fe41e9e9217"
+    on_big_sur do
+      version "24.2.1798840"
+      sha256 "dacbf3dbd42eab3b1d3c4b48e0f0672146d07d94627b7ad073985fe41e9e9217"
 
-    url "https://www.deepl.com/macos/download/#{version.major_minor}/#{version.patch}/DeepL.tar.gz"
+      url "https://www.deepl.com/macos/download/#{version.major_minor}/#{version.patch}/DeepL.tar.gz"
+    end
+    on_monterey do
+      version "24.11.31463097"
+      sha256 "8e02db7b5f85d4020419a5bf7a44a39b7d1f321acabb9b8011407b3b462c0218"
 
+      url "https://www.deepl.com/macos/download/#{version.major_minor}/#{version.patch}/DeepL.tar.gz"
+    end
+    on_ventura do
+      version "25.9.42781299"
+      sha256 "fee6e77aed8fa9947bdd4b4d9aab147c7b4d56671e0cafece8d48c9b871ebf98"
+
+      url "https://www.deepl.com/macos/download/#{version.major_minor}/#{version.patch}/DeepL.dmg"
+    end
     livecheck do
       skip "Legacy version"
     end
   end
-  on_monterey :or_newer do
-    version "24.8.11145133"
-    sha256 "0ec4668d11d92573d2f5e5694c45091a4c4e0482dac856b602c09388f5280d65"
+  on_sonoma :or_newer do
+    version "26.3.14124477"
+    sha256 "ec1f68036d211878b14da74c04d3f5ee17e0aab513af2cfcf84910274365babd"
 
-    url "https://www.deepl.com/macos/download/#{version.major_minor}/#{version.patch}/DeepL.tar.gz"
-
+    url "https://www.deepl.com/macos/download/#{version.major_minor}/#{version.patch}/DeepL.dmg"
     livecheck do
-      url "https://appdownload.deepl.com/macos/"
-      regex(%r{^v?(\d+(?:\.\d+)+)/(\d+(?:\.\d+)*)/DeepL\.tar\.gz$}i)
-      strategy :xml do |xml|
-        xml.get_elements("//ListBucketResult//Contents//Key").map do |item|
-          match = item.text.match(regex)
-          next if match.blank?
-
-          "#{match[1]}.#{match[2]}"
-        end
-      end
+      url "https://appdownload.deepl.com/macos/appcast.xml"
+      strategy :sparkle
     end
   end
 
   name "DeepL"
-  desc "Trains AIs to understand and translate texts"
+  desc "AI-powered translator"
   homepage "https://www.deepl.com/"
 
   auto_updates true
-  depends_on macos: ">= :catalina"
 
   app "DeepL.app"
 

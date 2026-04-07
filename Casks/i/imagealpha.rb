@@ -8,6 +8,7 @@ cask "imagealpha" do
   homepage "https://pngmini.com/"
 
   deprecate! date: "2024-06-22", because: :discontinued
+  disable! date: "2025-06-23", because: :discontinued
 
   app "ImageAlpha.app"
 end

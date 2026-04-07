@@ -1,6 +1,6 @@
 cask "grammarly-desktop" do
-  version "1.84.1.0"
-  sha256 "334033994c16414b26dc743a842f427a615cd07b2604a4e46731cf61898a6599"
+  version "1.159.0.0"
+  sha256 "5582b35f585f5343cef408713fec32289a4277ff6af40c0573bcb9532a688e7e"
 
   url "https://download-mac.grammarly.com/versions/#{version}/Grammarly.dmg"
   name "Grammarly Desktop"
@@ -13,13 +13,18 @@ cask "grammarly-desktop" do
   end
 
   auto_updates true
-  depends_on macos: ">= :sierra"
 
   app "Grammarly Installer.app", target: "Grammarly Desktop.app"
 
   zap trash: [
     "~/Library/Application Support/com.grammarly.ProjectLlama",
     "~/Library/Caches/com.grammarly.ProjectLlama",
+    "~/Library/HTTPStorages/com.grammarly.GRLlamaOnboarding.binarycookies",
+    "~/Library/HTTPStorages/com.grammarly.ProjectLlama",
+    "~/Library/HTTPStorages/com.grammarly.ProjectLlama.binarycookies",
+    "~/Library/LaunchAgents/com.grammarly.ProjectLlama.Shepherd.plist",
     "~/Library/Preferences/com.grammarly.ProjectLlama.plist",
+    "~/Library/WebKit/com.grammarly.GRLlamaOnboarding",
+    "~/Library/WebKit/com.grammarly.ProjectLlama",
   ]
 end

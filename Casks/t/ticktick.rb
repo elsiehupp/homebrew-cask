@@ -1,25 +1,19 @@
 cask "ticktick" do
-  version "6.0.40,378"
-  sha256 "104418705fceac7f57cd816916a5d214dc714a4f5bdf3a961966eab51fd75819"
+  version "8.0.30,464"
+  sha256 "bd5ab6da26472b12d6cc0babb4d6098c56c265ccd84f95d22ef58ce707981dfe"
 
-  url "https://ticktick-download-mac.s3.amazonaws.com/download/mac/TickTick_#{version.csv.first}_#{version.csv.second}.dmg",
-      verified: "ticktick-download-mac.s3.amazonaws.com/download/mac/"
+  url "https://download.ticktick.app/download/mac/TickTick_#{version.csv.first}_#{version.csv.second}.dmg",
+      verified: "download.ticktick.app/download/mac/"
   name "TickTick"
   desc "To-do & task list manager"
-  homepage "https://www.ticktick.com/home"
+  homepage "https://www.ticktick.com/"
 
   livecheck do
-    url "https://www.ticktick.com/static/getApp/download?type=mac"
-    strategy :header_match do |headers|
-      match = headers["location"].match(/TickTick[._-]v?(\d+(?:\.\d+)+)[_-](\d+)\.dmg/i)
-      next if match.blank?
-
-      "#{match[1]},#{match[2]}"
-    end
+    url "https://pull.ticktick.com/mac/release_note/mac_appcast.xml"
+    strategy :sparkle
   end
 
   auto_updates true
-  depends_on macos: ">= :mojave"
 
   app "TickTick.app"
 

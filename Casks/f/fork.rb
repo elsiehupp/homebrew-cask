@@ -1,19 +1,25 @@
 cask "fork" do
-  version "2.45.1"
-  sha256 "49d348e42eb0ce372975ab8502619770f636a3c9fd98262714fb22028fa1b537"
+  version "2.63.2"
+  sha256 "152c20e7e9285e41518deaae36a6feae0df6190caca878091f0d489a5a75b030"
 
   url "https://cdn.fork.dev/mac/Fork-#{version}.dmg"
   name "Fork"
   desc "GIT client"
   homepage "https://fork.dev/"
 
+  # The appcast `version` may omit a `0` patch for a new minor release (e.g.
+  # 1.23 for 1.23.0) but the filename in the `url` uses the full version, so we
+  # match the version from the filename.
   livecheck do
-    url "https://git-fork.com/update/feed.xml"
-    strategy :sparkle
+    url "https://fork.dev/update/feed-stable.xml"
+    regex(/v?(\d+(?:\.\d+)+)/i)
+    strategy :sparkle do |item, regex|
+      item.url&.[](regex, 1)
+    end
   end
 
   auto_updates true
-  depends_on macos: ">= :high_sierra"
+  conflicts_with cask: "fork@dev"
 
   app "Fork.app"
   binary "#{appdir}/Fork.app/Contents/Resources/fork_cli", target: "fork"

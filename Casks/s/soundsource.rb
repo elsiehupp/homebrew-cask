@@ -1,5 +1,5 @@
 cask "soundsource" do
-  version "5.6.3"
+  version "6.0.5"
   sha256 :no_check
 
   url "https://cdn.rogueamoeba.com/soundsource/download/SoundSource.zip"
@@ -8,12 +8,13 @@ cask "soundsource" do
   homepage "https://rogueamoeba.com/soundsource/"
 
   livecheck do
-    url "https://rogueamoeba.net/ping/versionCheck.cgi?format=sparkle&system=#{MacOS.full_version.to_s.delete(".")}&bundleid=com.rogueamoeba.soundsource&platform=osx&version=#{version.no_dots}8000"
+    url "https://rogueamoeba.net/ping/versionCheck.cgi?format=sparkle&system=999&bundleid=com.rogueamoeba.soundsource&platform=osx&version=#{version.no_dots}8000"
     strategy :sparkle
   end
 
   auto_updates true
-  depends_on macos: ">= :big_sur"
+  conflicts_with cask: "soundsource@test"
+  depends_on macos: ">= :sequoia"
 
   app "SoundSource.app"
 

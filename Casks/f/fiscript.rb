@@ -7,8 +7,7 @@ cask "fiscript" do
   homepage "https://github.com/Mortennn/FiScript"
 
   deprecate! date: "2024-07-10", because: :unmaintained
-
-  depends_on macos: ">= :sierra"
+  disable! date: "2025-07-10", because: :unmaintained
 
   app "FiScript.app"
 
@@ -17,6 +16,7 @@ cask "fiscript" do
     "~/Library/Application Scripts/com.Mortennn.FiScript.Finder-Extension",
     "~/Library/Containers/com.Mortennn.FiScript",
     "~/Library/Containers/com.Mortennn.FiScript.Finder-Extension",
+    "~/Library/Group Containers/group.Mortennn.FiScript",
     "~/Library/Group Containers/group.Mortennn.FiScript",
     "~/Library/Group Containers/group.Mortennn.FiScript",
     "~/Library/Group Containers/sharedContainerID.container",

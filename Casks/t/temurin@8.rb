@@ -1,6 +1,6 @@
 cask "temurin@8" do
-  version "8,422,05.1"
-  sha256 "809d7c0b6c7c2fd483711fb784e4fb101ad431c71dc8e96aa9c2cffaa8bfa7b7"
+  version "8,482,08"
+  sha256 "4d06c83518264389a58951a5b44357f66f7879a6ad0b326fa0f35f3a7e95fd4b"
 
   url "https://github.com/adoptium/temurin8-binaries/releases/download/jdk#{version.csv.first}u#{version.csv.second}-b#{version.csv.third}/OpenJDK#{version.csv.first}U-jdk_x64_mac_hotspot_#{version.csv.first}u#{version.csv.second}b#{version.csv.third.split(".").first}.pkg",
       verified: "github.com/adoptium/temurin8-binaries/"

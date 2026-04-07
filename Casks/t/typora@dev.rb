@@ -1,25 +1,26 @@
 cask "typora@dev" do
-  version "1.9.2"
-  sha256 "638b294e8fdf4ad1dcd8161af34bafa77b0f2244b568afdd875311ada077d64c"
+  version "1.13.1-dev"
+  sha256 "58a1f2990331d9d8e8de8971d93242f5e97d24d60acad2010cbc259548dd44be"
 
   language "zh-Hans-CN" do # use official Chinese mirror
-    url "https://download2.typoraio.cn/mac/Typora-#{version}-dev.dmg",
+    url "https://downloads.typoraio.cn/mac/Typora-#{version}.dmg",
         verified: "typoraio.cn/"
+
+    "zh-Hans-CN"
   end
   language "en", default: true do
-    url "https://download.typora.io/mac/Typora-#{version}-dev.dmg"
+    url "https://downloads.typora.io/mac/Typora-#{version}.dmg"
+
+    "en-US"
   end
 
-  name "typora-dev"
+  name "Typora"
   desc "Configurable document editor that supports Markdown"
   homepage "https://typora.io/"
 
   livecheck do
     url "https://typora.io/releases/dev_macos.xml"
-    regex(/Typora[._-]v?(\d+(?:\.\d+)+)(?:-dev)\.dmg/i)
-    strategy :sparkle do |item|
-      item.url[regex, 1]
-    end
+    strategy :sparkle, &:short_version
   end
 
   auto_updates true

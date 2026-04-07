@@ -1,6 +1,6 @@
 cask "marathon-infinity" do
-  version "20240822"
-  sha256 "0123846189c088836ce5f506c47cea2b5425db2b686eef289f9edadf812301da"
+  version "20250829"
+  sha256 "1a87729341ddb5358b77e6aed3c38009e1f857e9cfd704ec03a5d1babf3a5433"
 
   url "https://github.com/Aleph-One-Marathon/alephone/releases/download/release-#{version}/MarathonInfinity-#{version}-Mac.dmg",
       verified: "github.com/Aleph-One-Marathon/alephone/"
@@ -12,8 +12,6 @@ cask "marathon-infinity" do
     url :homepage
     regex(%r{href=.*?/MarathonInfinity[._-]v?(\d+(?:\.\d+)*)[._-]Mac\.dmg}i)
   end
-
-  depends_on macos: ">= :high_sierra"
 
   app "Classic Marathon Infinity.app"
 

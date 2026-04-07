@@ -9,6 +9,7 @@ cask "nvalt" do
   homepage "https://brettterpstra.com/projects/nvalt/"
 
   deprecate! date: "2024-07-27", because: :unmaintained
+  disable! date: "2025-07-27", because: :unmaintained
 
   app "nvALT.app"
 

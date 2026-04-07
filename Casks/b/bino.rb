@@ -13,7 +13,14 @@ cask "bino" do
     regex(/href=.*?Bino[._-](\d+(?:\.\d+)+)[._-]OSX[._-]Mavericks[._-]GPL\.zip/i)
   end
 
+  disable! date: "2026-09-01", because: :fails_gatekeeper_check
+
   app "Bino.app"
+
+  zap trash: [
+    "~/Library/Preferences/org.bino3d.Bino.plist",
+    "~/Library/Saved Application State/org.bino3d.savedState",
+  ]
 
   caveats do
     requires_rosetta

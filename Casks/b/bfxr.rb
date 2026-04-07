@@ -8,6 +8,7 @@ cask "bfxr" do
   homepage "https://www.bfxr.net/"
 
   deprecate! date: "2024-07-04", because: :discontinued
+  disable! date: "2025-07-04", because: :discontinued
 
   app "Bfxr.app"
 

@@ -1,9 +1,9 @@
 cask "streamlabs" do
   arch arm: "-arm64"
 
-  version "1.16.7"
-  sha256 arm:   "41f7d69052e6ba22716156e1289235ce63cd8deff801e7bc10cdea272095a47f",
-         intel: "92c64ff9a5959d7f154a21576d30d0f21711c56b23c0a53778dd35fc6d47887d"
+  version "1.20.7"
+  sha256 arm:   "1cbae6b436ed6bffe0925eddaf02e55b74b14ad518ea694a68009c17a814615c",
+         intel: "9cf5b89a615da8629ac5bc9c47f68486da3c008690335e73fbefba9bf30b054f"
 
   url "https://slobs-cdn.streamlabs.com/Streamlabs+Desktop-#{version}#{arch}.dmg"
   name "Streamlabs Desktop"
@@ -16,7 +16,6 @@ cask "streamlabs" do
   end
 
   auto_updates true
-  depends_on macos: ">= :catalina"
 
   app "Streamlabs Desktop.app"
 

@@ -8,6 +8,7 @@ cask "deepnest" do
   homepage "https://deepnest.io/"
 
   deprecate! date: "2024-07-09", because: :unmaintained
+  disable! date: "2025-07-09", because: :unmaintained
 
   app "Deepnest-#{version}-mac/Deepnest-mac-#{version}.app", target: "Deepnest.app"
 

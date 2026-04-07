@@ -1,5 +1,5 @@
 cask "ankama" do
-  version "3.12.19"
+  version "3.14.7"
   sha256 :no_check
 
   url "https://launcher.cdn.ankama.com/installers/production/Ankama%20Launcher-Setup.dmg"
@@ -11,6 +11,10 @@ cask "ankama" do
     url "https://launcher.cdn.ankama.com/installers/production/latest-mac.yml"
     strategy :electron_builder
   end
+
+  disable! date: "2026-09-01", because: :fails_gatekeeper_check
+
+  auto_updates true
 
   app "Ankama Launcher.app"
 

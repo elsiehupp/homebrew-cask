@@ -1,6 +1,6 @@
 cask "hapigo" do
-  version "2.13.0"
-  sha256 "66a92fb64da32c20791c9aacc3233379a64a6741236217aae92b9108ade0271d"
+  version "2.20.0"
+  sha256 "249dc7e25e0493ececcc1ad80bfe54f8b1795fb67adedf91e1b3222ce3bfada8"
 
   url "https://dl.hapigo.com/HapiGo_#{version}.dmg"
   name "HapiGo"
@@ -15,7 +15,6 @@ cask "hapigo" do
   end
 
   auto_updates true
-  depends_on macos: ">= :mojave"
 
   app "HapiGo.app"
 

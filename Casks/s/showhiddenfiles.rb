@@ -8,6 +8,7 @@ cask "showhiddenfiles" do
   homepage "https://gotoes.org/sales/ShowHiddenFilesMacOSX/How_To_Show_Hidden_Files.php"
 
   deprecate! date: "2024-07-06", because: :unmaintained
+  disable! date: "2025-07-06", because: :unmaintained
 
   app "ShowHiddenFiles.app"
 

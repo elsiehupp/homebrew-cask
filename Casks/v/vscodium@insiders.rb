@@ -1,11 +1,11 @@
 cask "vscodium@insiders" do
   arch arm: "arm64", intel: "x64"
 
-  version "1.93.0.24231-insider"
-  sha256 arm:   "4e15911f58466b803de0bf9c6211b7143cc172819a921a548db7cfd78704b981",
-         intel: "a87e09c502dadb2e45772fd19444abd198b2f2d35352ced188ec94399b81b2c3"
+  version "1.112.02251-insider"
+  sha256 arm:   "bc9526f40db1ea7645c94362a836d9849b18d2846834dd59361b1d335894cd0e",
+         intel: "dda30096f0be31f2972ef54e204c89d04e4ca36937a84a5705cebaa70f72474f"
 
-  url "https://github.com/VSCodium/vscodium-insiders/releases/download/#{version}/VSCodium.#{arch}.#{version}.dmg",
+  url "https://github.com/VSCodium/vscodium-insiders/releases/download/#{version}/VSCodium-darwin-#{arch}-#{version}.zip",
       verified: "github.com/VSCodium/vscodium-insiders/"
   name "VSCodium"
   name "VSCodium Insiders"
@@ -13,15 +13,17 @@ cask "vscodium@insiders" do
   homepage "https://vscodium.com/"
 
   livecheck do
-    url :url
-    regex(/^v?(\d+(?:\.\d+)+.*)$/i)
-    strategy :github_latest
+    url "https://raw.githubusercontent.com/VSCodium/versions/refs/heads/master/insider/darwin/#{arch}/latest.json"
+    strategy :json do |json|
+      json["name"]
+    end
   end
 
-  depends_on macos: ">= :catalina"
+  auto_updates true
+  depends_on macos: ">= :monterey"
 
   app "VSCodium - Insiders.app"
-  binary "#{appdir}/VSCodium - Insiders.app/Contents/Resources/app/bin/codium-insiders", target: "codium-insiders"
+  binary "#{appdir}/VSCodium - Insiders.app/Contents/Resources/app/bin/codium-insiders"
 
   zap trash: [
     "~/.vscodium-insiders",

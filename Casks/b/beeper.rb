@@ -1,39 +1,33 @@
 cask "beeper" do
-  arch arm: "arm64", intel: "x64"
+  arch arm: "-arm64"
+  livecheck_arch = on_arch_conditional arm: "arm64", intel: "x64"
 
-  version "3.108.3,2407188w36frwla"
-  sha256 arm:   "51495143c1ebb499266bef8005e41fe8829f65e5baced6afa4da530cbd96d2d9",
-         intel: "c03d4c5a2bec94275c0f1916468f708b94c2f1cd3ed1a31b2869dbabb6a56765"
+  version "4.2.692"
+  sha256 arm:   "890ed55ad76ec3cc4847ac2608999ecfe47798ac28c880d9534450bf570bb8c5",
+         intel: "a76af3fd6efa21b45cc3ff31c4344dcb544f979764123df3175e0ab465460c11"
 
-  url "https://download.todesktop.com/2003241lzgn20jd/Beeper%20#{version.csv.first}%20-%20Build%20#{version.csv.second}-#{arch}-mac.zip",
-      verified: "download.todesktop.com/2003241lzgn20jd/"
+  url "https://beeper-desktop.download.beeper.com/builds/Beeper-#{version}#{arch}-mac.zip"
   name "Beeper"
   desc "Universal chat app powered by Matrix"
   homepage "https://www.beeper.com/"
 
   livecheck do
-    url "https://download.todesktop.com/2003241lzgn20jd/latest-mac.yml"
-    regex(/Beeper\sv?(\d+(?:\.\d+)+)(?:\s-\sBuild\s([a-z\d]+?))?-#{arch}-mac\.zip/)
-    strategy :electron_builder do |yaml, regex|
-      yaml["files"]&.map do |item|
-        match = item["url"]&.match(regex)
-        next if match.blank?
-
-        match[2].present? ? "#{match[1]},#{match[2]}" : match[1]
-      end
+    url "https://api.beeper.com/desktop/update-feed.json?bundleID=com.automattic.beeper.desktop&platform=macos&arch=#{livecheck_arch}&channel=stable"
+    strategy :json do |json|
+      json["version"]
     end
   end
 
   auto_updates true
-  depends_on macos: ">= :catalina"
+  depends_on macos: ">= :monterey"
 
-  app "Beeper.app"
+  app "Beeper Desktop.app"
 
   zap trash: [
-    "~/Library/Application Support/Beeper",
-    "~/Library/Caches/im.beeper",
-    "~/Library/Caches/im.beeper.ShipIt",
-    "~/Library/Preferences/im.beeper.plist",
-    "~/Library/Saved Application State/im.beeper.savedState",
+    "~/Library/Application Support/BeeperTexts",
+    "~/Library/Caches/com.automattic.beeper.desktop",
+    "~/Library/Caches/com.automattic.beeper.desktop.ShipIt",
+    "~/Library/Preferences/com.automattic.beeper.desktop.plist",
+    "~/Library/Saved Application State/com.automattic.beeper.desktop.savedState",
   ]
 end

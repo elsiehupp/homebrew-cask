@@ -1,6 +1,6 @@
 cask "instantview" do
-  version "3.21,R0001"
-  sha256 "16cd0f07bff511c788d75a850a21712176428551ed39d7e3a236584708fc0697"
+  version "3.24,R0004"
+  sha256 "968cd5ca428ad5e754425c3134acbf1b230a8ec41a5de47d5d5a1abbbd81c218"
 
   url "https://www.siliconmotion.com/downloads/macOS_InstantView_V#{version.csv.first}#{version.csv.second}.dmg"
   name "SiliconMotion InstantView"
@@ -8,15 +8,14 @@ cask "instantview" do
   homepage "https://www.siliconmotion.com/"
 
   livecheck do
-    url "https://www.siliconmotion.com/downloads/index.html"
-    regex(/macOS[._-]instantview[._-]v?(\d+(?:\.\d+)+)(\w\d+)\.dmg/i)
-    strategy :page_match do |page, regex|
-      page.scan(regex).map { |match| "#{match[0]},#{match[1]}" }
+    url "https://www.siliconmotion.com/downloads/InstantView/Mac/MacAppupdate.V4.xml"
+    strategy :sparkle do |item|
+      item.short_version.tr(" ", ",")
     end
   end
 
   auto_updates true
-  depends_on macos: ">= :catalina"
+  depends_on macos: ">= :monterey"
 
   app "macOS InstantView.app"
 

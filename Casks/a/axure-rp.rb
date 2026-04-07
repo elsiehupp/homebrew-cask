@@ -1,6 +1,6 @@
 cask "axure-rp" do
-  version "10.0.0.3924"
-  sha256 "987c5339ac9b058727cdf96e886ee1ffb1473ecffb0c00ca62bfe997ed4e8f4f"
+  version "11.0.0.4137"
+  sha256 "fc9a4b3e46b835bab9f4450a382f8fea0e4e4bd2dd2602886f36da38ff9571b4"
 
   url "https://axure.cachefly.net/versions/#{version.csv.first.major_minor.dots_to_hyphens}/AxureRP-Setup-#{version.split(".")[3]}.dmg",
       verified: "axure.cachefly.net/"
@@ -9,11 +9,9 @@ cask "axure-rp" do
   homepage "https://www.axure.com/"
 
   livecheck do
-    url "https://www.axure.com/release-history"
+    url "https://www.axure.com/changelog?filter=Axure+RP"
     regex(/>\s*(?:Version|Axure\s*RP)\s*v?(\d+(?:\.\d+)+)/i)
   end
-
-  depends_on macos: ">= :high_sierra"
 
   app "Axure RP #{version.major}.app"
 

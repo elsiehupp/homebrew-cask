@@ -8,6 +8,7 @@ cask "beardedspice" do
   homepage "https://github.com/beardedspice/beardedspice/"
 
   deprecate! date: "2024-07-09", because: :unmaintained
+  disable! date: "2025-07-09", because: :unmaintained
 
   auto_updates true
 

@@ -1,9 +1,9 @@
 cask "stretchly" do
   arch arm: "-arm64"
 
-  version "1.16.0"
-  sha256 arm:   "eaf7204b77d7a2cd3fa3ff3e8e54fdf542440b33e035cef4799d31b35433eb5e",
-         intel: "c2a3766833fb3a249af1ea939db18545be069254bffe6357bd83f725cadc4967"
+  version "1.20.0"
+  sha256 arm:   "277b8c5649aad01182f224abcda21b154775531ca4aacd71d6cff359d435584d",
+         intel: "799f14585d0220abdd500e57cd9775a48505f894cbd2eca83f57c9cf0a45f620"
 
   url "https://github.com/hovancik/stretchly/releases/download/v#{version}/stretchly-#{version}#{arch}.dmg",
       verified: "github.com/hovancik/stretchly/"
@@ -11,7 +11,9 @@ cask "stretchly" do
   desc "Break time reminder app"
   homepage "https://hovancik.net/stretchly/"
 
-  depends_on macos: ">= :catalina"
+  disable! date: "2026-09-01", because: :fails_gatekeeper_check
+
+  depends_on macos: ">= :monterey"
 
   app "Stretchly.app"
 
@@ -22,10 +24,4 @@ cask "stretchly" do
     "~/Library/Logs/Stretchly",
     "~/Library/Preferences/net.hovancik.stretchly.plist",
   ]
-
-  caveats <<~EOS
-    This application is not signed. For details see:
-
-    https://github.com/hovancik/stretchly#application-signing
-  EOS
 end

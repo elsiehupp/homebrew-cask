@@ -7,6 +7,7 @@ cask "force-paste" do
   homepage "https://github.com/EugeneDae/Force-Paste"
 
   deprecate! date: "2024-07-10", because: :unmaintained
+  disable! date: "2025-07-10", because: :unmaintained
 
   app "Force Paste.app"
 

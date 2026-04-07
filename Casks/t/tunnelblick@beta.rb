@@ -1,32 +1,25 @@
 cask "tunnelblick@beta" do
-  version "6.0beta05,6090"
-  sha256 "27663f933cf998434245f6c757079f27db29d655f830bdff16530fccc53762b9"
+  version "9.0beta02,6410"
+  sha256 "1dd9a98e1ae1043c6a20f920c29bbfadd389f7f64162817a0955dccbc8c7d91f"
 
-  url "https://github.com/Tunnelblick/Tunnelblick/releases/download/v#{version.csv.first}/Tunnelblick_#{version.csv.first}_build_#{version.csv.second}.dmg",
-      verified: "github.com/Tunnelblick/Tunnelblick/"
+  url "https://tunnelblick.net/iprelease/Tunnelblick_#{version.csv.first}_build_#{version.csv.second}.dmg"
   name "Tunnelblick"
   desc "Free and open source graphic user interface for OpenVPN"
   homepage "https://www.tunnelblick.net/"
 
   livecheck do
-    url :url
-    regex(/^Tunnelblick[._-]v?(\d+(?:\.\d+)+[._-]?beta\d+[a-z]?)[._-]build[._-](\d+)\.(?:dmg|pkg)$/i)
-    strategy :github_releases do |json, regex|
-      json.map do |release|
-        next if release["draft"]
+    url "https://tunnelblick.net/appcast-b.rss"
+    regex(/^v?(\d+(?:\.\d+)+[._-]?beta\d+[a-z]?)\s+\(build\s+(\d+(?:\.\d+)*)\)$/i)
+    strategy :sparkle do |item, regex|
+      match = item.short_version&.match(regex)
+      next if match.blank?
 
-        release["assets"]&.map do |asset|
-          match = asset["name"]&.match(regex)
-          next if match.blank?
-
-          "#{match[1]},#{match[2]}"
-        end
-      end.flatten
+      "#{match[1]},#{match[2]}"
     end
   end
 
   auto_updates true
-  depends_on macos: ">= :high_sierra"
+  depends_on macos: ">= :ventura"
 
   app "Tunnelblick.app"
 

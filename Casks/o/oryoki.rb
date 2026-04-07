@@ -11,8 +11,7 @@ cask "oryoki" do
   homepage "http://oryoki.io/"
 
   deprecate! date: "2024-07-27", because: :unmaintained
-
-  depends_on macos: ">= :el_capitan"
+  disable! date: "2025-07-27", because: :unmaintained
 
   app "Oryoki.app"
 

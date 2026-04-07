@@ -1,16 +1,18 @@
 cask "iina+" do
-  version "0.8.3"
-  sha256 "b244167488fb59b119c8e04befd66e04d734e4dc58a7b7f1aba96ec325a1bcc2"
+  version "0.8.17"
+  sha256 "f49c0dc464e618ac3e0c0bed4f8e23b84139afe5eaf37458d323eabe864fd25a"
 
   url "https://github.com/xjbeta/iina-plus/releases/download/#{version}/IINA+.#{version}.dmg"
   name "IINA+"
   desc "Extra danmaku support for iina (iina 弹幕支持)"
   homepage "https://github.com/xjbeta/iina-plus"
 
-  auto_updates true
-  depends_on macos: ">= :mojave"
+  disable! date: "2026-09-01", because: :fails_gatekeeper_check
 
-  app "iina+.app"
+  auto_updates true
+  depends_on macos: ">= :ventura"
+
+  app "IINA+.app"
 
   zap trash: [
     "~/Library/Application Support/com.xjbeta.iina-plus",

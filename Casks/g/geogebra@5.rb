@@ -1,6 +1,6 @@
 cask "geogebra@5" do
-  version "5.2.853.0"
-  sha256 "9ca48f86b628cbf9808a1da8694160822ba107c3047b6b7a3440c6bf44d08197"
+  version "5.4.920.0"
+  sha256 "5a796255c0497c91ff503a7714cfd4d036fb3afb8d9daff9c5d08257e30032e7"
 
   url "https://download.geogebra.org/installers/#{version.major_minor}/GeoGebra-MacOS-Installer-withJava-#{version.dots_to_hyphens}.zip"
   name "GeoGebra"
@@ -11,14 +11,12 @@ cask "geogebra@5" do
     url "https://download.geogebra.org/package/mac"
     regex(%r{/GeoGebra[._-]MacOS[._-]Installer[._-]withJava[._-]v?(\d+(?:-\d+)+)\.zip}i)
     strategy :header_match do |headers, regex|
-      match = headers["location"][regex, 1]
+      match = headers["location"]&.match(regex)
       next if match.blank?
 
-      match.tr("-", ".")
+      match[1].tr("-", ".")
     end
   end
-
-  deprecate! date: "2025-05-01", because: :unsigned
 
   app "Geogebra.app"
 

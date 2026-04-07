@@ -1,5 +1,5 @@
 cask "zoho-workdrive" do
-  version "2.7.43"
+  version "2.7.48"
   sha256 :no_check
 
   url "https://files-accl.zohopublic.com/public/wdbin/download/46f971e4fc4a32b68ad5d7dade38a7d2",
@@ -12,8 +12,6 @@ cask "zoho-workdrive" do
     url :url
     strategy :extract_plist
   end
-
-  depends_on macos: ">= :mojave"
 
   app "Zoho WorkDrive.app"
 

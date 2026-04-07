@@ -9,6 +9,7 @@ cask "jtool2" do
   homepage "https://newosxbook.com/tools/jtool.html"
 
   deprecate! date: "2024-06-27", because: :discontinued
+  disable! date: "2025-06-27", because: :discontinued
 
   binary "jtool2"
 end

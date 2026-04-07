@@ -8,7 +8,8 @@ cask "citra" do
   desc "Nintendo 3DS emulator"
   homepage "https://citra-emu.org/"
 
-  deprecate! date: "2024-06-25", because: :repo_archived
+  deprecate! date: "2024-06-25", because: :discontinued
+  disable! date: "2025-06-25", because: :discontinued
 
   installer manual: "citra-setup-mac.app"
 

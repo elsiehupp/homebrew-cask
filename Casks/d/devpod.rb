@@ -1,9 +1,9 @@
 cask "devpod" do
   arch arm: "aarch64", intel: "x64"
 
-  version "0.5.19"
-  sha256 arm:   "e440115386c06f5e084b9cf6de85818d69618109d6feda1281f22ce48b5b31e6",
-         intel: "8558fb872d77dba35b81f1b52b541d982686991ac40b5ac0429965ae0f1e3408"
+  version "0.6.15"
+  sha256 arm:   "63fea2f91762be167a53267722b1f37b95214bb1824957e2eeaf38d41f6a16af",
+         intel: "f90c172732d7430b74a221b3af7602fcadcf0175a3dfce3b9ce7953e8f93d2ed"
 
   url "https://github.com/loft-sh/devpod/releases/download/v#{version}/DevPod_macos_#{arch}.dmg",
       verified: "github.com/loft-sh/devpod/"
@@ -17,7 +17,6 @@ cask "devpod" do
   end
 
   auto_updates true
-  depends_on macos: ">= :high_sierra"
 
   app "DevPod.app"
   binary "#{appdir}/DevPod.app/Contents/MacOS/devpod-cli", target: "devpod"

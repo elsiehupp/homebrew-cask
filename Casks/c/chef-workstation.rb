@@ -1,25 +1,33 @@
 cask "chef-workstation" do
   arch arm: "arm64", intel: "x86_64"
 
-  macos_version = "11"
+  on_arm do
+    version "25.13.7,14"
+    sha256 "13f6d27250cd5104253454cf06f00032e7a78efb8198f126d7dea009e6b64cac"
 
-  version "24.8.1068"
-  sha256 arm:   "636c1a320df9ea2dd30ce1c73552d8922d1ed5b5bd3976dce4429233f7da630a",
-         intel: "cda0de891a11c6a502a142172c386e06a1461d7312fa7a57b4169e107db9e37c"
+    depends_on macos: ">= :ventura"
+  end
+  on_intel do
+    version "25.9.1094,12"
+    sha256 "d0f537cb4a1e5ae1b6752576427f8bfbf9ce7ac4de4dd3cbbeb603c8f9892347"
 
-  url "https://packages.chef.io/files/stable/chef-workstation/#{version}/mac_os_x/#{macos_version}/chef-workstation-#{version}-1.#{arch}.dmg"
+    depends_on macos: ">= :monterey"
+  end
+
+  url "https://packages.chef.io/files/stable/chef-workstation/#{version.csv.first}/mac_os_x/#{version.csv.second}/chef-workstation-#{version.csv.first}-1.#{arch}.dmg"
   name "Chef Workstation"
   desc "All-in-one installer for the tools you need to manage your Chef infrastructure"
   homepage "https://docs.chef.io/workstation/"
 
   livecheck do
-    url "https://omnitruck.chef.io/stable/chef-workstation/metadata?p=mac_os_x&pv=#{macos_version}&m=#{arch}&v=latest"
-    regex(/version\s*(\d+(?:\.\d+)+)/i)
+    url "https://omnitruck.chef.io/stable/chef-workstation/metadata?p=mac_os_x&pv=99&m=#{arch}&v=latest"
+    regex(%r{/chef-workstation/v?(\d+(?:\.\d+)+)/mac_os_x/(\d+(?:\.\d+)*)/}i)
+    strategy :page_match do |page, regex|
+      page.scan(regex).map { |match| "#{match[0]},#{match[1]}" }
+    end
   end
 
-  depends_on macos: ">= :big_sur"
-
-  pkg "chef-workstation-#{version}-1.#{arch}.pkg"
+  pkg "chef-workstation-#{version.csv.first}-1.#{arch}.pkg"
 
   uninstall launchctl: [
               "io.chef.chef-workstation",

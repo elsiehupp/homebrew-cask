@@ -2,11 +2,11 @@ cask "apidog" do
   arch arm: "-macOS-arm64"
   livecheck_folder = on_arch_conditional arm: "-arm64"
 
-  version "2.6.12"
-  sha256 arm:   "ef5c201a4def2cb48d7f7e15a1752df3e9268e20b256d043ac7fdc819ef1cf92",
-         intel: "21bbeadd445de73d03d84bcaa28b7ef862c638197e6e8c2cfd0dae8ba94840dd"
+  version "2.8.23"
+  sha256 arm:   "cb0997d434a06f7c564d062c54fad035782780ebbf0a1838303de24abdfd4fd3",
+         intel: "a8215b003cf714f57e6126844aeca38273e9dc30fda5f49920a7b2be707b2f63"
 
-  url "https://file-assets.apidog.com/download/#{version}/Apidog#{arch}-#{version}.dmg"
+  url "https://file-assets.apidog.com/download/#{version}/legacy-Apidog#{arch}-#{version}.dmg"
   name "Apidog"
   desc "API development platform"
   homepage "https://apidog.com/"
@@ -17,7 +17,6 @@ cask "apidog" do
   end
 
   auto_updates true
-  depends_on macos: ">= :el_capitan"
 
   app "Apidog.app"
 

@@ -1,6 +1,6 @@
 cask "prince" do
-  version "15.4"
-  sha256 "08552d090275627b3d35cf291b251459a1fb5433e555654d0d8e6db132e64bf0"
+  version "16.2"
+  sha256 "30a14021a68c38b92c36beb2fddc62ea5425392a86d4cdc6767adde38a9af8aa"
 
   url "https://www.princexml.com/download/prince-#{version}-macos.zip"
   name "Prince"
@@ -9,7 +9,7 @@ cask "prince" do
 
   livecheck do
     url "https://www.princexml.com/download/"
-    regex(/>Prince v?(\d+(?:\.\d+)+)/i)
+    regex(/>\s*Prince\s+v?(\d+(?:\.\d+)*)/i)
   end
 
   # shim script (https://github.com/Homebrew/homebrew-cask/issues/18809)

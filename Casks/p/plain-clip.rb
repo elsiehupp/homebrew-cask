@@ -8,6 +8,7 @@ cask "plain-clip" do
   homepage "https://www.bluem.net/en/mac/plain-clip/"
 
   deprecate! date: "2024-07-06", because: :discontinued
+  disable! date: "2025-07-06", because: :discontinued
 
   app "Plain Clip/Plain Clip.app"
 

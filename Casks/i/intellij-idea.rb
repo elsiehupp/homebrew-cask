@@ -1,9 +1,9 @@
 cask "intellij-idea" do
   arch arm: "-aarch64"
 
-  version "2024.2.0.2,242.20224.419"
-  sha256 arm:   "03866cf637bc0698e6764fe18d2af98a7065c9c9ca0b847953df0ccc42d65b3d",
-         intel: "fde5ffcba501bd94139115266b71dff76ec199ea35ff0673e7b7afea73aeb80b"
+  version "2026.1,261.22158.277"
+  sha256 arm:   "90f2aeca3fd0173102b3d2734ad863602bb17146c317fe2d88b0618fd47ea600",
+         intel: "74de5e8a49d16aa1892115a67506df3b932b8806c66ba494ed573a72901c1899"
 
   url "https://download.jetbrains.com/idea/ideaIU-#{version.csv.first}#{arch}.dmg"
   name "IntelliJ IDEA Ultimate"
@@ -13,18 +13,30 @@ cask "intellij-idea" do
   livecheck do
     url "https://data.services.jetbrains.com/products/releases?code=IIU&latest=true&type=release"
     strategy :json do |json|
-      json["IIU"].map do |release|
-        "#{release["version"]},#{release["build"]}"
+      json["IIU"]&.map do |release|
+        version = release["version"]
+        build = release["build"]
+        next if version.blank? || build.blank?
+
+        "#{version},#{build}"
       end
     end
   end
 
   auto_updates true
   conflicts_with cask: "intellij-idea@eap"
-  depends_on macos: ">= :high_sierra"
 
   app "IntelliJ IDEA.app"
-  binary "#{appdir}/IntelliJ IDEA.app/Contents/MacOS/idea"
+  # shim script (https://github.com/Homebrew/homebrew-cask/issues/18809)
+  shimscript = "#{staged_path}/idea.wrapper.sh"
+  binary shimscript, target: "idea"
+
+  preflight do
+    File.write shimscript, <<~EOS
+      #!/bin/sh
+      open -na "IntelliJ IDEA.app" --args "$@"
+    EOS
+  end
 
   zap trash: [
     "~/Library/Application Support/JetBrains/IntelliJIdea#{version.major_minor}",

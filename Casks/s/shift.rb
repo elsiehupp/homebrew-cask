@@ -1,9 +1,9 @@
 cask "shift" do
   arch arm: "arm64", intel: "x64"
 
-  version "9.3.3.1096"
-  sha256 arm:   "a8d4458ece2feb19480057450f47744a95a0789b16a8447c9c1512a9d449bc5a",
-         intel: "b7c1b4078149799177db3a0b0698848f76cf4793d5de9755fed37797c95f092c"
+  version "9.6.4.1231"
+  sha256 arm:   "51210315db71db2be06d95bacad1921c73011f0c62c239cd1cfa527189d255c5",
+         intel: "73e27d3d282406decde79c8204693ea3eb3eee2a2d0a89c3b83c0909b174baad"
 
   url "https://updates.tryshift.com/v#{version.major_minor_patch}/stable/shift-v#{version}-stable-#{arch}.dmg",
       verified: "updates.tryshift.com/"
@@ -12,9 +12,14 @@ cask "shift" do
   homepage "https://shift.com/"
 
   livecheck do
-    url "https://shift.com/download/?platform=mac"
-    regex(/href=.*?(\d+(?:[._-]\d+)+)[._-]stable.*?\.dmg/i)
+    url "https://updates.tryshift.com/appcast/stable/mac-#{arch}.xml"
+    regex(/shift[._-]v?(\d+(?:\.\d+)+)[._-]stable[._-]#{arch}\.dmg/i)
+    strategy :sparkle do |item, regex|
+      item.url[regex, 1]
+    end
   end
+
+  depends_on macos: ">= :big_sur"
 
   app "Shift.app"
 

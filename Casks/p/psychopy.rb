@@ -1,15 +1,21 @@
 cask "psychopy" do
-  version "2024.2.1"
-  sha256 "069a75e6c4a9fe849b347e2af8d743f609624bcb6941d40ac5b831ab87e0758b"
+  version "2026.1.3"
+  sha256 "90cc8d9e9b3a3d02ed149be736686aa834021889d91b0f3a03dcd830a9488fc8"
 
-  url "https://github.com/psychopy/psychopy/releases/download/#{version.major_minor_patch}/StandalonePsychoPy-#{version}-macOS-py3.10.dmg"
+  url "https://github.com/psychopy/psychopy/releases/download/#{version.csv.first.major_minor_patch}/StandalonePsychoPy-#{version.csv.first}-macOS#{"_#{version.csv.second}" if version.csv.second}-3.10.dmg",
+      verified: "github.com/psychopy/psychopy/"
   name "PsychoPy"
   desc "Create experiments in behavioral science"
-  homepage "https://github.com/psychopy/psychopy"
+  homepage "https://www.psychopy.org/"
 
   livecheck do
-    url :url
-    strategy :github_latest
+    url "https://www.psychopy.org/download.html"
+    regex(/StandalonePsychoPy[._-]v?(\d+(?:\.\d+)+)[._-]macOS[._-]?(\d+(?:[._-]\d+)+)?[._-](?:py)?3\.10\.dmg/i)
+    strategy :page_match do |page, regex|
+      page.scan(regex).map do |match|
+        match[1].present? ? "#{match[0]},#{match[1]}" : match[0]
+      end
+    end
   end
 
   app "PsychoPy.app"

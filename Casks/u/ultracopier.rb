@@ -9,8 +9,7 @@ cask "ultracopier" do
   homepage "https://ultracopier.herman-brule.com/"
 
   deprecate! date: "2024-08-04", because: :discontinued
-
-  depends_on macos: ">= :high_sierra"
+  disable! date: "2025-08-04", because: :discontinued
 
   app "ultracopier.app"
 

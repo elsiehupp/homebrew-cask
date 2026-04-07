@@ -1,9 +1,8 @@
 cask "metashape" do
-  version "2.1.2"
-  sha256 "bbc204e8bf03dca4863abc8f11309c1794c4c3ff8fa9f2848d726843baa485ca"
+  version "2.3.0"
+  sha256 "1af185187856a25c0a3572ee95fc8bb88d4c1255398d893c3efe0442d1badb35"
 
-  url "https://s3-eu-west-1.amazonaws.com/download.agisoft.com/metashape_#{version.dots_to_underscores}.dmg",
-      verified: "s3-eu-west-1.amazonaws.com/download.agisoft.com/"
+  url "https://download.agisoft.com/metashape_#{version.dots_to_underscores}.dmg"
   name "Agisoft Metashape Standard Edition"
   desc "Process digital images and generate 3D spatial data"
   homepage "https://www.agisoft.com/"
@@ -12,6 +11,8 @@ cask "metashape" do
     url "https://www.agisoft.com/downloads/installer/"
     regex(/Metashape\s*(\d+(?:\.\d+)+)/i)
   end
+
+  depends_on macos: ">= :big_sur"
 
   app "Metashape.app"
 

@@ -1,5 +1,5 @@
 cask "expressscribe" do
-  version "13.17"
+  version "14.12"
   sha256 :no_check
 
   url "https://www.nch.com.au/scribe/scribemaci.zip"
@@ -9,7 +9,7 @@ cask "expressscribe" do
 
   livecheck do
     url "https://www.nch.com.au/scribe/versions.html"
-    regex(/Version\s*v?(\d+(?:\.\d+)+)/i)
+    regex(/Version\s+v?(\d+(?:\.\d+)+)[^>]*>\s*macOS/im)
   end
 
   app "ExpressScribe.app"

@@ -1,9 +1,9 @@
 cask "popsql" do
   arch arm: "-arm64"
 
-  version "1.0.129"
-  sha256 arm:   "434b37ba2c6065f8add58715c3b02e61c071fbebbbd45e826da3cf85a1f48376",
-         intel: "95a0cf6cb608b992ad5665a3c36fe0d8347c378fa0a28d8c46d27761caee8d04"
+  version "1.0.135"
+  sha256 arm:   "2a1e9af94cb191b80771c8bbb1952a85b628402fd6e783d91b2231d48236ae00",
+         intel: "d6ab634d6d6af2f2e3a6715b31498b506fe5610ffd8e294cd28d47f3bf761782"
 
   url "https://popsql-releases.s3.amazonaws.com/mac/PopSQL-#{version}#{arch}.dmg",
       verified: "popsql-releases.s3.amazonaws.com/"
@@ -17,7 +17,6 @@ cask "popsql" do
   end
 
   auto_updates true
-  depends_on macos: ">= :catalina"
 
   app "PopSQL.app"
 

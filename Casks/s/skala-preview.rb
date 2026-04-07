@@ -9,6 +9,7 @@ cask "skala-preview" do
   homepage "https://bjango.com/mac/skalapreview/"
 
   deprecate! date: "2024-06-25", because: :unmaintained
+  disable! date: "2025-06-25", because: :unmaintained
 
   app "Skala Preview.app"
 end

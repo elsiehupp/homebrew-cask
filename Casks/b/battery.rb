@@ -1,14 +1,13 @@
 cask "battery" do
-  version "1.2.2"
-  sha256 "dc0ce58181bc53bbd4f2c500162e529067bd7d234962c8c7abfd7539c6e392ad"
+  version "1.4.0"
+  sha256 "4510a3c3fc772f57a1a7fa595604002458120b55b83364edb98b762d4e19ab14"
 
-  url "https://github.com/actuallymentor/battery/releases/download/v#{version}/battery-#{version}-mac-arm64.dmg"
+  url "https://github.com/actuallymentor/battery/releases/download/v#{version}/battery-#{version}-mac-arm64.zip"
   name "Battery"
   desc "App for managing battery charging. (Also installs a CLI on first use.)"
   homepage "https://github.com/actuallymentor/battery/"
 
   auto_updates true
-  depends_on macos: ">= :catalina"
   depends_on arch: :arm64
 
   app "battery.app"
@@ -18,6 +17,10 @@ cask "battery" do
   zap trash: [
     "~/.battery",
     "~/Library/Application Support/battery",
+    "~/Library/Application Support/com.apple.sharedfilelist/com.apple.LSSharedFileList.ApplicationRecentDocuments/co.palokaj.battery.sfl*",
+    "~/Library/Caches/co.palokaj.battery",
+    "~/Library/Caches/co.palokaj.battery.ShipIt",
+    "~/Library/HTTPStorages/co.palokaj.battery",
     "~/Library/LaunchAgents/battery.plist",
     "~/Library/Preferences/co.palokaj.battery.plist",
     "~/Library/Preferences/org.mentor.Battery.plist",

@@ -9,6 +9,7 @@ cask "oolite" do
   homepage "https://www.oolite.space/"
 
   deprecate! date: "2024-07-27", because: :discontinued
+  disable! date: "2025-07-27", because: :discontinued
 
   app "Oolite.app"
 

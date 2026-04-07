@@ -9,10 +9,10 @@ cask "microsoft-teams@classic" do
   homepage "https://www.microsoft.com/en-us/microsoft-teams/group-chat-software"
 
   deprecate! date: "2024-07-03", because: :discontinued
+  disable! date: "2025-07-05", because: :discontinued
 
   auto_updates true
   conflicts_with cask: "microsoft-office-businesspro"
-  depends_on macos: ">= :el_capitan"
 
   pkg "Teams_osx.pkg"
 

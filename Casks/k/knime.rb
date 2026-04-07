@@ -1,9 +1,9 @@
 cask "knime" do
   arch arm: "aarch64", intel: "x86_64"
 
-  version "5.3.1"
-  sha256 arm:   "251352f2288b4d59959cbe7680d0e9f842378fd4edece7aa3feca1d37728544b",
-         intel: "9db511a612482adb8c5d8808b9de044ff020ab3c0350074d9fb0ffedc04cc9df"
+  version "5.8.3"
+  sha256 arm:   "044d1d0c924f1943cc7b608e85b5403d6eb500b641e08751a35793f550c8c196",
+         intel: "914f9699fdbd47e78e4d4657794373523ca60808e22630e189c62c11c1b21402"
 
   url "https://download.knime.org/analytics-platform/macosx/knime_#{version}.app.macosx.cocoa.#{arch}.dmg",
       verified: "download.knime.org/analytics-platform/macosx/"
@@ -17,7 +17,8 @@ cask "knime" do
     strategy :header_match
   end
 
-  depends_on macos: ">= :high_sierra"
+  auto_updates true
+  depends_on macos: ">= :big_sur"
 
   app "KNIME #{version}.app"
 

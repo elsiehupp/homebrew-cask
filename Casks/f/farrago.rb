@@ -1,5 +1,5 @@
 cask "farrago" do
-  version "2.1.0"
+  version "2.1.5"
   sha256 :no_check
 
   url "https://cdn.rogueamoeba.com/farrago/download/Farrago.zip"
@@ -8,7 +8,7 @@ cask "farrago" do
   homepage "https://rogueamoeba.com/farrago/"
 
   livecheck do
-    url "https://rogueamoeba.net/ping/versionCheck.cgi?format=sparkle&system=#{MacOS.full_version.to_s.delete(".")}&bundleid=com.rogueamoeba.farrago&platform=osx&version=#{version.no_dots}8000"
+    url "https://rogueamoeba.net/ping/versionCheck.cgi?format=sparkle&system=999&bundleid=com.rogueamoeba.farrago&platform=osx&version=#{version.no_dots}8000"
     strategy :sparkle
   end
 

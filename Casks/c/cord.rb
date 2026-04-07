@@ -8,6 +8,7 @@ cask "cord" do
   homepage "https://cord.sourceforge.net/"
 
   deprecate! date: "2024-07-17", because: :discontinued
+  disable! date: "2025-07-17", because: :discontinued
 
   app "CoRD.app"
 

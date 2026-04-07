@@ -1,9 +1,9 @@
 cask "eclipse-java" do
   arch arm: "aarch64", intel: "x86_64"
 
-  version "4.31.0,2024-06"
-  sha256 arm:   "9c67d238fe77529f823bdaf12e0a13b7c1e78544535d4b8ff88cad65ffec8219",
-         intel: "8c3e3b642ea6f86258fe9a9b24d7538ef2e8fd94561d036748f43420f97127f2"
+  version "4.39,2026-03"
+  sha256 arm:   "c79eb486ed23dba6613f48163c306fadc1756ebd834d740829cc06ec1919dc83",
+         intel: "7f094e520909d7585c4ca99ca03cecce03c5e5233f00304d9eb04b7c0460e1df"
 
   url "https://www.eclipse.org/downloads/download.php?file=/technology/epp/downloads/release/#{version.csv.second}/R/eclipse-java-#{version.csv.second}-R-macosx-cocoa-#{arch}.dmg&r=1"
   name "Eclipse IDE for Java Developers"
@@ -13,6 +13,8 @@ cask "eclipse-java" do
   livecheck do
     cask "eclipse-ide"
   end
+
+  depends_on macos: ">= :big_sur"
 
   # Renamed to avoid conflict with other Eclipse.
   app "Eclipse.app", target: "Eclipse Java.app"

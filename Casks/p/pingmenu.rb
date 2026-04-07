@@ -8,6 +8,7 @@ cask "pingmenu" do
   homepage "https://github.com/kalleboo/PingMenu"
 
   deprecate! date: "2024-07-14", because: :unmaintained
+  disable! date: "2025-07-14", because: :unmaintained
 
   app "PingMenu.app"
 

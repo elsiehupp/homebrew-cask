@@ -9,8 +9,7 @@ cask "flotato" do
   homepage "https://flotato.com/"
 
   deprecate! date: "2024-07-15", because: :unmaintained
-
-  depends_on macos: ">= :high_sierra"
+  disable! date: "2025-07-15", because: :unmaintained
 
   app "Flotato.app"
 

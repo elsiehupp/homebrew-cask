@@ -1,31 +1,25 @@
 cask "virtualbuddy" do
-  version "1.6.2,131"
-  sha256 "f2bbe7d0eaf8756c888e6e1574a9a2112a684f4436491092ec4c0bf830b1be3b"
+  version "2.1,325"
+  sha256 "6ed17e8d7245931fd405c419321ace7ef9333fe2e3d59b3a7f78e34fcbe628b6"
 
-  url "https://github.com/insidegui/VirtualBuddy/releases/download/#{version.csv.first}/VirtualBuddy_v#{version.csv.first}-#{version.csv.second}.dmg"
+  url "https://su.virtualbuddy.app/VirtualBuddy_v#{version.csv.first}-#{version.csv.second}.dmg",
+      verified: "su.virtualbuddy.app/"
   name "VirtualBuddy"
   desc "Virtualization tool"
   homepage "https://github.com/insidegui/VirtualBuddy"
 
   livecheck do
-    url :url
-    regex(/^VirtualBuddy[._-]v?(\d+(?:[.-]\d+)+)\.dmg$/i)
-    strategy :github_latest do |json, regex|
-      json["assets"]&.map do |asset|
-        match = asset["name"]&.match(regex)
-        next if match.blank?
-
-        match[1].tr("-", ",")
-      end
-    end
+    url "https://su.virtualbuddy.app/appcast.xml?channel=release"
+    strategy :sparkle
   end
 
   auto_updates true
   conflicts_with cask: "virtualbuddy@beta"
   depends_on arch: :arm64
-  depends_on macos: ">= :monterey"
+  depends_on macos: ">= :ventura"
 
   app "VirtualBuddy.app"
+  binary "#{appdir}/VirtualBuddy.app/Contents/MacOS/vctool", target: "vctool"
 
   zap trash: [
     "~/Library/Application Support/VirtualBuddy",

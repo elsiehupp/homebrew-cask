@@ -8,6 +8,7 @@ cask "kakapo" do
   homepage "https://github.com/bluedaniel/Kakapo-app"
 
   deprecate! date: "2024-07-17", because: :unmaintained
+  disable! date: "2025-07-17", because: :unmaintained
 
   app "Kakapo.app"
 

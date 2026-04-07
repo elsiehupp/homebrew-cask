@@ -1,8 +1,8 @@
 cask "mactracker" do
-  version "7.12.16"
-  sha256 "8276b91b458f9af452f8fecfc69e3b0bf29aff6edf7bc36436062c6f6a6236f7"
+  version "8.2"
+  sha256 "f6cb57321616e27acffe473e457b4321ca011a5941c57da476d1f09d57ecc0a0"
 
-  url "https://www.mactracker.ca/downloads/Mactracker_#{version}.zip"
+  url "https://mactracker.ca/downloads/Mactracker_#{version}.zip"
   name "Mactracker"
   desc "Detailed information on every Apple product ever made"
   homepage "https://mactracker.ca/"
@@ -13,7 +13,7 @@ cask "mactracker" do
   end
 
   auto_updates true
-  depends_on macos: ">= :sierra"
+  depends_on macos: ">= :big_sur"
 
   app "Mactracker.app"
 

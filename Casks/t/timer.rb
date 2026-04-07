@@ -7,10 +7,8 @@ cask "timer" do
   desc "Stopwatch, alarm clock, and clock utility"
   homepage "https://www.apimac.com/mac/timer/"
 
-  livecheck do
-    url :url
-    strategy :extract_plist
-  end
+  deprecate! date: "2024-10-27", because: :unmaintained
+  disable! date: "2025-10-27", because: :unmaintained
 
   app "Timer.app"
 

@@ -16,6 +16,8 @@ cask "leapp" do
     strategy :electron_builder
   end
 
+  auto_updates true
+
   app "Leapp.app"
 
   zap trash: [

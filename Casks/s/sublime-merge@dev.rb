@@ -1,6 +1,6 @@
 cask "sublime-merge@dev" do
-  version "2099"
-  sha256 "2725aa6d055041e55d8103cfd01e609b5ce0169cf382254231fece79afe86259"
+  version "2124"
+  sha256 "453da973102d32d952356b3526fb1294f69cbfc412dda78424786a43f05a8f72"
 
   url "https://download.sublimetext.com/sublime_merge_build_#{version}_mac.zip",
       verified: "download.sublimetext.com/"
@@ -10,7 +10,9 @@ cask "sublime-merge@dev" do
 
   livecheck do
     url "https://www.sublimemerge.com/updates/dev_update_check"
-    regex(/"latest_version"\s*:\s*(\d+)/i)
+    strategy :json do |json|
+      json["latest_version"]&.to_s
+    end
   end
 
   auto_updates true
@@ -24,7 +26,7 @@ cask "sublime-merge@dev" do
   zap trash: [
     "~/Library/Application Support/com.apple.sharedfilelist/com.apple.LSSharedFileList.ApplicationRecentDocuments/com.sublimemerge.sfl*",
     "~/Library/Application Support/Sublime Merge",
-    "~/Library/Caches/com.sublimemerge/",
+    "~/Library/Caches/com.sublimemerge",
     "~/Library/Preferences/com.sublimemerge.plist",
     "~/Library/Saved Application State/com.sublimemerge.savedState",
   ]

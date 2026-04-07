@@ -8,6 +8,7 @@ cask "pineapple" do
   homepage "https://nwhitehead.github.io/pineapple/"
 
   deprecate! date: "2024-07-28", because: :unmaintained
+  disable! date: "2025-07-28", because: :unmaintained
 
   app "Pineapple.app"
 

@@ -1,20 +1,24 @@
 cask "teamspeak-client@beta" do
-  version "5.0.0-beta77"
-  sha256 "ab8f4b0f04a514f60a32dc48339aa4608460696f58f3e29ecfcc6f2e16bab86b"
+  arch arm: "arm", intel: "intel"
 
-  url "https://files.teamspeak-services.com/pre_releases/client/#{version}/teamspeak-client.dmg",
+  version "6.0.0-beta3.4"
+  sha256 arm:   "367260a110642604f383a44dc2463ae33c6850777b7b7bad4c260dc839b6f800",
+         intel: "3074ca3783a80cd0f27ca790a5dc7c2dda22ab23e0f958d3915cad9106c9f2b2"
+
+  url "https://files.teamspeak-services.com/pre_releases/client/#{version}/teamspeak-client-#{arch}.dmg",
       verified: "files.teamspeak-services.com/"
   name "TeamSpeak Beta"
   desc "Voice communication client"
   homepage "https://www.teamspeak.com/"
 
   livecheck do
-    url "https://teamspeak.com/en/downloads"
-    regex(%r{href=.*?/(\d+(?:\.\d+)+[^/]*)/teamspeak[._-]client\.dmg}i)
+    url "https://teamspeak.com/en/downloads/"
+    regex(%r{href=.*?/(\d+(?:\.\d+)+[^/]*)/teamspeak[._-]client-#{arch}\.dmg}i)
   end
 
+  disable! date: "2026-09-01", because: :fails_gatekeeper_check
+
   auto_updates true
-  depends_on macos: ">= :sierra"
 
   app "TeamSpeak.app"
 
@@ -23,8 +27,4 @@ cask "teamspeak-client@beta" do
     "~/Library/Preferences/TeamSpeak",
     "~/Library/Saved Application State/com.teamspeak.#{version.major}.client.savedState",
   ]
-
-  caveats do
-    requires_rosetta
-  end
 end

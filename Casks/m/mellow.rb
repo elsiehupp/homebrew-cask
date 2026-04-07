@@ -8,6 +8,7 @@ cask "mellow" do
   homepage "https://github.com/mellow-io/mellow"
 
   deprecate! date: "2024-07-27", because: :unmaintained
+  disable! date: "2025-07-27", because: :unmaintained
 
   app "Mellow.app"
 

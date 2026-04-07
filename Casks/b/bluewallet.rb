@@ -1,6 +1,6 @@
 cask "bluewallet" do
-  version "7.0.2"
-  sha256 "103ed7a06de772631e021757655dd5031ead00e02bf2cd987e75e3d6562bbd77"
+  version "7.2.6"
+  sha256 "38299c0800d1bf19656638ccf64266fa1d2e614f2845918fe544c0c1b3935328"
 
   url "https://github.com/BlueWallet/BlueWallet/releases/download/v#{version}/BlueWallet.#{version}.dmg",
       verified: "github.com/BlueWallet/BlueWallet/"
@@ -8,7 +8,26 @@ cask "bluewallet" do
   desc "Bitcoin wallet and Lightning wallet"
   homepage "https://bluewallet.io/"
 
-  depends_on macos: ">= :big_sur"
+  # Not every GitHub release provides a file for macOS, so we check multiple
+  # recent releases instead of only the "latest" release.
+  livecheck do
+    url :url
+    regex(/^BlueWallet[._-]v?(\d+(?:\.\d+)+)\.dmg$/i)
+    strategy :github_releases do |json, regex|
+      json.map do |release|
+        next if release["draft"] || release["prerelease"]
+
+        release["assets"]&.map do |asset|
+          match = asset["name"]&.match(regex)
+          next if match.blank?
+
+          match[1]
+        end
+      end.flatten
+    end
+  end
+
+  depends_on macos: ">= :monterey"
 
   app "BlueWallet.app"
 

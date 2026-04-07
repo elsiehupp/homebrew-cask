@@ -7,6 +7,9 @@ cask "font-lxgw-fasmartgothic" do
   name "霞鹜尚智黑"
   homepage "https://github.com/lxgw/LxgwNeoXiHei"
 
+  deprecate! date: "2024-11-22", because: :discontinued
+  disable! date: "2025-11-24", because: :discontinued
+
   font "LXGWFasmartGothic.ttf"
 
   # No zap stanza required

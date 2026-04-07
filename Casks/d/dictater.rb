@@ -8,6 +8,7 @@ cask "dictater" do
   homepage "https://nosrac.github.io/Dictater/"
 
   deprecate! date: "2024-07-10", because: :unmaintained
+  disable! date: "2025-07-10", because: :unmaintained
 
   app "Dictater.app"
 

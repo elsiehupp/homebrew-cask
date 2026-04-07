@@ -1,14 +1,19 @@
 cask "finch" do
   arch arm: "aarch64", intel: "x86_64"
 
-  version "1.2.3"
-  sha256 arm:   "d61f17d2e87a2f2d9d64bb26a95e7c9ec34aadbaed73987dc8d4d5dbb9484ec0",
-         intel: "3bf1150455b4dac50740dfee6f5d9c6e76508b62013136ef54e7a153b4f8ca96"
+  version "1.16.0"
+  sha256 arm:   "fa66166add82d6ebb7059b32766f1e719b3b328a19bfcd8dbcece7aaa3c43fb7",
+         intel: "a191d18e60c956435836b497e9ce1ede4f26d7a75af9b7d7163a164ca7d71a4c"
 
   url "https://github.com/runfinch/finch/releases/download/v#{version}/Finch-v#{version}-#{arch}.pkg"
   name "Finch"
   desc "Open source container development tool"
   homepage "https://github.com/runfinch/finch"
+
+  livecheck do
+    url :url
+    strategy :github_latest
+  end
 
   pkg "Finch-v#{version}-#{arch}.pkg"
 

@@ -1,13 +1,5 @@
 cask "lingon-x" do
-  on_high_sierra :or_older do
-    version "6.6.5"
-    sha256 "b0231b1a98dcc8f5c4234b419c9f5331407b8cce29b33f0ea2e32b12595adfa8"
-  end
-  on_mojave do
-    version "8.4.9"
-    sha256 "c1c839e8dc13bd295f2080980c5bea22299c33f3333b7c6981161b46d6f021d8"
-  end
-  on_catalina do
+  on_catalina :or_older do
     version "8.4.9"
     sha256 "c1c839e8dc13bd295f2080980c5bea22299c33f3333b7c6981161b46d6f021d8"
   end
@@ -16,8 +8,8 @@ cask "lingon-x" do
     sha256 "c1c839e8dc13bd295f2080980c5bea22299c33f3333b7c6981161b46d6f021d8"
   end
   on_monterey :or_newer do
-    version "9.5.3"
-    sha256 "6618e96b4163cae1248888ff1dec7670967c4e062008f8db54eccec2096a6663"
+    version "9.6.6"
+    sha256 "7cafd1fc98cd23662f0670eed996698dccc98762fe1a284036ee76132553e7f3"
   end
 
   url "https://www.peterborgapps.com/downloads/LingonX#{version.major}.zip"
@@ -33,7 +25,6 @@ cask "lingon-x" do
   end
 
   auto_updates true
-  depends_on macos: ">= :high_sierra"
 
   app "Lingon X.app"
 

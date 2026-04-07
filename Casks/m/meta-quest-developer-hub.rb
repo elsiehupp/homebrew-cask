@@ -1,6 +1,6 @@
 cask "meta-quest-developer-hub" do
-  version "4.9.0,173cd7ab2f5af21a4b91ddec26b4e12e"
-  sha256 "3219360e0ad59e33c6ff519c319ed0c07cc7511f6439df3c41edce2fdab6e171"
+  version "6.3.2,5a1a35d130e03890ed3ec1a417b8c05a"
+  sha256 "79e397331996f91d8321f1a364defc5f0bc53b9fc33afd189beab96004ce7f36"
 
   url "https://www.oculus.com/x2asset/electron-apps/odh/#{version.csv.second}/Meta%20Quest%20Developer%20Hub-#{version.csv.first}.zip"
   name "meta-quest-developer-hub"
@@ -10,15 +10,13 @@ cask "meta-quest-developer-hub" do
   livecheck do
     url "https://www.oculus.com/electron-updates/mqdh/latest-mac.yml"
     regex(%r{([^/]+)/Meta\s+Quest\s+Developer\s+Hub[._-]v?(\d+(?:\.\d+)+)\.zip}i)
-    strategy :electron_builder do |item|
+    strategy :electron_builder do |item, regex|
       match = item["path"]&.match(regex)
       next if match.blank?
 
       "#{match[2]},#{match[1]}"
     end
   end
-
-  depends_on macos: ">= :catalina"
 
   app "Meta Quest Developer Hub.app"
 

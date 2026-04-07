@@ -1,21 +1,26 @@
 cask "yaak" do
   arch arm: "aarch64", intel: "x64"
 
-  version "2024.8.2"
-  sha256 arm:   "d8c359e2444e7b94f18e1bc56d6cd8b630cde2d49ecbff3f4cbbb70c4544dcd0",
-         intel: "8432a2d4b426b3b885e6061cfc4709303e73513c031ce955eade36236f8b8401"
+  version "2026.3.1"
+  sha256 arm:   "e50abf290e970c97a9304496c00a484058854a49e202fcfbf8b3ca64fe34e002",
+         intel: "8f9add684b45042e28b6039ec3a8da03e364a65eea8ee3ce7c682c1edbefce30"
 
-  url "https://releases.yaak.app/releases/#{version}/Yaak_#{version}_#{arch}.dmg"
+  url "https://github.com/mountain-loop/yaak/releases/download/v#{version}/Yaak_#{version}_#{arch}.dmg",
+      verified: "github.com/mountain-loop/yaak/"
   name "Yaak"
   desc "REST, GraphQL and gRPC client"
   homepage "https://yaak.app/"
 
   livecheck do
-    url "https://yaak.app/download"
-    regex(/href=.*?yaak[._-]v?(\d+(?:\.\d+)+)[._-]#{arch}\.dmg/i)
+    url "https://update.yaak.app/check/darwin/#{arch}/#{version}"
+    strategy :json do |json|
+      json["version"]
+    end
   end
 
-  depends_on macos: ">= :high_sierra"
+  auto_updates true
+  conflicts_with cask: "yaak@beta"
+  depends_on macos: ">= :ventura"
 
   app "yaak.app"
 

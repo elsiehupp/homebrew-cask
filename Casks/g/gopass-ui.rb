@@ -8,6 +8,7 @@ cask "gopass-ui" do
   homepage "https://github.com/codecentric/gopass-ui"
 
   deprecate! date: "2024-07-11", because: :unmaintained
+  disable! date: "2025-07-11", because: :unmaintained
 
   app "Gopass UI.app"
 

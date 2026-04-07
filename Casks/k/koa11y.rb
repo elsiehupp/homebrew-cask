@@ -9,6 +9,7 @@ cask "koa11y" do
   homepage "https://open-indy.github.io/Koa11y/"
 
   deprecate! date: "2024-07-21", because: :unmaintained
+  disable! date: "2025-07-21", because: :unmaintained
 
   app "Koa11y.app"
 

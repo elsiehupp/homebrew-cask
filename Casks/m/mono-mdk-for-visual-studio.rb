@@ -7,15 +7,11 @@ cask "mono-mdk-for-visual-studio" do
   desc "Open source implementation of Microsoft's .NET Framework"
   homepage "https://www.mono-project.com/"
 
-  # The stable version is that listed on the download page. See:
-  #   https://github.com/Homebrew/homebrew-cask-versions/pull/12974
-  livecheck do
-    url "https://www.mono-project.com/download/preview/"
-    regex(/MonoFramework-MDK-(\d+(?:\.\d+)+).macos10.xamarin.universal\.pkg/i)
-  end
+  # https://learn.microsoft.com/en-us/visualstudio/releases/2022/what-happened-to-vs-for-mac
+  deprecate! date: "2024-09-01", because: :discontinued
+  disable! date: "2025-09-02", because: :discontinued
 
-  conflicts_with cask:    "mono-mdk",
-                 formula: "mono"
+  conflicts_with cask: "mono-mdk"
 
   pkg "MonoFramework-MDK-#{version}.macos10.xamarin.universal.pkg"
 

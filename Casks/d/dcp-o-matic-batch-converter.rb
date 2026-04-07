@@ -1,15 +1,13 @@
 cask "dcp-o-matic-batch-converter" do
-  version "2.16.91"
-  sha256 "dfc35a4094a66655e73a376ed917fcdc01a67424247715b66a4acbce67fd6295"
+  version "2.18.21"
+  sha256 "75fc0fd77acb440b6e293bb4ade248517d57176b70970df710ec9d32acf543a7"
 
   url "https://dcpomatic.com/dl.php?id=osx-10.10-batch&version=#{version}"
   name "DCP-o-matic Batch converter"
   desc "Convert video, audio and subtitles into DCP (Digital Cinema Package)"
   homepage "https://dcpomatic.com/"
 
-  livecheck do
-    cask "dcp-o-matic"
-  end
+  disable! date: "2025-07-28", because: "cannot be reliably fetched due to Cloudflare protections"
 
   app "DCP-o-matic #{version.major} Batch converter.app"
 

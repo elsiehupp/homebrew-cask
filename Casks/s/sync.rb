@@ -1,8 +1,8 @@
 cask "sync" do
-  version "2.2.44"
-  sha256 "38218b28fb307835b6d4f153a4ee21bcea4a3577651f082bd77bd976ea1ddc39"
+  version "2.2.57"
+  sha256 "ffe50bc4fe385511a97049cc60d2e151dfe0603f8e1951f66ab0ba815375e43d"
 
-  url "https://www.sync.com/download/apple/Sync-#{version}.dmg"
+  url "https://www10.sync.com/download/apple/Sync-#{version}.dmg"
   name "Sync"
   desc "Store, share and access files from anywhere"
   homepage "https://www.sync.com/"
@@ -11,6 +11,8 @@ cask "sync" do
     url "https://www.sync.com/install/"
     regex(/href=.*?Sync[._-]v?(\d+(?:\.\d+)+)\.dmg/i)
   end
+
+  auto_updates true
 
   app "Sync.app"
 

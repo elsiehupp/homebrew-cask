@@ -24,7 +24,6 @@ cask "teamspeak-client" do
   homepage "https://www.teamspeak.com/"
 
   auto_updates true
-  depends_on macos: ">= :sierra"
 
   app "TeamSpeak #{version.major} Client.app"
 
@@ -34,4 +33,8 @@ cask "teamspeak-client" do
     "~/Library/Preferences/com.teamspeak.TeamSpeak#{version.major}.plist*",
     "~/Library/Saved Application State/com.teamspeak.TeamSpeak#{version.major}.savedState",
   ]
+
+  caveats do
+    requires_rosetta
+  end
 end

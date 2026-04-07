@@ -1,23 +1,16 @@
 cask "fabfilter-volcano" do
-  version "3.07"
-  sha256 "d41849e5136122560c0ddc5ec5d21538ca79f7fe07bf47b10a67dfaf384c6b70"
+  version "3.08"
+  sha256 "fd9c313f5d72320d106189e09e4919ea1aeec3352f28d82836faa1424bf19d6c"
 
   url "https://cdn-b.fabfilter.com/downloads/ffvolcano#{version.no_dots}.dmg"
   name "FabFilter Volcano"
   desc "Filter plug-in"
-  homepage "https://www.fabfilter.com/products/volcano-2-powerful-filter-plug-in"
+  homepage "https://www.fabfilter.com/products/volcano-3-filter-plug-in"
 
   livecheck do
     url "https://www.fabfilter.com/download"
-    strategy :page_match do |page|
-      match = page.match(/ffvolcano(\d)(\d+)\.dmg/i)
-      next if match.blank?
-
-      "#{match[1]}.#{match[2]}"
-    end
+    regex(/FabFilter\s+Volcano.*?v?(\d+(?:\.\d+)+)/im)
   end
-
-  depends_on macos: ">= :sierra"
 
   pkg "FabFilter Volcano #{version} Installer.pkg"
 

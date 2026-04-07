@@ -1,6 +1,6 @@
 cask "height" do
-  version "0.26.0"
-  sha256 "4581b440eaf94b7c1feb1b91ad8e29d946814de8cb21f20ce28f9fbd573619dc"
+  version "0.28.2"
+  sha256 "d1bc02ef43598842d0a96533127ce0f2d38a56397e43ab1df31f2c02662ef17d"
 
   url "https://storage.googleapis.com/height-statics/_app/Height-#{version}-universal.dmg",
       verified: "storage.googleapis.com/height-statics/_app/"
@@ -8,10 +8,7 @@ cask "height" do
   desc "All-in-one project management tool"
   homepage "https://height.app/"
 
-  livecheck do
-    url "https://storage.googleapis.com/height-statics/_app/latest-mac.yml"
-    strategy :electron_builder
-  end
+  disable! date: "2025-11-01", because: :discontinued
 
   auto_updates true
 

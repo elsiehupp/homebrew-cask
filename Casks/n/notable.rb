@@ -9,6 +9,7 @@ cask "notable" do
   homepage "https://notable.app/"
 
   deprecate! date: "2024-07-27", because: :unmaintained
+  disable! date: "2025-07-27", because: :unmaintained
 
   auto_updates true
 

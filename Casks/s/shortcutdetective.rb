@@ -8,6 +8,7 @@ cask "shortcutdetective" do
   homepage "https://www.irradiatedsoftware.com/labs/"
 
   deprecate! date: "2024-07-15", because: :unmaintained
+  disable! date: "2025-07-15", because: :unmaintained
 
   app "ShortcutDetective.app"
 

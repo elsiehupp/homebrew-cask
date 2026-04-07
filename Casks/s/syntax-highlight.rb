@@ -1,14 +1,27 @@
 cask "syntax-highlight" do
-  version "2.1.24"
-  sha256 "31adcab045b69ad55eb0f47b4d0cb1c45f18dcf00e3391b8f32e15eeef7f97b9"
+  version "2.1.28"
+  sha256 "a63bf284e53c98b0cd2f906d6feb64ad2978e0e53b9c6d79e744d7a722249aae"
 
   url "https://github.com/sbarex/SourceCodeSyntaxHighlight/releases/download/#{version}/Syntax.Highlight.zip"
   name "Syntax Highlight"
   desc "Quicklook extension for source files"
   homepage "https://github.com/sbarex/SourceCodeSyntaxHighlight"
 
+  # The Sparkle feed contains `pubDate` values that are in Italian (e.g.
+  # mar, 31 dic 2024 18:21:00 +0100), so the `Sparkle` strategy doesn't
+  # accurately sort the items by date. We have to work with all the feed items
+  # in the `strategy` block, as a way of avoiding the sorting issues.
+  livecheck do
+    url "https://sbarex.github.io/SourceCodeSyntaxHighlight/appcast.xml"
+    strategy :sparkle do |items|
+      items.map(&:short_version)
+    end
+  end
+
+  disable! date: "2026-09-01", because: :fails_gatekeeper_check
+
   auto_updates true
-  depends_on macos: ">= :catalina"
+  depends_on macos: ">= :big_sur"
 
   app "Syntax Highlight.app"
   binary "#{appdir}/Syntax Highlight.app/Contents/Resources/syntax_highlight_cli"

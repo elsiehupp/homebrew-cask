@@ -1,8 +1,8 @@
 cask "robofont" do
-  version "4.4,2310101500"
-  sha256 :no_check
+  version "4.6,2602231550"
+  sha256 "d4f84518091be37aa9e4d7695a4154200bf28a9ca98825eb8ad49cf19e1a44a1"
 
-  url "https://static.typemytype.com/robofont/RoboFont.dmg",
+  url "https://static.typemytype.com/robofont/versionHistory/RoboFont_#{version.csv.first}_#{version.csv.second}.dmg",
       verified: "static.typemytype.com/robofont/"
   name "RoboFont"
   desc "Font editor"
@@ -10,15 +10,11 @@ cask "robofont" do
 
   livecheck do
     url "https://doc.robofont.com/appcast.xml"
-    strategy :page_match do |page|
-      match = page.match(/Version\s(\d+(?:\.\d+)+)\s\(build\s(\d+(?:\.\d+)*)\)/i)
-      next if match.blank?
-
-      "#{match[1]},#{match[2]}"
+    regex(/(?:buil[dt]\s+)?v?(\d+(?:\.\d+)*)/i)
+    strategy :sparkle do |item, regex|
+      "#{item.short_version},#{item.version[regex, 1]}"
     end
   end
-
-  depends_on macos: ">= :sierra"
 
   app "RoboFont.app"
 
@@ -27,8 +23,4 @@ cask "robofont" do
     "~/Library/Preferences/com.typemytype.robofont#{version.major}.plist",
     "~/Library/Saved Application State/com.typemytype.robofont#{version.major}.savedState",
   ]
-
-  caveats do
-    requires_rosetta
-  end
 end

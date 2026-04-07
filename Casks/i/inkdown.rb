@@ -1,22 +1,20 @@
 cask "inkdown" do
   arch arm: "arm64", intel: "x64"
 
-  version "1.0.2"
-  sha256 arm:   "78504fdc1f235388dfb1f55db2a91e199799827aed98b4f398e977fefa77d856",
-         intel: "5c33296cebd623f4f450a802a619c19d3b3cd6ba6e346dc316465a5900d190d1"
+  version "2.0.2"
+  sha256 arm:   "48aa7b9d5f640a97edd5aa424a8315dcaf909d79d529c061552c028ccb2dd4eb",
+         intel: "0b316849613e468bc98094732d617b18accd8d2b0bec0eb3b5c0b01020f52d29"
 
-  url "https://github.com/1943time/inkdown/releases/download/v#{version}/inkdown-mac-#{arch}.dmg"
+  url "https://assets.inkdown.me/release/v#{version}/darwin/#{arch}/Inkdown-mac-#{arch}.dmg"
   name "Inkdown"
   desc "WYSIWYG Markdown editor"
-  homepage "https://github.com/1943time/inkdown"
+  homepage "https://www.inkdown.me/"
 
-  livecheck do
-    url :url
-    strategy :github_latest
-  end
+  deprecate! date: "2025-01-25", because: :moved_to_mas
+  disable! date: "2026-01-27", because: :moved_to_mas
 
   auto_updates true
-  depends_on macos: ">= :catalina"
+  depends_on macos: ">= :monterey"
 
   app "Inkdown.app"
 

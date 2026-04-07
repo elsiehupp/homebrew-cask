@@ -1,6 +1,6 @@
 cask "photosrevive" do
-  version "2.1.6"
-  sha256 "aa8bf75f31527ab45bfdc4a6516328b37baf55856624d5eef1a745eb1fbff402"
+  version "2.2.0"
+  sha256 "d289c25c67c495156b7b7f95b80838bf06207ccafb91eec45e7668aa6044db24"
 
   url "https://neededapps.com/appcasts/photosrevive/versions/#{version}"
   name "PhotosRevive"
@@ -12,6 +12,7 @@ cask "photosrevive" do
     strategy :sparkle, &:short_version
   end
 
+  auto_updates true
   depends_on macos: ">= :big_sur"
 
   app "PhotosRevive.app"

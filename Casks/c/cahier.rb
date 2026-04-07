@@ -1,16 +1,13 @@
 cask "cahier" do
-  version "0.8.0"
-  sha256 "0a197c0c626f3fa3aefdb8d97c674d640177e69d5c3ec397bac24df323989501"
+  version "0.10.2"
+  sha256 "0bec93550b8b13a35a3b2a4266d0d36e406690133ff0bbc95d4957f0f72f6cfd"
 
   url "https://getcahier.com/releases-macos/cahier-#{version}.dmg"
   name "Cahier"
   desc "Knowledge base with native support for research"
   homepage "https://getcahier.com/"
 
-  livecheck do
-    url "https://getcahier.com/releases-macos/appcast.xml"
-    strategy :sparkle
-  end
+  disable! date: "2026-02-23", because: :discontinued
 
   auto_updates true
   depends_on macos: ">= :big_sur"

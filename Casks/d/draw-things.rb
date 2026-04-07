@@ -1,6 +1,6 @@
 cask "draw-things" do
-  version "1.20240826.0-09b0856c"
-  sha256 "09b0856c3479e308ef71361f6b37a407668687021a2981972985dd64b1b15099"
+  version "1.20260330.0-a7e05c5b"
+  sha256 "a7e05c5bb03db7408449ad6246059f713ce992575e4625858006e07027d600cc"
 
   url "https://static.drawthings.ai/DrawThings-#{version}.zip"
   name "Draw Things"
@@ -8,9 +8,11 @@ cask "draw-things" do
   homepage "https://drawthings.ai/"
 
   livecheck do
-    url :homepage
-    regex(/href=.*?DrawThings[._-]v?(\d+(?:\.\d+)+(?:-[\da-f]*)?)\.zip/i)
+    url "https://drawthings.ai/downloads/"
+    regex(/href=.*?DrawThings[._-]v?(\d+(?:\.\d+)+(?:-\h+)?)\.zip/i)
   end
+
+  depends_on macos: ">= :monterey"
 
   app "Draw Things.app"
 

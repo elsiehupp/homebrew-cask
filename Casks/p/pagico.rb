@@ -1,6 +1,6 @@
 cask "pagico" do
-  version "10,20240809"
-  sha256 "565179b9ce78e7dee11d4c504e17d862c8f1437b2e74e54bea050f0dead5eea3"
+  version "10,20260107"
+  sha256 "7ce6b6a0e81ed197259ae89575168544bafc81a64942d97a80cbe8b766a0fd24"
 
   url "https://www.pagico.com/downloads/Pagico_macOS_r#{version.csv.second}.dmg"
   name "Pagico"
@@ -12,7 +12,7 @@ cask "pagico" do
     strategy :sparkle
   end
 
-  depends_on macos: ">= :el_capitan"
+  auto_updates true
 
   app "Pagico.app"
 
@@ -24,6 +24,7 @@ cask "pagico" do
     "~/Library/HTTPStorages/com.pagico.mac",
     "~/Library/PagicoHelpers",
     "~/Library/Preferences/com.pagico.mac.plist",
+    "~/Library/Saved Application State/com.pagico.mac.savedState",
     "~/Library/WebKit/com.pagico.mac",
   ]
 end

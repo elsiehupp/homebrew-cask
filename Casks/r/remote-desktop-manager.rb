@@ -1,6 +1,6 @@
 cask "remote-desktop-manager" do
-  version "2024.2.9.2"
-  sha256 "7609f59a82ed0f731e27952b30a9a355e2fe6c2ae27b67f21d32b42c0a7f076c"
+  version "2026.1.10.3"
+  sha256 "8b00146aafa50eb97bf3df3a3fa437c010b11e1c49a4e4bf3c6eed6cb22ff253"
 
   url "https://cdn.devolutions.net/download/Mac/Devolutions.RemoteDesktopManager.Mac.#{version}.dmg",
       verified: "cdn.devolutions.net/download/Mac/"
@@ -14,7 +14,7 @@ cask "remote-desktop-manager" do
   end
 
   auto_updates true
-  depends_on macos: ">= :sierra"
+  depends_on macos: ">= :monterey"
 
   app "Remote Desktop Manager.app"
 

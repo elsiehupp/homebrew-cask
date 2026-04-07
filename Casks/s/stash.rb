@@ -1,6 +1,6 @@
 cask "stash" do
-  version "2.7.0,306"
-  sha256 "4fc71b0e098ffbfee5128e1a93b7f46f3cf9fe9a3649aa070aeb1e46ba43c8a4"
+  version "4.2.0,467"
+  sha256 "13e8a54e3f15c53f7849ab35a87f68800c57d66cdcff605dd02cf88b36e3f828"
 
   url "https://mac-release-static.stash.ws/Stash-build-#{version.csv.second}.zip"
   name "Stash"
@@ -13,9 +13,10 @@ cask "stash" do
   end
 
   auto_updates true
-  depends_on macos: ">= :big_sur"
+  depends_on macos: ">= :monterey"
 
   app "Stash.app"
+  binary "#{appdir}/Stash.app/Contents/Applications/Stash Dashboard.app", target: "#{appdir}/Stash Dashboard.app"
 
   uninstall quit:   "ws.stash.app.mac",
             delete: [

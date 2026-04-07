@@ -1,31 +1,31 @@
 cask "qbittorrent" do
-  on_high_sierra :or_older do
-    version "4.3.2"
-    sha256 "dd38e80710978430694c430276a6b7749ef3533cbd0271075bc9eada484ea36b"
+  on_catalina :or_older do
+    version "4.6.7"
+    sha256 "0b1051af73562fc3f7c0c71abd27c3433ad238fbca0c4612f554db35be3eba6e"
 
     livecheck do
       skip "Legacy version"
     end
   end
-  on_mojave :or_newer do
-    version "4.6.6"
-    sha256 "c1273ef498024305fc49192171688b9abb54ca45524931d9720bc81663b0eba1"
+  on_big_sur :or_newer do
+    version "5.0.5"
+    sha256 "7285e98b5ef4b9a227247dcd933f1a556bfc1ff10901fc7aedb0c4b7ad082814"
 
     livecheck do
       url "https://sourceforge.net/projects/qbittorrent/rss?path=/qbittorrent-mac"
-      regex(/qbittorrent[._-]v?(\d+(?:\.\d+)+)\.dmg/i)
-      strategy :page_match
+      regex(%r{url=.*?/qbittorrent[._-]v?(\d+(?:\.\d+)+)\.dmg}i)
     end
   end
 
   url "https://downloads.sourceforge.net/qbittorrent/qbittorrent-mac/qbittorrent-#{version}/qbittorrent-#{version}.dmg",
-      verified: "sourceforge.net/qbittorrent/"
+      verified: "downloads.sourceforge.net/qbittorrent/qbittorrent-mac/"
   name "qBittorrent"
   desc "Peer to peer Bitorrent client"
   homepage "https://www.qbittorrent.org/"
 
+  disable! date: "2026-09-01", because: :fails_gatekeeper_check
+
   conflicts_with cask: "qbittorrent@lt20"
-  depends_on macos: ">= :high_sierra"
 
   # Renamed for consistency: app name is different in the Finder and in a shell.
   app "qbittorrent.app", target: "qBittorrent.app"

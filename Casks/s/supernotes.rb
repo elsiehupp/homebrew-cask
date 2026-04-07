@@ -1,9 +1,9 @@
 cask "supernotes" do
   arch arm: "-arm64"
 
-  version "3.1.4"
-  sha256 arm:   "722a695df913089d5bd2b21321f73be64db7e4cf2f30198470e361c145ddf508",
-         intel: "d2d1b446283161562833973c389d5bccd9fddcc499274e00d54cd3c8aa36f1a8"
+  version "3.2.3"
+  sha256 arm:   "5f4ff13ad1f7e977115a1e305323363fa148fc26b64bcb1dfc30a2edf957f22a",
+         intel: "6f9fdf1f18fbcef52103a607f19f906a6cdcbb4f8a9d0367938e6d8e5ddf007f"
 
   url "https://download.supernotes.app/Supernotes-#{version}#{arch}.dmg"
   name "Supernotes"
@@ -18,7 +18,7 @@ cask "supernotes" do
   end
 
   auto_updates true
-  depends_on macos: ">= :high_sierra"
+  depends_on macos: ">= :monterey"
 
   app "Supernotes.app"
 

@@ -1,6 +1,6 @@
 cask "insomnia@alpha" do
-  version "10.0.0-beta.0"
-  sha256 "025eff48a2e06213b36e8f1b2f4ce062bf1df51da71755a7756012ae5239d7b0"
+  version "12.5.0"
+  sha256 "ebe2ff850eab58d56e11ea53a99ce048cb716c1292fcb3d8ab2be8a4e4673d04"
 
   url "https://github.com/Kong/insomnia/releases/download/core%40#{version}/Insomnia.Core-#{version}.dmg",
       verified: "github.com/Kong/insomnia/"
@@ -8,24 +8,21 @@ cask "insomnia@alpha" do
   desc "HTTP and GraphQL Client"
   homepage "https://insomnia.rest/"
 
+  # The upstream server only returns a JSON response if the provided version is
+  # lower than the newest version. This uses a X.0.0 version in the `url` to
+  # work around it but this won't work for a new major version (e.g., 1.0.0)
+  # where the provided version and newest version are equal, so this uses the
+  # previous major for a new major release.
   livecheck do
-    url :url
-    regex(/^core@v?(\d+(?:\.\d+)+[._-](?:alpha|beta|rc)[._-]?\d*)$/i)
-    strategy :github_releases do |json, regex|
-      json.map do |release|
-        next if release["draft"]
-
-        match = release["tag_name"]&.match(regex)
-        next if match.blank?
-
-        match[1]
-      end
+    url "https://updates.insomnia.rest/builds/check/mac?v=#{version.include?(".0.0") ? (version.major.to_i - 1) : version.major}.0.0#{"-beta.0" if version.include?("-")}&app=com.insomnia.app&channel=beta"
+    strategy :json do |json|
+      json["name"]
     end
   end
 
   auto_updates true
   conflicts_with cask: "insomnia"
-  depends_on macos: ">= :catalina"
+  depends_on macos: ">= :monterey"
 
   app "Insomnia.app"
 

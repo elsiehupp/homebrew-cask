@@ -1,6 +1,6 @@
 cask "keyboard-cowboy" do
-  version "3.24.2"
-  sha256 "3086c2c7c99c49a9947abd91e3aecc7bfedbba0c5cc2042bb50ba328b0bba893"
+  version "3.28.4"
+  sha256 "e95e4cc8fd5438215da659acfe20cd901081edcf7aa99824b6fc4001d5b5fc52"
 
   url "https://github.com/zenangst/KeyboardCowboy/releases/download/#{version}/Keyboard.Cowboy.#{version}.dmg"
   name "Keyboard Cowboy"

@@ -1,6 +1,6 @@
 cask "fabfilter-pro-q" do
-  version "3.26"
-  sha256 "0bcb7879703c45a17bd9a9ad2a3f6510ecf08608810ed087cadc94c9404570a5"
+  version "4.11"
+  sha256 "e45c5b62c3f158bab8711d34e4ba417b6467db74d682f64540901b1637628cb0"
 
   url "https://cdn-b.fabfilter.com/downloads/ffproq#{version.no_dots}.dmg"
   name "FabFilter Pro-Q"
@@ -9,15 +9,8 @@ cask "fabfilter-pro-q" do
 
   livecheck do
     url "https://www.fabfilter.com/download"
-    strategy :page_match do |page|
-      match = page.match(/ffproq(\d)(\d+)\.dmg/i)
-      next if match.blank?
-
-      "#{match[1]}.#{match[2]}"
-    end
+    regex(/FabFilter\s+Pro-Q.*?v?(\d+(?:\.\d+)+)/im)
   end
-
-  depends_on macos: ">= :sierra"
 
   pkg "FabFilter Pro-Q #{version} Installer.pkg"
 

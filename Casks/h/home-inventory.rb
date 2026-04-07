@@ -8,8 +8,7 @@ cask "home-inventory" do
   homepage "https://binaryformations.com/products/home-inventory/"
 
   deprecate! date: "2024-07-04", because: :discontinued
-
-  depends_on macos: ">= :sierra"
+  disable! date: "2025-07-04", because: :discontinued
 
   app "Home Inventory.app"
 end

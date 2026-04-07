@@ -1,9 +1,9 @@
 cask "zap" do
   arch arm: "_aarch64"
 
-  version "2.15.0"
-  sha256 arm:   "4426253f4702bbd5fb4779bcf4d62490b2c10ec851c4ebc94ced8f156d2e5509",
-         intel: "ae025403e46cdefff013cd0c3b88d8edc5a183a76daa63cb62c7c629005337a5"
+  version "2.17.0"
+  sha256 arm:   "3b3c6c8b105a33cb2a7d718e7f9aa41418a6d8aae3887d94a42523b5eeac723b",
+         intel: "a3d246125dd6e576036af8fb29f90377fc72a0a5df8c89c54711972b449582c7"
 
   url "https://github.com/zaproxy/zaproxy/releases/download/v#{version}/ZAP_#{version}#{arch}.dmg",
       verified: "github.com/zaproxy/zaproxy/"
@@ -16,6 +16,8 @@ cask "zap" do
     url :url
     strategy :github_latest
   end
+
+  disable! date: "2026-09-01", because: :fails_gatekeeper_check
 
   app "ZAP.app"
 

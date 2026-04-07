@@ -1,16 +1,15 @@
 cask "aldente" do
-  version "1.27.3"
-  sha256 "1ba2a97f2d4b135546fe74e4b38294e9da132997894fa824e89b4a994132e852"
+  version "1.37.2"
+  sha256 "212c41638b3cc44fefa190e1b10377bfa5e1c6defed6efe41bd32196ab22e4d7"
 
-  url "https://github.com/AppHouseKitchen/AlDente-Charge-Limiter/releases/download/#{version}/AlDente.dmg",
-      verified: "github.com/AppHouseKitchen/AlDente-Charge-Limiter/"
+  url "https://apphousekitchen.com/aldente/AlDente#{version}.dmg"
   name "AlDente"
   desc "Menu bar tool to limit maximum charging percentage"
   homepage "https://apphousekitchen.com/"
 
   livecheck do
-    url :url
-    strategy :github_latest
+    url "https://apphousekitchen.com/aldente/aldenteproappcast.xml"
+    strategy :sparkle, &:short_version
   end
 
   auto_updates true

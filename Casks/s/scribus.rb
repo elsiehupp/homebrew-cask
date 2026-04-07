@@ -1,11 +1,18 @@
 cask "scribus" do
   arch arm: "-arm64"
 
-  version "1.6.2"
-  sha256 arm:   "e0020434cbc234025b9a2675dd0ffda0f978ae2fc74e6b1d8528af7a8dc03075",
-         intel: "0f0aa86dcd8674ee933e4cbe80f54f785f3847ea3b8c1d152d43f7245c0c7e69"
+  version "1.6.5"
+  sha256 arm:   "d3bdc88fa105e932be1db610689bad17395c05e06b133bfbf372410d5bdf102a",
+         intel: "bcf92bd3f96b0c4e5130cd385c159d67ecebdb71baf04658de291fa476ea3159"
 
-  url "https://downloads.sourceforge.net/scribus/scribus/#{version}/scribus-#{version}#{arch}.dmg",
+  on_arm do
+    depends_on macos: ">= :big_sur"
+  end
+  on_intel do
+    depends_on macos: ">= :monterey"
+  end
+
+  url "https://downloads.sourceforge.net/scribus/scribus/#{version.csv.first}/scribus-#{version.csv.second || version.csv.first}#{arch}.dmg",
       verified: "sourceforge.net/scribus/"
   name "Scribus"
   desc "Free and open-source page layout program"
@@ -13,7 +20,15 @@ cask "scribus" do
 
   livecheck do
     url "https://sourceforge.net/projects/scribus/rss?path=/scribus"
-    regex(%r{url=.*?/scribus[._-]v?(\d+(?:\.\d+)+)(?:#{arch})?\.(?:dmg|pkg)}i)
+    regex(%r{url=.*?/v?(\d+(?:\.\d+)+)/scribus[._-]v?(\d+(?:[._]\d+)+)(?:#{arch})?\.(?:dmg|pkg)}i)
+    strategy :sourceforge do |page, regex|
+      match = page.match(regex)
+      next if match.blank?
+
+      next match[1] if match[1] == match[2]
+
+      "#{match[1]},#{match[2]}"
+    end
   end
 
   app "Scribus.app"

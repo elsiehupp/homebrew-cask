@@ -1,29 +1,25 @@
 cask "boltai" do
-  version "1.19.1"
-  sha256 "e3199cbe16599078e7a0f6ac99f548533d4926896b2224b202927ef6597ed00a"
+  version "2.8.5"
+  sha256 "a213421a71e91df3484c79a5853c473569beeb14eb883859786f2ce70312ee1f"
 
-  url "https://download.boltai.com/releases/BoltAI-#{version}.dmg"
-  name "BoltAI"
+  url "https://updates.boltai.com/dmg/BoltAI-#{version}.dmg"
+  name "BoltAI 2"
   desc "AI chat client"
   homepage "https://boltai.com/"
 
   livecheck do
-    url "https://boltai.com/sparkle/appcast.xml"
+    url "https://updates.boltai.com/appcast.xml"
     strategy :sparkle, &:short_version
   end
 
   auto_updates true
-  depends_on macos: ">= :monterey"
+  depends_on macos: ">= :ventura"
 
-  app "BoltAI.app"
+  app "BoltAI #{version.major}.app"
 
   zap trash: [
-    "~/Library/Application Support/co.podzim.BoltGPT",
-    "~/Library/Application Support/com.apple.sharedfilelist/com.apple.LSSharedFileList.ApplicationRecentDocuments/co.podzim.BoltGPT.*",
-    "~/Library/Caches/co.podzim.BoltGPT",
-    "~/Library/HTTPStorages/co.podzim.BoltGPT",
-    "~/Library/Preferences/co.podzim.BoltGPT.plist",
-    "~/Library/Saved Application State/co.podzim.BoltGPT.savedState",
-    "~/Library/WebKit/co.podzim.BoltGPT",
+    "~/Library/Application Scripts/co.podzim.boltai-mobile",
+    "~/Library/Containers/co.podzim.boltai-mobile",
+    "~/Library/Saved Application State/co.podzim.boltai-mobile.savedState",
   ]
 end

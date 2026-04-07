@@ -7,6 +7,8 @@ cask "whale" do
   desc "Unofficial Trello app"
   homepage "https://github.com/1000ch/whale"
 
+  disable! date: "2026-09-01", because: :fails_gatekeeper_check
+
   app "Whale.app"
 
   zap trash: [
@@ -17,4 +19,8 @@ cask "whale" do
     "~/Library/Preferences/net.1000ch.whale.plist",
     "~/Library/Saved Application State/net.1000ch.whale.savedState",
   ]
+
+  caveats do
+    requires_rosetta
+  end
 end

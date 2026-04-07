@@ -1,6 +1,6 @@
 cask "genesys-cloud" do
-  version "2.37.598,98"
-  sha256 "73d377abb3672dc2cf9dba35f03e0c8e085ce1f6f28dfa6549cba35b3248ebe1"
+  version "2.48.680,171"
+  sha256 "74fed463ec0d7f0d2da606b40c41e4676c1e3d6a9ef628a3e4631c61877f934b"
 
   url "https://app.mypurecloud.com/directory-mac/build-assets/#{version.csv.first}-#{version.csv.second}/genesys-cloud-mac-#{version.csv.first}.dmg"
   name "Genesys Cloud for macOS"
@@ -9,7 +9,7 @@ cask "genesys-cloud" do
 
   livecheck do
     url :homepage
-    regex(%r{href=.*?/build-assets/(\d+(?:\.\d+)+)[._-](\d+).*?\.dmg}i)
+    regex(%r{/v?(\d+(?:\.\d+)+)-(\d+)/[^"' >]*?\.dmg}i)
     strategy :page_match do |page, regex|
       page.scan(regex).map do |match|
         "#{match[0]},#{match[1]}"
@@ -18,6 +18,7 @@ cask "genesys-cloud" do
   end
 
   auto_updates true
+  depends_on macos: ">= :big_sur"
 
   app "Genesys Cloud.app"
 
@@ -27,8 +28,4 @@ cask "genesys-cloud" do
     "~/Library/Preferences/com.inin.purecloud.directory.plist",
     "~/Library/Saved Application State/com.inin.purecloud.directory.savedState",
   ]
-
-  caveats do
-    requires_rosetta
-  end
 end

@@ -8,6 +8,7 @@ cask "black-light-pro" do
   homepage "https://michelf.ca/software/black-light-pro/"
 
   deprecate! date: "2024-07-17", because: :discontinued
+  disable! date: "2025-07-17", because: :discontinued
 
   app "BLack Light Pro.app"
 

@@ -1,5 +1,5 @@
 cask "etrecheckpro" do
-  version "6.8.5"
+  version "6.8.14"
   sha256 :no_check
 
   url "https://cdn.etrecheck.com/EtreCheckPro.zip"
@@ -10,11 +10,12 @@ cask "etrecheckpro" do
   livecheck do
     url "https://cdn.etrecheck.com/EtreCheckProUpdates.plist"
     strategy :xml do |xml|
-      xml.elements["//key[text()='CFBundleShortVersionString']"]&.next_element&.text&.strip
+      version = xml.elements["//key[text()='CFBundleShortVersionString']"]&.next_element&.text
+      next if version.blank?
+
+      version.strip
     end
   end
-
-  depends_on macos: ">= :high_sierra"
 
   app "EtreCheckPro.app"
 

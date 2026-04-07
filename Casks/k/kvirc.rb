@@ -1,6 +1,6 @@
 cask "kvirc" do
-  version "5.2.4,Quasar"
-  sha256 "ca5320e0ab9521554f672ddaec9f47e3676150cba43015bb2627f63daae9a4f5"
+  version "5.2.10,Quasar"
+  sha256 "c439697be84fb8dc41b9541f64182bb6ee561ecfd3e5070f1f4be64ca0fe156c"
 
   url "https://github.com/kvirc/KVIrc/releases/download/#{version.csv.first}/KVIrc-#{version.csv.first}-#{version.csv.second}.dmg",
       verified: "github.com/kvirc/KVIrc/"
@@ -25,7 +25,10 @@ cask "kvirc" do
     end
   end
 
-  depends_on macos: ">= :high_sierra"
+  disable! date: "2026-09-01", because: :fails_gatekeeper_check
+
+  depends_on arch: :arm64
+  depends_on macos: ">= :sonoma"
 
   app "KVIrc.app"
 

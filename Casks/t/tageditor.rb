@@ -1,5 +1,5 @@
 cask "tageditor" do
-  version "1.0.15,1249"
+  version "2.0.4,1366"
   sha256 :no_check
 
   url "https://amvidia.com/downloads/tag-editor-mac.dmg"
@@ -12,12 +12,14 @@ cask "tageditor" do
     strategy :extract_plist
   end
 
-  depends_on macos: ">= :high_sierra"
+  # The url is unversioned, but the download returns an app with a version number
+  rename "Tag Editor*.app", "Tag Editor.app"
 
   app "Tag Editor.app"
 
   zap trash: [
     "~/Library/Application Scripts/com.amvidia.Tag-Editor-FS",
+    "~/Library/Containers/com.amvidia.Tag-Editor-FS",
     "~/Library/Containers/Tag Editor",
     "~/Library/Saved Application State/com.amvidia.Tag-Editor-FS.savedState",
   ]

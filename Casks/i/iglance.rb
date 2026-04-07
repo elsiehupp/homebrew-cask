@@ -8,9 +8,9 @@ cask "iglance" do
   homepage "https://github.com/iglance/iGlance"
 
   deprecate! date: "2024-07-17", because: :unmaintained
+  disable! date: "2025-07-17", because: :unmaintained
 
   auto_updates true
-  depends_on macos: ">= :sierra"
 
   app "iGlance.app"
 

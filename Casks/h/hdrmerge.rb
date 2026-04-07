@@ -9,6 +9,7 @@ cask "hdrmerge" do
   homepage "https://jcelaya.github.io/hdrmerge/"
 
   deprecate! date: "2024-07-12", because: :unmaintained
+  disable! date: "2025-07-12", because: :unmaintained
 
   app "HDRMerge.app"
   binary "#{appdir}/HDRMerge.app/Contents/MacOS/hdrmerge"

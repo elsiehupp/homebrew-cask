@@ -8,6 +8,7 @@ cask "ringcentral-meetings" do
   homepage "https://www.ringcentral.com/online-meetings/overview.html"
 
   deprecate! date: "2024-07-11", because: :discontinued
+  disable! date: "2025-07-11", because: :discontinued
 
   pkg "RCMeetingsClientSetup.pkg"
 

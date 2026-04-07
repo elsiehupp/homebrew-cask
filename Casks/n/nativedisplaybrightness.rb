@@ -7,6 +7,7 @@ cask "nativedisplaybrightness" do
   homepage "https://github.com/Bensge/NativeDisplayBrightness/"
 
   deprecate! date: "2024-07-27", because: :unmaintained
+  disable! date: "2025-07-27", because: :unmaintained
 
   app "NativeDisplayBrightness.app"
 

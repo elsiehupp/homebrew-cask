@@ -8,6 +8,7 @@ cask "datazenit" do
   homepage "https://datazenit.com/"
 
   deprecate! date: "2024-07-10", because: :unmaintained
+  disable! date: "2025-07-10", because: :unmaintained
 
   app "Datazenit.app"
 

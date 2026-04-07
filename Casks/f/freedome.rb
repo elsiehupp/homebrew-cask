@@ -8,6 +8,7 @@ cask "freedome" do
   homepage "https://www.f-secure.com/en_US/web/home_us/freedome"
 
   deprecate! date: "2024-07-15", because: :discontinued
+  disable! date: "2025-07-15", because: :discontinued
 
   pkg "Freedome.pkg"
 

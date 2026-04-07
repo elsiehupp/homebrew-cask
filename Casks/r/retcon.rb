@@ -1,16 +1,18 @@
 cask "retcon" do
-  version "1.0.0"
-  sha256 "b5baeb745b1765e9c42e75e452501849478aacabf80e77cf47a113d9a53697c3"
+  version "1.5.3"
+  sha256 "c0d5d9b94d3232322d68d702c2d62f8b43d3ccbd2dd916156dfac5297d81e495"
 
-  url "https://f000.backblazeb2.com/file/downloads-lemon-garden/retcon/retcon-#{version}.dmg",
-      verified: "f000.backblazeb2.com/file/downloads-lemon-garden/"
+  url "https://downloads.lemon.garden/retcon/retcon-#{version}.dmg",
+      verified: "downloads.lemon.garden/retcon/"
   name "Retcon"
   desc "Drag-and-drop Git history editor"
   homepage "https://retcon.app/"
 
   livecheck do
     url "https://lemon.garden/retcon/appcast.xml"
-    strategy :sparkle, &:short_version
+    strategy :sparkle do |items|
+      items.find { |item| item.channel == "release" }&.short_version
+    end
   end
 
   auto_updates true
@@ -20,6 +22,7 @@ cask "retcon" do
 
   zap trash: [
     "~/Library/Application Support/com.apple.sharedfilelist/com.apple.LSSharedFileList.ApplicationRecentDocuments/garden.lemon.retcon.sfl*",
+    "~/Library/Application Support/Retcon",
     "~/Library/Caches/garden.lemon.Retcon",
     "~/Library/HTTPStorages/garden.lemon.Retcon",
     "~/Library/Preferences/garden.lemon.Retcon.plist",

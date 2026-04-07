@@ -1,6 +1,6 @@
 cask "bitbox" do
-  version "4.43.0"
-  sha256 "6c35993d51a905fd75c8c331693289630e6323efa99ac952d37da6d638b73146"
+  version "4.50.1"
+  sha256 "25eac2dec5820863bff81f671c3b9b3dae4805995361a3624bf639f1231f57ed"
 
   url "https://github.com/BitBoxSwiss/bitbox-wallet-app/releases/download/v#{version}/BitBox-#{version}-macOS.dmg",
       verified: "github.com/BitBoxSwiss/bitbox-wallet-app/releases/download/"
@@ -9,9 +9,11 @@ cask "bitbox" do
   homepage "https://bitbox.swiss/"
 
   livecheck do
-    url :url
-    strategy :github_latest
+    url "https://bitbox.swiss/download/"
+    regex(/href=.*?BitBox[._-]v?(\d+(?:\.\d+)+)(?:[._-]macOS)?\.dmg/i)
   end
+
+  depends_on macos: ">= :monterey"
 
   app "BitBox.app"
 
@@ -19,8 +21,4 @@ cask "bitbox" do
     "~/Library/Preferences/ch.shiftcrypto.BitBoxApp.plist",
     "~/Library/Saved Application State/ch.shiftcrypto.wallet.savedState",
   ]
-
-  caveats do
-    requires_rosetta
-  end
 end

@@ -1,12 +1,19 @@
 cask "livebook" do
-  version "0.14.0"
-  sha256 "edbf8110be20e22d57ecca5296721a7ba39d088a814d0100bd6671f24618e0b3"
+  arch arm: "aarch64", intel: "x64"
 
-  url "https://github.com/livebook-dev/livebook/releases/download/v#{version}/LivebookInstall-v#{version}-macos-universal.dmg",
+  version "0.19.6"
+  sha256 arm:   "c1a8d356f2762c7fd297cc0d270869e88d2c1d0bc31f380edc140e46cf1fb89a",
+         intel: "bb77e7c7cf44f7e027340c0105c1fa26f60a37fd4450ec1a5bcb6cb3f5641825"
+
+  url "https://github.com/livebook-dev/livebook/releases/download/v#{version}/Livebook-darwin-#{arch}.dmg",
       verified: "github.com/livebook-dev/livebook/"
   name "Livebook"
   desc "Code notebooks for Elixir developers"
   homepage "https://livebook.dev/"
+
+  auto_updates true
+  conflicts_with cask: "livebook@nightly"
+  depends_on macos: ">= :big_sur"
 
   app "Livebook.app"
 

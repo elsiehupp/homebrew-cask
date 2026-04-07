@@ -1,5 +1,5 @@
 cask "datagraph" do
-  version "5.3,66"
+  version "5.5"
   sha256 :no_check
 
   url "https://www.visualdatatools.com/DataGraph/DataGraph.dmg"
@@ -8,8 +8,8 @@ cask "datagraph" do
   homepage "https://www.visualdatatools.com/DataGraph/"
 
   livecheck do
-    url :url
-    strategy :extract_plist
+    url "https://www.visualdatatools.com/DataGraph/Download/"
+    regex(/Version\s+v?(\d+(?:\.\d+)+)/i)
   end
 
   app "DataGraph.app"

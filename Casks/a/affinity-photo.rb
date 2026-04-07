@@ -1,6 +1,6 @@
 cask "affinity-photo" do
-  version "2.5.3,2516"
-  sha256 "3288c9c2b0a0ba511ec53f54ae0f7864a974f4149bdedd29bf4c5c6153b8462c"
+  version "2.6.5,3782"
+  sha256 "8ea03dfac76cebe9eeceef996ac585813b47624217c3f23e6921cbd9580a0788"
 
   url "https://affinity-update.s3.amazonaws.com/mac2/retail/Affinity%20Photo%20#{version.csv.first.major}%20Affinity%20Store%20#{version.csv.second}.zip",
       verified: "affinity-update.s3.amazonaws.com/"
@@ -8,15 +8,9 @@ cask "affinity-photo" do
   desc "Professional image editing software"
   homepage "https://affinity.serif.com/en-us/photo/"
 
-  livecheck do
-    url "https://go.seriflabs.com/affinity-update-mac-retail-photo#{version.csv.first.major}"
-    strategy :sparkle do |item|
-      "#{item.short_version},#{item.version}"
-    end
-  end
+  deprecate! date: "2025-10-30", because: :discontinued
 
   auto_updates true
-  depends_on macos: ">= :catalina"
 
   app "Affinity Photo #{version.csv.first.major}.app"
 

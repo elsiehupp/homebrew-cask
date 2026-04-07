@@ -1,5 +1,5 @@
 cask "minitube" do
-  version "4.0"
+  version "4.0.3"
   sha256 :no_check
 
   url "https://flavio.tordini.org/files/minitube/minitube.dmg"
@@ -11,8 +11,6 @@ cask "minitube" do
     url "https://flavio.tordini.org/minitube-ws/appcast.xml"
     strategy :sparkle, &:short_version
   end
-
-  depends_on macos: ">= :high_sierra"
 
   app "Minitube.app"
 

@@ -7,6 +7,9 @@ cask "nslogger" do
   desc "Modern, flexible logging tool"
   homepage "https://github.com/fpillet/NSLogger"
 
+  deprecate! date: "2025-03-02", because: :unmaintained
+  disable! date: "2026-03-02", because: :unmaintained
+
   app "NSLogger.app"
 
   caveats do

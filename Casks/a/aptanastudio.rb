@@ -9,6 +9,7 @@ cask "aptanastudio" do
   homepage "https://www.aptana.com/"
 
   deprecate! date: "2024-07-17", because: :unmaintained
+  disable! date: "2025-07-17", because: :unmaintained
 
   app "AptanaStudio.app"
 

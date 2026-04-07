@@ -1,5 +1,5 @@
 cask "yousician" do
-  version "2.11.43"
+  version "2.11.51"
   sha256 :no_check
 
   url "https://public.yousician.com/Builds/Yousician.dmg"
@@ -14,8 +14,6 @@ cask "yousician" do
       json["remote_version"]&.match(regex) { |match| match[1] }
     end
   end
-
-  depends_on macos: ">= :high_sierra"
 
   app "Yousician Launcher.app"
 

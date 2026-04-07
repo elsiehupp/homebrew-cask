@@ -1,29 +1,27 @@
 cask "vcam" do
-  version "2.0.192"
-  sha256 "06bd6320f4db6470ab7f7144dfb8a9ec71e6b0c043a205515a3e9f2e12eed1a1"
+  version "5.0.5"
+  sha256 "8e51abe129c13cd4818d73cc60645389531d7c4f413196483ef793373661b5bf"
 
-  url "https://downloads.vcam.ai/mac/VCam.ai_#{version}.pkg"
-  name "VCam.ai"
+  url "https://installers.vcam.ai/VCam_#{version}.pkg"
+  name "VCam"
   desc "Webcam background tool"
   homepage "https://vcam.ai/"
 
   livecheck do
-    url "https://downloads.vcam.ai/mac/updates.txt"
-    regex(/v?(\d+(?:\.\d+)+)/i)
+    url "https://go.vcam.ai/download-mac"
+    strategy :header_match
   end
 
-  depends_on macos: ">= :catalina"
-
-  pkg "VCam.ai_#{version}.pkg"
+  pkg "VCam_#{version}.pkg"
 
   postflight do
     # Description: Ensure console variant of postinstall is non-interactive.
-    # This is because `open /Applications/VCam.ai/VCam.app` is called from the
+    # This is because `open /Applications/VCam/VCam.app` is called from the
     # postinstall script of the package and we don't want any user intervention there.
     retries ||= 3
-    ohai "The VCam.ai package postinstall script launches the VCam app" if retries >= 3
+    ohai "The VCam package postinstall script launches the VCam app" if retries >= 3
     ohai "Attempting to close VCam.app to avoid unwanted user intervention" if retries >= 3
-    return unless system_command "/usr/bin/pkill", args: ["-f", "/Applications/VCam.ai/VCam.app"]
+    return unless system_command "/usr/bin/pkill", args: ["-f", "/Applications/VCam/VCam.app"]
   rescue RuntimeError
     sleep 1
     retry unless (retries -= 1).zero?
@@ -36,7 +34,7 @@ cask "vcam" do
               "electron-app",
               "vcam.ai-uninstall",
             ],
-            delete:  "/Applications/VCam.ai"
+            delete:  "/Applications/VCam"
 
   zap trash: [
     "~/Library/Application Support/com.apple.sharedfilelist/com.apple.LSSharedFileList.ApplicationRecentDocuments/ai.vcam.desktop.sfl*",

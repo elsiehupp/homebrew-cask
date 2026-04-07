@@ -1,9 +1,9 @@
 cask "simplex" do
   arch arm: "aarch64", intel: "x86_64"
 
-  version "6.0.3"
-  sha256 arm:   "d928a196f62fe08194c2d12b35bd821eb46fac93e41e0b13e7bde05d26995283",
-         intel: "c0eb8e6f56268edb2306f937766b9c71b51d79d2738734392590f557c561b86c"
+  version "6.4.11"
+  sha256 arm:   "46fb3b4acf318c5df229c3de10ad3368e7173cc548ff417079c8a3c818c16008",
+         intel: "e7e9b8ce22d0617f469144f9fc23ae8698a79f0054f86a1037b6f71d10be5a82"
 
   url "https://github.com/simplex-chat/simplex-chat/releases/download/v#{version}/simplex-desktop-macos-#{arch}.dmg",
       verified: "github.com/simplex-chat/simplex-chat/"
@@ -15,8 +15,6 @@ cask "simplex" do
     url :url
     strategy :github_latest
   end
-
-  depends_on macos: ">= :high_sierra"
 
   app "SimpleX.app"
 

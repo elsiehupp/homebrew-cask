@@ -1,89 +1,80 @@
 cask "orion" do
-  version "0.99,128.2.1"
+  on_catalina :or_older do
+    version "1.0.4,143"
+    sha256 "44bdb8e2d1b1148b940e3f88a37c2ff90a0b16f00ae1b53b8fa628a2b4119016"
 
-  on_mojave :or_older do
-    sha256 "61c5202748984b047c0c1367e36b37794caacc572f202f656ccbef04f4e01742"
-
-    url "https://browser.kagi.com/updates/10_14/#{version.csv.second}.zip"
-
-    livecheck do
-      url "https://cdn.kagi.com/updates/10_14/appcast.xml"
-      strategy :sparkle
-    end
-
-    depends_on macos: :mojave
-  end
-  on_catalina do
-    sha256 "812de30d5179ef19544bb074de07df2222b6b35dc4cfdff1e1fd96eaccd9d60e"
-
-    url "https://browser.kagi.com/updates/10_15/#{version.csv.second}.zip"
+    url "https://cdn.kagi.com/updates/10_15/#{version.csv.second}.zip"
 
     livecheck do
       url "https://cdn.kagi.com/updates/10_15/appcast.xml"
       strategy :sparkle
     end
-
-    depends_on macos: :catalina
   end
   on_big_sur do
-    sha256 "54fcbb55ca6f3998adbbb49e10442369820d68b0fe026c3922399efad6d404fe"
+    version "1.0.4,143"
+    sha256 "5ade3844f2228630634e77e460fe3c27553371462116c110e851d8730a130b0b"
 
-    url "https://browser.kagi.com/updates/11_0/#{version.csv.second}.zip"
+    url "https://cdn.kagi.com/updates/11_0/#{version.csv.second}.zip"
 
     livecheck do
       url "https://cdn.kagi.com/updates/11_0/appcast.xml"
       strategy :sparkle
     end
-
-    depends_on macos: :big_sur
   end
   on_monterey do
-    sha256 "0a3787994daaa98f4a9bc4719d463373a989e62e9258323cde12b0291ed0d49d"
+    version "1.0.4,143"
+    sha256 "3020f30d1b7209211a2ac77e5f3c613c8a21d3ed35783771ad02c5e8a979d334"
 
-    url "https://browser.kagi.com/updates/12_0/#{version.csv.second}.zip"
+    url "https://cdn.kagi.com/updates/12_0/#{version.csv.second}.zip"
 
     livecheck do
       url "https://cdn.kagi.com/updates/12_0/appcast.xml"
       strategy :sparkle
     end
-
-    depends_on macos: :monterey
   end
   on_ventura do
-    sha256 "b1f8ad490664e96d3f435b7b95f192327507591a5b64365b1c19e00f28f93991"
+    version "1.0.4,143"
+    sha256 "27b04e7ae106ce96923bf542c5f9f82c6abda59bd3d972797cc1efc439c30ab4"
 
-    url "https://browser.kagi.com/updates/13_0/#{version.csv.second}.zip"
+    url "https://cdn.kagi.com/updates/13_0/#{version.csv.second}.zip"
 
     livecheck do
       url "https://cdn.kagi.com/updates/13_0/appcast.xml"
       strategy :sparkle
     end
-
-    depends_on macos: :ventura
   end
   on_sonoma do
-    sha256 "09ec195da5e1858ed63c2202cd63d5616183c056a6069f8cf4698701ebcd2d4c"
+    version "1.0.4,143"
+    sha256 "4a07035515db6c3bdd9597bd9c780206afd17448f6e88d9b7e6ae1fdbb18b134"
 
-    url "https://browser.kagi.com/updates/14_0/#{version.csv.second}.zip"
+    url "https://cdn.kagi.com/updates/14_0/#{version.csv.second}.zip"
 
     livecheck do
       url "https://cdn.kagi.com/updates/14_0/appcast.xml"
       strategy :sparkle
     end
-
-    depends_on macos: :sonoma
   end
-  on_sequoia :or_newer do
-    sha256 "bc84ddb9d5f6e877e1b5db69a4bd683b02e423d0b9eb3edf3b6d081089960cc7"
+  on_sequoia do
+    version "1.0.4,143"
+    sha256 "2697cabd242b8acb5005a8653cc1bff1710c89c2af0d679080d20eefcd68f4da"
 
-    url "https://browser.kagi.com/updates/15_0/#{version.csv.second}.zip"
+    url "https://cdn.kagi.com/updates/15_0/#{version.csv.second}.zip"
 
     livecheck do
       url "https://cdn.kagi.com/updates/15_0/appcast.xml"
       strategy :sparkle
     end
+  end
+  on_tahoe :or_newer do
+    version "1.0.4,143"
+    sha256 "0d32eaf4aaabbfea818dcbcabbf3933acc0e75d327a82fd5627d7a576bb6feb9"
 
-    depends_on macos: ">= :sequoia"
+    url "https://cdn.kagi.com/updates/26_0/#{version.csv.second}.zip"
+
+    livecheck do
+      url "https://cdn.kagi.com/updates/26_0/appcast.xml"
+      strategy :sparkle
+    end
   end
 
   name "Orion Browser"
@@ -100,6 +91,7 @@ cask "orion" do
     "~/Library/Application Scripts/com.kagi.kagimacOS.ShareExtension",
     "~/Library/Application Support/Orion",
     "~/Library/Caches/com.kagi.kagimacOS",
+    "~/Library/Caches/com.kagi.kagimacOS.IconService",
     "~/Library/Containers/com.kagi.kagimacOS.ShareExtension",
     "~/Library/HTTPStorages/com.kagi.kagimacOS*",
     "~/Library/Preferences/com.kagi.kagimacOS.plist",

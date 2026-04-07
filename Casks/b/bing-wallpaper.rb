@@ -1,14 +1,14 @@
 cask "bing-wallpaper" do
-  version "1.1.4"
-  sha256 "b23caf98fcfc0f9f1ab97ef263c67071b767a7774ebb9666461dbbba05bd4aae"
+  version "1.1.8"
+  sha256 "564b0793186dfb639d5207849a65ab20a6ea0b93a16d3de3939a24bb9b56984c"
 
-  url "https://download.microsoft.com/download/9/4/a/94aa841f-5578-4856-8a8c-83ff78eb2d1f/Installer/#{version}/MSN/Flight2/MW021/Bing%20Wallpaper.pkg"
+  url "https://download.microsoft.com/download/3a8e7366-aac0-4636-bc1d-a3c6c217accf/Installer/#{version}/MSN/Var1/MW021/Bing%20Wallpaper.pkg"
   name "Bing Wallpaper"
   desc "Use the Bing daily image as your wallpaper"
   homepage "https://bingwallpaper.microsoft.com/"
 
   livecheck do
-    url "https://go.microsoft.com/fwlink/?linkid=2181295"
+    url "https://go.microsoft.com/fwlink/?linkid=2181295&installerType=PKG"
     regex(%r{Installer/(\d+(?:\.\d+)+)[^/]*/}i)
     strategy :header_match
   end
@@ -23,6 +23,7 @@ cask "bing-wallpaper" do
             ],
             quit:      [
               "com.microsoft.autoupdate2",
+              "com.microsoft.MicrosoftBingSearch",
               "com.microsoft.msbwapp",
               "com.microsoft.msbwdefaults",
             ],

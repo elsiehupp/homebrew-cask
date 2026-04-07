@@ -1,6 +1,6 @@
 cask "douyin-chat" do
-  version "1.1.21,12070043"
-  sha256 "32566ebb6869b5a1c59001cb9d7d3b24174b44b93fac68666f5c000918396cf6"
+  version "1.1.28,183979140"
+  sha256 "8ef9c4f432699460573135895275c62b4af5ed6374e97e692024c8f3fb7fdeb2"
 
   url "https://lf-impc.douyinstatic.com/obj/tos-aweme-im-pc/7094550955558967563/releases/#{version.csv.second}/#{version.csv.first}/darwin-x64/DouyinChat.dmg",
       verified: "lf-impc.douyinstatic.com/obj/tos-aweme-im-pc/"
@@ -21,7 +21,6 @@ cask "douyin-chat" do
   end
 
   auto_updates true
-  depends_on macos: ">= :high_sierra"
 
   app "抖音聊天.app"
 

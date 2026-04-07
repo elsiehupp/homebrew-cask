@@ -1,9 +1,9 @@
 cask "asana" do
   arch arm: "arm64", intel: "x64"
 
-  version "2.2.1"
-  sha256 arm:   "e0bab088dcb72ea72df84e235fb54a08cae1913cc77464ede5f8321162424b8b",
-         intel: "3ac5a6229723b5c1c47f7c30365277b70003f8c684619f7229d279dddb4881cc"
+  version "2.6.0"
+  sha256 arm:   "086f0dd28a291f1d7affbe99d725eee799951c25917cd7ff5a021e1a7c4210da",
+         intel: "b1a714a7d0949701bb7402d3b43d5725fc77dc946728000068ec8cf576cfdb74"
 
   url "https://desktop-downloads.asana.com/darwin_#{arch}/prod/v#{version}/Asana-darwin-#{arch}-#{version}.zip"
   name "Asana"
@@ -18,7 +18,7 @@ cask "asana" do
   end
 
   auto_updates true
-  depends_on macos: ">= :catalina"
+  depends_on macos: ">= :big_sur"
 
   app "Asana.app"
 

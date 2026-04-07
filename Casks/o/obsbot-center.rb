@@ -1,6 +1,6 @@
 cask "obsbot-center" do
-  version "2.0.9.26"
-  sha256 "5928325de8ed94543d4bad404b15c94f98a24a2a013981ce2c8d67d63cd87103"
+  version "2.0.10.40"
+  sha256 "7b1c1eff35d192f63dd6cf3f1d3d993223c53f4a1b3f43217509aca65de4140c"
 
   url "https://resource-cdn.obsbothk.com/download/obsbot-center/Obsbot_Center_OA_E_MacOS_#{version}_release.dmg",
       verified: "resource-cdn.obsbothk.com/download/obsbot-center/"
@@ -8,10 +8,7 @@ cask "obsbot-center" do
   desc "Configuration and firmware update utility for OBSBOT Tiny and Meet series"
   homepage "https://www.obsbot.com/download"
 
-  livecheck do
-    url "https://www.obsbot.com/download/obsbot-tiny-series"
-    regex(/Obsbot[._-]Center[._-]OA[._-]E[._-]MacOS[._-](\d+(?:\.\d+)+)[._-]release\.dmg/i)
-  end
+  disable! date: "2025-04-07", because: "now has the download artifact behind a signed URL"
 
   depends_on macos: ">= :big_sur"
 

@@ -1,9 +1,8 @@
 cask "roam" do
   arch arm: "arm64", intel: "x64"
 
-  version "124.0.0-beta001"
-  sha256 arm:   "bcd411920c8390ff32475b7566359974d6902225173919086ee56d4970c9337b",
-         intel: "31e624556439c8a271147eb1b1bc8c4d47af0a573e81f8657c4f4f80a9c4dad8"
+  version "207.0.0-beta001"
+  sha256 :no_check
 
   url "https://download.ro.am/Roam/8a86d88cfc9da3551063102e9a4e2a83/latest/darwin/#{arch}/Roam.dmg"
   name "Roam"
@@ -12,7 +11,7 @@ cask "roam" do
 
   livecheck do
     url "https://ro.am/release-notes"
-    regex(/version:\s*"([^"]+)"/i)
+    regex(/version:\s*"v?(\d+(?:\.\d+)+(?:[._-]beta\d+)?)"/i)
     strategy :page_match do |page, regex|
       js_match = page[/src=.*?(index[._-]\w+\.js)/i, 1]
       next if js_match.blank?
@@ -23,7 +22,7 @@ cask "roam" do
   end
 
   auto_updates true
-  depends_on macos: ">= :catalina"
+  depends_on macos: ">= :monterey"
 
   app "Roam.app"
 

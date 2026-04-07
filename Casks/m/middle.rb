@@ -1,6 +1,6 @@
 cask "middle" do
-  version "1.8.6"
-  sha256 "6450eb3909e42efe473775198d8990025314ce29d0927653a6dd5b6075c61179"
+  version "1.14"
+  sha256 "28bf5dd6ec0eaabdcf4bee181dd880d077b2f9e312e652e662dbfa7122a59a83"
 
   url "https://middleclick.app/downloads/Middle#{version}.dmg"
   name "Middle"
@@ -13,7 +13,6 @@ cask "middle" do
   end
 
   auto_updates true
-  depends_on macos: ">= :catalina"
 
   app "Middle.app"
 

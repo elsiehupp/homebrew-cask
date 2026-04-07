@@ -7,6 +7,8 @@ cask "tip" do
   desc "Programmable tooltip that can be used with any app"
   homepage "https://github.com/tanin47/tip"
 
+  deprecate! date: "2025-05-25", because: :moved_to_mas
+
   app "Tip.app"
 
   zap trash: "~/Library/Application Scripts/tanin.tip"

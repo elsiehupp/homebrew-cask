@@ -1,6 +1,6 @@
 cask "meteorologist" do
-  version "4.0.5"
-  sha256 "267b2e1f7333dc0b470274432d4ac0ed9aadbb2bdd2328fd7637bd51c1414262"
+  version "4.1.3"
+  sha256 "20f688917d37e817219ec4e5906c08f905110c16794a7fba6bf33d555f40e884"
 
   url "https://downloads.sourceforge.net/heat-meteo/Meteorologist-#{version}.dmg",
       verified: "downloads.sourceforge.net/heat-meteo/"

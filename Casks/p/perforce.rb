@@ -1,9 +1,9 @@
 cask "perforce" do
   arch arm: "12arm64", intel: "1015x86_64"
 
-  version "2024.1,2625008"
-  sha256 arm:   "ec74a4d39b0f3bb30d8f24dc0b6450fbaa335f119245531b1e99273cdf66050b",
-         intel: "5174ca8d62ccc1d803ef63111aa12ff55f82534aea2da19700dc02f57b08842d"
+  version "2025.2,2907753"
+  sha256 arm:   "98d9f1243eff9af8f99580ab0a47c85ccbe28d101dbc250b247114c0034d1ed3",
+         intel: "a2488f0b46c07beb87e7a725eebb8417a2f48c920c1dadec7d82b37fe22f0cc5"
 
   url "https://filehost.perforce.com/perforce/r#{version.major[-2..]}.#{version.minor}/bin.macosx#{arch}/helix-core-server.tgz"
   name "Perforce Helix Core Server"
@@ -23,7 +23,6 @@ cask "perforce" do
   end
 
   conflicts_with cask: "p4"
-  depends_on macos: ">= :sierra"
 
   binary "p4"
   binary "p4broker"

@@ -9,6 +9,7 @@ cask "fromscratch" do
   homepage "https://fromscratch.rocks/"
 
   deprecate! date: "2024-07-10", because: :unmaintained
+  disable! date: "2025-07-10", because: :unmaintained
 
   app "FromScratch.app"
 

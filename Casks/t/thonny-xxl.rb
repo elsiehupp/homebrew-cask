@@ -9,6 +9,7 @@ cask "thonny-xxl" do
   homepage "https://thonny.org/"
 
   deprecate! date: "2024-07-04", because: :discontinued
+  disable! date: "2025-07-04", because: :discontinued
 
   conflicts_with cask: "thonny"
 

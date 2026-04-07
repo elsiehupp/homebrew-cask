@@ -1,16 +1,21 @@
 cask "iqmol" do
-  version "3.1.4"
-  sha256 "e0f11b539b17ff7e0575b5e02c54f31b54c6eaa2b9e2578f168671392d33daa9"
+  version "3.2.1"
+  sha256 "186656e2c61a4b2f8369741832e98827eadd565a922416f8cb62aecb836aea4a"
 
-  url "http://iqmol.org/downloads/IQmol-#{version}.dmg"
+  url "https://downloads.q-chem.com/iqmol/IQmol-#{version}.dmg",
+      verified: "downloads.q-chem.com/iqmol/"
   name "IQmol"
   desc "Free open-source molecular editor and visualization package"
-  homepage "http://iqmol.org/"
+  homepage "https://www.iqmol.org/"
 
   livecheck do
-    url "http://iqmol.org/downloads.html"
-    regex(/href=.*?=IQmol[._-]v?(\d+(?:\.\d+)*)\.dmg/i)
+    url "https://www.iqmol.org/downloads.html"
+    regex(/href=.*?IQmol[._-]v?(\d+(?:\.\d+)*)\.dmg/i)
   end
+
+  disable! date: "2026-09-01", because: :fails_gatekeeper_check
+
+  depends_on macos: ">= :ventura"
 
   app "IQmol.app"
 
@@ -19,8 +24,4 @@ cask "iqmol" do
     "~/Library/Preferences/org.iqmol.plist",
     "~/Library/Saved Application State/org.iqmol.savedState",
   ]
-
-  caveats do
-    requires_rosetta
-  end
 end

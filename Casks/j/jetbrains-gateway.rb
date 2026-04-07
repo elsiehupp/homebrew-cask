@@ -1,11 +1,11 @@
 cask "jetbrains-gateway" do
   arch arm: "-aarch64"
 
-  version "2024.2"
-  sha256 arm:   "a66f93350e9251ba34a1d3cf6061fc9ad5c5351b328a15be906a8706b8be2ded",
-         intel: "630ee3bfb6537c5da26aa7907027788f287d4e42fe24ba1f6eca037eb6afea42"
+  version "2026.1,261.22158.290"
+  sha256 arm:   "e1974169dc8176ea01f93fc1f27d4216fbde77d84ee2498d56bc0afcc3ec2073",
+         intel: "ecdf460fe1e8d8d20763bacec0a96d2b45b08beecd551366d28279682cf7d938"
 
-  url "https://download.jetbrains.com/idea/gateway/JetBrainsGateway-#{version}#{arch}.dmg"
+  url "https://download.jetbrains.com/idea/gateway/JetBrainsGateway-#{version.csv.first}#{arch}.dmg"
   name "jetbrains-gateway"
   desc "Remote development gateway by Jetbrains"
   homepage "https://www.jetbrains.com/remote-development/gateway/"
@@ -13,12 +13,17 @@ cask "jetbrains-gateway" do
   livecheck do
     url "https://data.services.jetbrains.com/products/releases?code=GW&latest=true&type=release"
     strategy :json do |json|
-      json["GW"].map { |release| release["version"] }
+      json["GW"]&.map do |release|
+        version = release["version"]
+        build = release["build"]
+        next if version.blank? || build.blank?
+
+        "#{version},#{build}"
+      end
     end
   end
 
   auto_updates true
-  depends_on macos: ">= :high_sierra"
 
   app "JetBrains Gateway.app"
   binary "#{appdir}/JetBrains Gateway.app/Contents/MacOS/gateway"

@@ -1,24 +1,25 @@
 cask "lens" do
   arch arm: "-arm64"
 
-  version "2024.7.161041"
-  sha256 arm:   "2687fb15d20f279e037d5fcb1ad27503abd888e219aec4eff2088b710cbd4adb",
-         intel: "5a0109d22e55b50c2ea23b21d1f0ad1abbf01fcc2a50091fca1ea28f44fb133d"
+  version "2026.3.251250"
+  sha256 arm:   "8c9465cf897984c9e4fdb0ef46e49556ea1ed92310b9974067746719a52ebe15",
+         intel: "25ee7e32385e75f7d1c8a163a21d6125e7475c35004af5d9295775b1a2f069c7"
 
-  url "https://api.k8slens.dev/binaries/Lens-#{version}-latest#{arch}.dmg"
+  url "https://api.k8slens.dev/binaries/Lens-#{version}-latest#{arch}.dmg",
+      verified: "api.k8slens.dev/binaries/"
   name "Lens"
   desc "Kubernetes IDE"
-  homepage "https://k8slens.dev/"
+  homepage "https://lenshq.io/"
 
   livecheck do
-    url "https://api.k8slens.dev/binaries/latest-mac.json/"
-    regex(/(\d+(?:\.\d+)+)/i)
-    strategy :json do |json|
-      json["version"].sub("-latest", "")
+    url "https://api.k8slens.dev/binaries/latest-mac.yml"
+    strategy :electron_builder do |yaml|
+      yaml["version"]&.sub("-latest", "")
     end
   end
 
   auto_updates true
+  depends_on macos: ">= :monterey"
 
   app "Lens.app"
 

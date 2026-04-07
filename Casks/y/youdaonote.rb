@@ -1,8 +1,11 @@
 cask "youdaonote" do
-  version "8.0.30"
-  sha256 "44feb9a99192b64124b13ac6a8ae9ad8faebce9ad2ea82d7aa36e9263b0b08c7"
+  arch arm: "-arm64"
 
-  url "https://artifact.lx.netease.com/download/ynote-electron/%E6%9C%89%E9%81%93%E4%BA%91%E7%AC%94%E8%AE%B0-#{version}.zip",
+  version "8.2.41"
+  sha256 arm:   "4b25d9c46f8db655219ee7af433d9e10f285fbd035d281229dc3351a6ca4ef23",
+         intel: "7a0389c425f1449039a7d3452af3c3b713883bd74fbfc16d998b6c9cae43c4df"
+
+  url "https://artifact.lx.netease.com/download/ynote-electron/%E6%9C%89%E9%81%93%E4%BA%91%E7%AC%94%E8%AE%B0-#{version}#{arch}.dmg",
       user_agent: :fake,
       verified:   "artifact.lx.netease.com/download/ynote-electron/"
   name "youdaonote"
@@ -21,8 +24,4 @@ cask "youdaonote" do
     "~/Library/Containers/com.youdao.note.YoudaoNoteMac",
     "~/Library/Saved Application State/com.youdao.YoudaoDict.savedState",
   ]
-
-  caveats do
-    requires_rosetta
-  end
 end

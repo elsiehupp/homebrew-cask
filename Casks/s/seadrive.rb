@@ -1,9 +1,9 @@
 cask "seadrive" do
-  version "3.0.10"
-  sha256 "efd129f10cb34b7349889363484670f204ab47728ce979d36661b180ce52c578"
+  version "3.0.21"
+  sha256 "86dba35268620c496ebfc95bc4a9313c3140661b33ff5673dd6daa2cf3aaf16e"
 
-  url "https://download.seadrive.org/seadrive-#{version}.pkg",
-      verified: "download.seadrive.org/"
+  url "https://sos-ch-dk-2.exo.io/seafile-downloads/seadrive-#{version}.pkg",
+      verified: "sos-ch-dk-2.exo.io/seafile-downloads/"
   name "Seadrive"
   desc "Manual for Seafile server"
   homepage "https://www.seafile.com/en/home/"

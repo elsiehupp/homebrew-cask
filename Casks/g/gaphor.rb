@@ -1,14 +1,15 @@
 cask "gaphor" do
-  version "2.26.0"
-  sha256 "1c160fdf854f83de4503a3d45b3ab1c39fa841b278c5430dd2e599f5cdb6a4b2"
+  arch arm: "arm", intel: "intel"
 
-  url "https://github.com/gaphor/gaphor/releases/download/#{version}/Gaphor-#{version}.dmg",
+  version "3.2.0"
+  sha256 arm:   "ae59e7f232084e7091bbb31946900cd50d508faa12a27346c5bed96cab698c4e",
+         intel: "4fb5d766211d9688f1d7eb331a71fbb673453db9195643a225bf80596892d155"
+
+  url "https://github.com/gaphor/gaphor/releases/download/#{version}/Gaphor-#{version}-#{arch}.dmg",
       verified: "github.com/gaphor/gaphor/"
   name "Gaphor"
   desc "UML/SysML modelling tool"
   homepage "https://gaphor.org/"
-
-  depends_on macos: ">= :high_sierra"
 
   app "Gaphor.app"
 
@@ -18,8 +19,4 @@ cask "gaphor" do
     "~/.cache/gaphor",
     "~/.local/share/gaphor",
   ]
-
-  caveats do
-    requires_rosetta
-  end
 end

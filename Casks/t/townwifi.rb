@@ -7,10 +7,8 @@ cask "townwifi" do
   name "TownWiFi"
   homepage "https://townwifi.jp/"
 
-  livecheck do
-    url "https://storage.googleapis.com/townwifi-downloads/mac/update/appcast.xml"
-    strategy :sparkle
-  end
+  deprecate! date: "2024-11-03", because: :unmaintained
+  disable! date: "2025-11-03", because: :unmaintained
 
   auto_updates true
 

@@ -1,6 +1,6 @@
 cask "nomachine" do
-  version "8.13.1_4"
-  sha256 "14ef0fc50a1058c356b0fb293ce17b734cd8b6f88627acb6a7dd930288a12608"
+  version "9.4.14_1"
+  sha256 "5a044f6ee8480bd0ec3945580d5b87d803e77f3752bdb7c9b59a83a2640c20c3"
 
   url "https://download.nomachine.com/download/#{version.major_minor}/MacOSX/nomachine_#{version}.dmg"
   name "NoMachine"
@@ -8,8 +8,9 @@ cask "nomachine" do
   homepage "https://www.nomachine.com/"
 
   livecheck do
-    url "https://www.nomachine.com/support&destination=downloads&callback=L2Rvd25sb2FkLz9pZD03"
+    url "https://www.nomachine.com/dwl_nm_bann.php"
     regex(/nomachine[._-]v?(\d+(?:\.\d+)+_\d+)\.dmg/i)
+    strategy :header_match
   end
 
   auto_updates true

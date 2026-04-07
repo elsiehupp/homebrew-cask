@@ -8,6 +8,7 @@ cask "lightgallery" do
   homepage "https://sachinchoolur.github.io/lightgallery-desktop/"
 
   deprecate! date: "2024-07-18", because: :unmaintained
+  disable! date: "2025-07-18", because: :unmaintained
 
   app "lightgallery.app"
 

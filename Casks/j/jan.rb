@@ -1,11 +1,8 @@
 cask "jan" do
-  arch arm: "arm64", intel: "x64"
+  version "0.7.9"
+  sha256 "869f01a7da4150f355b41d2ba041dd2e865f861e38ceaddab9a29e61d3b8ef0c"
 
-  version "0.5.3"
-  sha256 arm:   "7073e1c45824218628a85a8bc8bc3a1664e05d611e5afbd6b34878785f77fa45",
-         intel: "7732f9eda2712bafcecafb44e17a91c16411b2218f472b0b1c3a973e9cf9541b"
-
-  url "https://github.com/janhq/jan/releases/download/v#{version}/jan-mac-#{arch}-#{version}.dmg",
+  url "https://github.com/janhq/jan/releases/download/v#{version}/jan-mac-universal-#{version}.zip",
       verified: "github.com/janhq/jan/"
   name "Jan"
   desc "Offline AI chat tool"
@@ -17,7 +14,6 @@ cask "jan" do
   end
 
   auto_updates true
-  depends_on macos: ">= :catalina"
 
   app "Jan.app"
 

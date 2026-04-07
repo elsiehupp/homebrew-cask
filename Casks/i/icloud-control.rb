@@ -8,6 +8,7 @@ cask "icloud-control" do
   homepage "https://github.com/Obbut/iCloud-Control"
 
   deprecate! date: "2024-07-17", because: :discontinued
+  disable! date: "2025-07-17", because: :discontinued
 
   app "iCloud Control.app"
 

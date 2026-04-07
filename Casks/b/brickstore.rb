@@ -1,12 +1,19 @@
 cask "brickstore" do
-  version "2024.5.2"
-  sha256 "e1c13583fff821f1accad237576a4be84a6a85d05590a28a58dd7d1a3974df99"
+  version "2026.3.2"
+  sha256 "4b8c6b5b2689c60f8264774b55fd1ebd5f61d8741a7841b69c4ae63734ecc21a"
 
   url "https://github.com/rgriebl/brickstore/releases/download/v#{version}/macOS-BrickStore-#{version}.dmg",
       verified: "github.com/rgriebl/brickstore/"
   name "BrickStore"
   desc "BrickLink offline management tool"
   homepage "https://www.brickstore.dev/"
+
+  livecheck do
+    url :url
+    strategy :github_latest
+  end
+
+  depends_on macos: ">= :ventura"
 
   app "BrickStore.app"
 

@@ -4,18 +4,11 @@ cask "font-brill" do
 
   url "https://brill.com/fileasset/The_Brill_Typeface_Package_v_#{version.dots_to_underscores}.zip"
   name "Brill"
-  homepage "https://brill.com/page/BrillFont/"
+  homepage "https://brill.com/page/resources_brilltypeface"
 
-  livecheck do
-    url "https://brill.com/page/BrillFontDownloads/Download-The-Brill-Typeface"
-    regex(/href=.*?The[._-]Brill[._-]Typeface[._-]Package[._-]v?[._-]?(\d+(?:[._]\d+)+)\.zip/i)
-    strategy :page_match do |page, regex|
-      match = page.match(regex)
-      next if match.blank?
-
-      match[1].tr("_", ".")
-    end
-  end
+  # The upstream website is inaccessible outside of a browser context and this
+  # applies to the zip file, so the cask is effectively unusable.
+  disable! date: "2025-11-01", because: :unreachable
 
   font "Brill-Bold.ttf"
   font "Brill-BoldItalic.ttf"

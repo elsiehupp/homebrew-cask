@@ -7,6 +7,7 @@ cask "pennywise" do
   homepage "https://github.com/kamranahmedse/pennywise"
 
   deprecate! date: "2024-07-28", because: :unmaintained
+  disable! date: "2025-07-28", because: :unmaintained
 
   app "Pennywise.app"
 

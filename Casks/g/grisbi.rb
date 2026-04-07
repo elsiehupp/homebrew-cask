@@ -9,9 +9,11 @@ cask "grisbi" do
   homepage "https://www.grisbi.org/"
 
   livecheck do
-    url "https://sourceforge.net/projects/grisbi/files/grisbi%20stable/"
-    regex(%r{url=.*?/grisbi/files/grisbi%20stable/.*?[-_/](\d+(?:[-.]\d+)+)\.dmg[-_/%.]}i)
+    url "https://sourceforge.net/projects/grisbi/rss?path=/grisbi%20stable"
+    regex(%r{url=.*?/Grisbi[^"' >]*?[._-]v?(\d+(?:[.-]\d+)+)\.dmg}i)
   end
+
+  disable! date: "2026-09-01", because: :fails_gatekeeper_check
 
   app "Grisbi.app"
 

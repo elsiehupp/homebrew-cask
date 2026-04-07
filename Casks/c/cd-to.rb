@@ -22,8 +22,6 @@ cask "cd-to" do
   desc "Finder Toolbar app to open the current directory in the Terminal"
   homepage "https://github.com/jbtule/cdto"
 
-  depends_on macos: ">= :mojave"
-
   app "cd to.app"
 
   caveats <<~EOS
@@ -35,4 +33,6 @@ cask "cd-to" do
     To use, just click on the new button and instantly opens a new Terminal.app
     window.
   EOS
+
+  # No zap stanza required
 end

@@ -1,12 +1,12 @@
 cask "gitkraken-on-premise-serverless" do
-  arch arm: "darwin-arm64", intel: "darwin"
+  arch arm: "arm64", intel: "x64"
 
-  version "10.2.0"
-  sha256 arm:   "f976a465accb823226d5c9d53c227d34d3e666ee1689a3b48c4f5355efaa74e6",
-         intel: "12f0f99e0aa845ec046e23e636ae2c8a92003d48f884ebeec4c31ff8f3e98f82"
+  version "11.10.0"
+  sha256 arm:   "b3fa6554416c38455f443c7c8c5282abc132954999fe3cbd500dd873dbe98ed3",
+         intel: "4c0788c134453746b3e65534a3680a4fc261642c43ecf1626ea2c44697ccdf7f"
 
-  url "https://release.axocdn.com/#{arch}-standalone/GitKraken-v#{version}.zip",
-      verified: "release.axocdn.com/"
+  url "https://api.gitkraken.dev/releases/standalone/production/darwin/#{arch}/#{version}/GitKraken-v#{version}.zip",
+      verified: "api.gitkraken.dev/releases/standalone/production/"
   name "GitKraken Serverless"
   desc "Git client focusing on productivity"
   homepage "https://www.gitkraken.com/git-client/on-premise"
@@ -18,7 +18,6 @@ cask "gitkraken-on-premise-serverless" do
 
   auto_updates true
   conflicts_with cask: "gitkraken"
-  depends_on macos: ">= :el_capitan"
 
   app "GitKraken.app"
 

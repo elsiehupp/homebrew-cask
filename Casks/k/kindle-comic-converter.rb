@@ -1,23 +1,29 @@
 cask "kindle-comic-converter" do
   arch arm: "arm", intel: "i386"
 
-  version "6.1.1"
-  sha256 arm:   "028822dde6d365504ec6dd9efb1c35ebba494ef12989664b4df27dd03d7110ce",
-         intel: "f9b47cce285b98cdf2c492ac10d30ac12dc3a3844970fb1aa60c1fc0ef78fb32"
+  version "9.6.2"
+  sha256 arm:   "31606a2c2a513d85a6e31a4eb00f295bb79f3f56c30fb748900610b85ad75ce9",
+         intel: "cfc9625cca219679eed4cdf380cc90e7d47e12a40a2078017c5100e2eec0fa28"
 
-  url "https://github.com/ciromattia/kcc/releases/download/v#{version}/kcc_macos_#{arch}_#{version}.dmg",
-      verified: "github.com/ciromattia/kcc/"
+  on_arm do
+    depends_on macos: ">= :big_sur"
+  end
+  on_intel do
+    depends_on macos: ">= :catalina"
+  end
+
+  url "https://github.com/ciromattia/kcc/releases/download/v#{version}/kcc_macos_#{arch}_#{version}.dmg"
   name "Kindle Comic Converter"
   name "KCC"
   desc "Comic and manga converter for ebook readers"
-  homepage "https://kcc.iosphe.re/"
+  homepage "https://github.com/ciromattia/kcc"
 
   livecheck do
     url :url
     strategy :github_latest
   end
 
-  depends_on macos: ">= :mojave"
+  disable! date: "2026-09-01", because: :fails_gatekeeper_check
 
   app "Kindle Comic Converter.app"
 

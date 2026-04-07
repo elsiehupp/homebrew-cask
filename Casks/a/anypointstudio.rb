@@ -1,8 +1,11 @@
 cask "anypointstudio" do
-  version "7.18.1"
-  sha256 "3f9dddf20bee30a3976a607a0c7138b265301e2284e7fd2ad5bae1bd68b0ce9f"
+  arch arm: "Arm", intel: "64"
 
-  url "https://mule-studio.s3.amazonaws.com/#{version}-GA/AnypointStudio-#{version}-macos64.zip",
+  version "7.24.0"
+  sha256 arm:   "565421e0f14597a3c16a78ffc1a2dd65245beb60aa89cb279dc94560299fea56",
+         intel: "434f51f02c88ae9342cf6a71552996a4284afd616dec780aa0cbd253586b6301"
+
+  url "https://mule-studio.s3.amazonaws.com/#{version}-GA/AnypointStudio-#{version}-macos#{arch}.zip",
       verified: "mule-studio.s3.amazonaws.com/"
   name "Anypoint Studio"
   desc "Eclipse-based IDE for designing and testing Mule applications"
@@ -20,8 +23,4 @@ cask "anypointstudio" do
   uninstall delete: "/Library/Logs/DiagnosticReports/AnypointStudio*.diag"
 
   # No zap stanza required
-
-  caveats do
-    requires_rosetta
-  end
 end

@@ -1,26 +1,19 @@
 cask "writerside" do
   arch arm: "-aarch64"
 
-  version "2024.1,241.18775.101"
-  sha256 arm:   "dc1d01915ff31d14828b668b71cfc92529d389af122adca06d785f7cc3a9d784",
-         intel: "fad7fbf6fec147556b53b75adb02f22df038822f4cb0662dd4748dcc1ffd0969"
+  version "2024.3,243.22562.371"
+  sha256 arm:   "9d86ef50b4c6d2a07d236219e9b05c0557241fb017d52ac395719bdb425130f5",
+         intel: "0c78b8035497c855aea5666256716778abd46dadf68f51e4f91c0db01f62b280"
 
   url "https://download.jetbrains.com/writerside/writerside-#{version.csv.second}#{arch}.dmg"
   name "Writerside"
   desc "Technical writing environment"
   homepage "https://www.jetbrains.com/writerside/"
 
-  livecheck do
-    url "https://data.services.jetbrains.com/products/releases?code=WRS&latest=true&type=eap"
-    strategy :json do |json|
-      json["WRS"].map do |release|
-        "#{release["version"]},#{release["build"]}"
-      end
-    end
-  end
+  # https://blog.jetbrains.com/writerside/2025/03/sunsetting-writerside-ide/
+  deprecate! date: "2025-08-16", because: :discontinued
 
   auto_updates true
-  depends_on macos: ">= :catalina"
 
   app "Writerside #{version.before_comma} EAP.app", target: "Writerside.app"
   binary "#{appdir}/Writerside.app/Contents/MacOS/writerside"

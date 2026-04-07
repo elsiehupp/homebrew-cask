@@ -2,12 +2,12 @@ cask "xpra" do
   arch arm: "arm64", intel: "x86_64"
 
   on_arm do
-    version "6.1.2,0"
-    sha256 "45b47c4f374cad40c248bdc534b6b23c469bf1832ff8dedfdcaa0a1ec49c4d37"
+    version "6.4.3,0"
+    sha256 "644f581b43958351673d80e4e31e2261dec5ead999964121a1131af011b62d18"
   end
   on_intel do
-    version "6.1,0"
-    sha256 "89d08abf9c42c28c15813e4638511303e78fd10bc940ee8d743195d570a1b7a4"
+    version "6.4.2,1"
+    sha256 "b59119b255c615fcc2077c2154ca47646c7726d0a5142f4b12a8ca4c6b4a1640"
   end
 
   url "https://xpra.org/dists/MacOS/#{arch}/Xpra-#{arch}-#{version.csv.first}-r#{version.csv.second}.dmg",
@@ -26,17 +26,16 @@ cask "xpra" do
     end
   end
 
-  depends_on macos: ">= :sierra"
+  disable! date: "2026-09-01", because: :fails_gatekeeper_check
+
+  depends_on macos: ">= :monterey"
 
   app "Xpra.app"
+  binary "#{appdir}/Xpra.app/Contents/MacOS/Xpra", target: "xpra"
 
   zap delete: "/Library/Application Support/Xpra",
       trash:  [
         "~/Library/Application Support/Xpra",
         "~/Library/Saved Application State/org.xpra.xpra.savedState",
       ]
-
-  caveats do
-    requires_rosetta
-  end
 end

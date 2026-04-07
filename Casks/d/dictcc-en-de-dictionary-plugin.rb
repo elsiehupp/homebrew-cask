@@ -7,6 +7,7 @@ cask "dictcc-en-de-dictionary-plugin" do
   homepage "https://www.dict.cc/?s=about%3Awordlist"
 
   deprecate! date: "2024-07-10", because: :unmaintained
+  disable! date: "2025-07-10", because: :unmaintained
 
   pkg "macosx10.6_dict.cc_dictionary.pkg"
 

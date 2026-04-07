@@ -1,6 +1,6 @@
 cask "fujifilm-x-raw-studio" do
-  version "1.24.0,vvr6ik27"
-  sha256 "5786a53d9bac03058a2af034df41f1d5afd7f6ace62b852263a26b04711098af"
+  version "1.28.0,10wt23dg"
+  sha256 "9963268c999cd9b96c102fcf3673248a6f5c6dd3c428f9da69d8827e163fa634"
 
   url "https://dl.fujifilm-x.com/support/software/x-raw-studio-mac#{version.csv.first.no_dots}-#{version.csv.second}/XRawStudio#{version.csv.first.no_dots}.dmg"
   name "FUJIFILM X RAW STUDIO"
@@ -21,12 +21,12 @@ cask "fujifilm-x-raw-studio" do
     end
   end
 
-  depends_on macos: ">= :sierra"
+  depends_on macos: ">= :big_sur"
 
   app "FUJIFILM X RAW STUDIO.app"
 
   zap trash: [
-    "~/Library/Application Support/com.fujifilm.denji",
+    "~/Library/Application Support/com.fujifilm.denji/X RAW STUDIO",
     "~/Library/Preferences/com.fujifilm.denji.X-RAW-STUDIO.plist",
   ]
 end

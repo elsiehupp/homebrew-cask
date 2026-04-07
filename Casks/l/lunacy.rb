@@ -1,6 +1,6 @@
 cask "lunacy" do
-  version "10.0.1"
-  sha256 "a711c750d55c158bfaec8ee91de4e883bd4d478472cc44eacb0181192f4980ff"
+  version "13.0"
+  sha256 "576513b61e461ec003c710e01b2a34ac4f14c06de6203949bf89f325b832ddcc"
 
   url "https://lcdn.icons8.com/setup/Lunacy_#{version}.dmg"
   name "Lunacy"
@@ -11,6 +11,8 @@ cask "lunacy" do
     url "https://lunacy.docs.icons8.com/release-notes/"
     regex(/Lunacy[._-]v?(\d+(?:\.\d+)+)\.dmg/i)
   end
+
+  depends_on macos: ">= :monterey"
 
   app "Lunacy.app"
 

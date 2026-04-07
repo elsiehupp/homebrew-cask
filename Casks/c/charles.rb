@@ -1,6 +1,6 @@
 cask "charles" do
-  version "4.6.7"
-  sha256 "ba16148c7a6b3723488cc95968d96fba1de0807ad8e47467a2b5ac3ad13ff22b"
+  version "5.0.3"
+  sha256 "2dc3535b295ff5b3214d474fb310c2a3fd42433f11d145a5d069c88de1b0dbe0"
 
   url "https://www.charlesproxy.com/assets/release/#{version}/charles-proxy-#{version}.dmg"
   name "Charles"
@@ -8,9 +8,11 @@ cask "charles" do
   homepage "https://www.charlesproxy.com/"
 
   livecheck do
-    url "https://www.charlesproxy.com/latest.do"
+    url "https://www.charlesproxy.com/latest.do", post_json: {}
     regex(/v?(\d+(?:\.\d+)+)/i)
   end
+
+  conflicts_with cask: "charles@4"
 
   app "Charles.app"
 
@@ -36,8 +38,4 @@ cask "charles" do
     "~/Library/Preferences/com.xk72.Charles.plist",
     "~/Library/Saved Application State/com.xk72.Charles.savedState",
   ]
-
-  caveats do
-    requires_rosetta
-  end
 end

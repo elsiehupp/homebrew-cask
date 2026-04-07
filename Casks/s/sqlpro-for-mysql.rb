@@ -1,6 +1,6 @@
 cask "sqlpro-for-mysql" do
-  version "2024.21"
-  sha256 "50c42298a558e00a428a01404e116befec42a601324995bc98941b92bed55fdf"
+  version "2026.07"
+  sha256 "d4154f08fd1b20936f1c67df3c06a2b21deff977f2e6ff2dd9d1e5bc872f5cf9"
 
   url "https://d3fwkemdw8spx3.cloudfront.net/mysql/SQLProMySQL.#{version}.app.zip",
       verified: "d3fwkemdw8spx3.cloudfront.net/mysql/"
@@ -12,6 +12,8 @@ cask "sqlpro-for-mysql" do
     url "https://www.mysqlui.com/download.php"
     strategy :header_match
   end
+
+  depends_on macos: ">= :ventura"
 
   app "SQLPro for MySQL.app"
 

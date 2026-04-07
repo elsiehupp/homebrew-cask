@@ -1,8 +1,8 @@
 cask "longplay" do
-  version "0.5.3,458"
-  sha256 "9257519386ff255b5a0146c7f74714558e642c7d8b8bc41189797afee4999f9e"
+  version "1.1.8"
+  sha256 "b4fbff99281afc06ee59314c1cd8b92d6a271283b5e500ea492be43551617108"
 
-  url "https://download.longplay.app/mac/longplay-#{version.csv.first}-#{version.csv.second}.zip",
+  url "https://download.longplay.app/mac/Longplay-#{version.csv.first}#{"-#{version.csv.second}" if version.csv.second}.dmg",
       verified: "download.longplay.app/"
   name "Longplay"
   desc "Album-focused music player"
@@ -10,10 +10,17 @@ cask "longplay" do
 
   livecheck do
     url "https://download.longplay.app/mac/appcast.xml"
-    strategy :sparkle
+    regex(/longplay[._-]v?(\d+(?:[.-]\d+)+)/i)
+    strategy :sparkle do |items|
+      stable_item = items.find { |item| item.channel.nil? }
+      next unless stable_item
+
+      stable_item.url&.[](regex, 1)&.tr("-", ",")
+    end
   end
 
-  depends_on macos: ">= :ventura"
+  auto_updates true
+  depends_on macos: ">= :sequoia"
 
   app "Longplay.app"
 

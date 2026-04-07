@@ -1,9 +1,10 @@
 cask "catlight" do
-  version "3.7.3"
-  sha256 "d0e279f07136d0665b5188386d2a3a59a8ad9a456c968fca196a5d260569f098"
+  version "3.9.1"
+  sha256 "1bee5f064841fe331e7acac4be2c78f7d114ff161a2eaa2b3d8ce27b379d88fc"
 
-  url "https://download.catlight.io/rel/mac/release/CatLightSetup-#{version}.zip"
-  name "catlight"
+  url "https://download.catlight.io/rel/mac/release/CatLightSetup-#{version}.dmg",
+      user_agent: :fake
+  name "CatLight"
   desc "Action center for developers"
   homepage "https://catlight.io/"
 
@@ -11,8 +12,6 @@ cask "catlight" do
     url "https://catlight.io/downloads/mac/release"
     strategy :header_match
   end
-
-  depends_on macos: ">= :sierra"
 
   app "Catlight.app"
 

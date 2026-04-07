@@ -1,12 +1,23 @@
 cask "tencent-lemon" do
-  version "5.1.9.1019"
-  sha256 "9a2d7525b4ad651cf39afa6d21671a4c3210275d5b46d2f68b0f76a78b3ee43f"
+  version "5.3.0,49930F7D5D2246ECF0BAEE20B056DD4A"
+  sha256 "4247c8971b28f78c00ad600c463da94a7c39b02db3a5ba99fb1e70c4c939c675"
 
-  url "https://github.com/Tencent/lemon-cleaner/releases/download/v#{version}/Lemon_v#{version}.dmg",
-      verified: "github.com/Tencent/lemon-cleaner/"
+  url "https://pm.myapp.com/invc/xfspeed/qqpcmgr/module_update/#{version.csv.second}/Lemon#{version.csv.first}.dmg",
+      verified: "pm.myapp.com/invc/xfspeed/qqpcmgr/"
   name "Tencent Lemon Cleaner"
   desc "Cleanup and system status tool"
   homepage "https://lemon.qq.com/"
+
+  livecheck do
+    url "https://lemon.guanjia.qq.com/latest/package?version=newTag"
+    regex(%r{/module_update/(\h+)/Lemon[._-]?v?(\d+(?:\.\d+)+)\.dmg}i)
+    strategy :json do |json, regex|
+      match = json.dig("latest", "downloadurl")&.match(regex)
+      next if match.blank?
+
+      "#{match[2]},#{match[1]}"
+    end
+  end
 
   auto_updates true
 

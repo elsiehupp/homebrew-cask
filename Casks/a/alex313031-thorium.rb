@@ -1,44 +1,27 @@
 cask "alex313031-thorium" do
-  arch arm: "ARM64", intel: "X64"
+  arch arm: "ARM64", intel: "x64"
 
-  sha256 arm:   "041aa435b43b42308c7d4f32424891a95de0f62a63728d572b147b5585568628",
-         intel: "1a6526f3259452f2d3e0f8163916b8cd2acb0cbf5d101dacc8ab6aad67b192f8"
-
-  on_arm do
-    version "M126.0.6478.231"
-  end
-  on_intel do
-    version "M124.0.6367.218"
-  end
+  version "M138.0.7204.303"
+  sha256  arm:   "01f77352f40445e5c39a838c6e48198a09b64c14b0ec423c83fd9b461e0d7069",
+          intel: "9a31c4d3fea1f6a49f2943f30d3400ef7cffbb8ab815567e83049b88652b8778"
 
   url "https://github.com/Alex313031/Thorium-MacOS/releases/download/#{version}/Thorium_MacOS_#{arch}.dmg",
       verified: "github.com/Alex313031/Thorium-MacOS/"
   name "Thorium"
-  desc "Web browser"
+  desc "Chromium-based web browser"
   homepage "https://thorium.rocks/"
 
   livecheck do
     url :url
     regex(/^(M?\d+(?:\.\d+)+)$/i)
-    strategy :github_releases do |json, regex|
-      file_regex = /^Thorium[._-]macOS[._-]#{arch}\.dmg$/i
-
-      json.map do |release|
-        next if release["draft"] || release["prerelease"]
-        next unless release["assets"]&.any? { |asset| asset["name"]&.match?(file_regex) }
-
-        match = release["tag_name"].match(regex)
-        next if match.blank?
-
-        match[1]
-      end
-    end
+    strategy :github_latest
   end
 
-  conflicts_with cask: "thorium"
-  depends_on macos: ">= :catalina"
+  disable! date: "2026-09-01", because: :fails_gatekeeper_check
 
-  app "Thorium.app"
+  depends_on macos: ">= :big_sur"
+
+  app "Thorium.app", target: "Thorium Browser.app"
   # shim script (https://github.com/Homebrew/homebrew-cask/issues/18809)
   shimscript = "#{staged_path}/thorium.wrapper.sh"
   binary shimscript, target: "thorium"
@@ -46,7 +29,7 @@ cask "alex313031-thorium" do
   preflight do
     File.write shimscript, <<~EOS
       #!/bin/bash
-      exec '#{appdir}/Thorium.app/Contents/MacOS/Thorium' "$@"
+      exec '#{appdir}/Thorium Browser.app/Contents/MacOS/Thorium' "$@"
     EOS
   end
 

@@ -1,6 +1,6 @@
 cask "chatgpt" do
-  version "1.2024.233,1724439245"
-  sha256 "ab5f8ffebab9fb3ef8f78e9a26b346a22a337a19af37a56b1bc6ec67c887b1eb"
+  version "1.2026.049,1774576178"
+  sha256 "874916159fc6e723c3f38364270726fc1ed294ecaa1b2962c45226932b71f4f0"
 
   url "https://persistent.oaistatic.com/sidekick/public/ChatGPT_Desktop_public_#{version.csv.first}_#{version.csv.second}.dmg",
       verified: "persistent.oaistatic.com/sidekick/public/"
@@ -13,7 +13,7 @@ cask "chatgpt" do
   livecheck do
     url "https://persistent.oaistatic.com/sidekick/public/sparkle_public_appcast.xml"
     strategy :sparkle do |items|
-      items.map { |item| "#{item.short_version},#{item.version}" }
+      items.map(&:nice_version)
     end
   end
 
@@ -26,6 +26,7 @@ cask "chatgpt" do
   uninstall quit: "com.openai.chat"
 
   zap trash: [
+    "~/Library/Application Support/ChatGPT",
     "~/Library/Application Support/com.openai.chat",
     "~/Library/Caches/com.openai.chat",
     "~/Library/HTTPStorages/com.openai.chat",

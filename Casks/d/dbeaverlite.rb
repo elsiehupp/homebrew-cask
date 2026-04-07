@@ -1,11 +1,12 @@
 cask "dbeaverlite" do
   arch arm: "aarch64", intel: "x86_64"
 
-  version "24.1.0"
-  sha256 arm:   "8cb52d83f785b34aa68a4c20a606b90b9129e754256a0b153adee1fd580942c3",
-         intel: "ef1ea85a978a6b54d517ff63a5ae8cdd53be26b643050126f290baa934a1fe0c"
+  version "26.0.0"
+  sha256 arm:   "bad4d7121af716f27594674361663de1b392f7ef7861b900845deef5e134084e",
+         intel: "dd8dd9284e9aa84b2964c8ca1e761086ecba89a4bea1c0cddf8796bf06cfc352"
 
-  url "https://dbeaver.com/downloads-lite/#{version}/dbeaver-le-#{version}-macos-#{arch}.dmg"
+  url "https://downloads.dbeaver.net/lite/#{version}/dbeaver-le-#{version}-macos-#{arch}.dmg",
+      verified: "downloads.dbeaver.net/lite/"
   name "DBeaver Lite Edition"
   desc "Universal database tool and SQL client"
   homepage "https://dbeaver.com/dbeaver-lite/"
@@ -16,6 +17,8 @@ cask "dbeaverlite" do
       xml.elements["//version/number"]&.text&.strip
     end
   end
+
+  depends_on macos: ">= :big_sur"
 
   app "DBeaverLite.app"
 

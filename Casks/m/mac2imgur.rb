@@ -8,6 +8,7 @@ cask "mac2imgur" do
   homepage "https://github.com/mileswd/mac2imgur"
 
   deprecate! date: "2024-07-27", because: :unmaintained
+  disable! date: "2025-07-27", because: :unmaintained
 
   app "mac2imgur.app"
 

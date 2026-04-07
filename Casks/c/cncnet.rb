@@ -9,6 +9,7 @@ cask "cncnet" do
   homepage "https://cncnet.org/"
 
   deprecate! date: "2024-07-11", because: :unmaintained
+  disable! date: "2025-07-11", because: :unmaintained
 
   app "CnCNet.app"
 

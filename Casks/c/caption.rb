@@ -9,6 +9,7 @@ cask "caption" do
   homepage "https://getcaption.co/"
 
   deprecate! date: "2024-07-09", because: :unmaintained
+  disable! date: "2025-07-09", because: :unmaintained
 
   app "Caption.app"
 

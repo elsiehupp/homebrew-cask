@@ -1,22 +1,37 @@
 cask "graalvm-jdk@21" do
   arch arm: "aarch64", intel: "x64"
 
-  version "21.0.4"
-  sha256 arm:   "1a38609765bb7f985783b438c0488dca1a03ee2d418c2d94a1aaabd6ea9960be",
-         intel: "4cfe4037fbb4190c27899e13ebdee8a034309f7a96e9e20f73fc94b28783a98d"
+  on_arm do
+    version "21.0.10,8"
+    sha256 "9e5d8c3b23b793ac3cc92462454edb9465208cb6eee18a0066971748ef5ce197"
 
-  url "https://download.oracle.com/graalvm/#{version.major}/archive/graalvm-jdk-#{version}_macos-#{arch}_bin.tar.gz",
+    livecheck do
+      url "https://java.oraclecloud.com/currentJavaReleases/#{version.major}"
+      regex(/(?:jdk[._-])?(\d+(?:\.\d+)*)(?:-\d+)?\+(\d+)/i)
+      strategy :json do |json, regex|
+        match = json["releaseFullVersion"]&.match(regex)
+        next if match.blank?
+
+        "#{match[1]},#{match[2]}"
+      end
+    end
+  end
+  on_intel do
+    version "21.0.9,7"
+    sha256 "aaf06b193ea1a05662d4a5a05e899eb51f8881eee4319db044707e79dcabbb32"
+
+    livecheck do
+      skip "Legacy version"
+    end
+  end
+
+  url "https://download.oracle.com/graalvm/#{version.major}/archive/graalvm-jdk-#{version.csv.first}_macos-#{arch}_bin.tar.gz",
       verified: "download.oracle.com/"
   name "GraalVM Java Development Kit"
   desc "GraalVM from Oracle"
   homepage "https://www.graalvm.org/"
 
-  livecheck do
-    url "https://www.oracle.com/java/technologies/downloads/"
-    regex(/graalvm\s+for\s+jdk\s+(21(?:\.\d+)+)/i)
-  end
-
-  artifact "graalvm-jdk-#{version}+8.1", target: "/Library/Java/JavaVirtualMachines/graalvm-#{version.major}.jdk"
+  artifact "graalvm-jdk-#{version.csv.first}+#{version.csv.second}.1", target: "/Library/Java/JavaVirtualMachines/graalvm-#{version.major}.jdk"
 
   # No zap stanza required
 

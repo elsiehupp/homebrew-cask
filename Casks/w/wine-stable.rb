@@ -1,6 +1,6 @@
 cask "wine-stable" do
-  version "9.0_3"
-  sha256 "e352befbd159225d4ef7c45ad90ccc4efb9797bd4e842f99036a32e850d1b3de"
+  version "11.0"
+  sha256 "573d43fc4618521148d98ad9c74e63387831827395c014925fdfdc52fe55cb5a"
 
   # Current winehq packages are deprecated and these are packages from
   # the new maintainers that will eventually be pushed to Winehq.
@@ -23,7 +23,7 @@ cask "wine-stable" do
         next if release["draft"] || release["prerelease"]
         next unless release["assets"]&.any? { |asset| asset["name"]&.match?(file_regex) }
 
-        match = release["tag_name"].match(regex)
+        match = release["tag_name"]&.match(regex)
         next if match.blank?
 
         match[1]
@@ -31,22 +31,23 @@ cask "wine-stable" do
     end
   end
 
+  disable! date: "2026-09-01", because: :fails_gatekeeper_check
+
   conflicts_with cask: [
     "wine@devel",
     "wine@staging",
   ]
   depends_on cask: "gstreamer-runtime"
-  depends_on macos: ">= :catalina"
 
   app "Wine Stable.app"
   binary "#{appdir}/Wine Stable.app/Contents/Resources/start/bin/appdb"
   binary "#{appdir}/Wine Stable.app/Contents/Resources/start/bin/winehelp"
+  binary "#{appdir}/Wine Stable.app/Contents/Resources/wine/bin/msidb"
   binary "#{appdir}/Wine Stable.app/Contents/Resources/wine/bin/msiexec"
   binary "#{appdir}/Wine Stable.app/Contents/Resources/wine/bin/notepad"
   binary "#{appdir}/Wine Stable.app/Contents/Resources/wine/bin/regedit"
   binary "#{appdir}/Wine Stable.app/Contents/Resources/wine/bin/regsvr32"
   binary "#{appdir}/Wine Stable.app/Contents/Resources/wine/bin/wine"
-  binary "#{appdir}/Wine Stable.app/Contents/Resources/wine/bin/wine64"
   binary "#{appdir}/Wine Stable.app/Contents/Resources/wine/bin/wineboot"
   binary "#{appdir}/Wine Stable.app/Contents/Resources/wine/bin/winecfg"
   binary "#{appdir}/Wine Stable.app/Contents/Resources/wine/bin/wineconsole"

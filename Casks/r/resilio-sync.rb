@@ -1,5 +1,5 @@
 cask "resilio-sync" do
-  version "2.8.1.1390"
+  version "3.1.2.1076"
   sha256 :no_check
 
   url "https://download-cdn.resilio.com/stable/mac/osx/0/Resilio-Sync.dmg"
@@ -8,7 +8,7 @@ cask "resilio-sync" do
   homepage "https://www.resilio.com/"
 
   livecheck do
-    url "https://syncapp.zendesk.com/api/v2/help_center/en-us/articles/206216855"
+    url "https://syncapp.zendesk.com/api/v2/help_center/en-us/articles/31386579044755"
     regex(/u003ev?(\d+(?:\.\d+)+)[\\ "<]/i)
   end
 

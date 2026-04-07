@@ -1,6 +1,6 @@
 cask "rekordbox" do
-  version "7.0.3,20240820101659"
-  sha256 "605f75eb486d5698093b5e298644064b59b4a22c0f7ec92243f2d9422fc05a91"
+  version "7.2.13,20260326153518"
+  sha256 "0ff12060ba632f52665adfa4abbe598b0cf92c1575bcc7d5d48d0ab92ae7cc0a"
 
   url "https://cdn.rekordbox.com/files/#{version.csv.second}/Install_rekordbox_#{version.csv.first.dots_to_underscores}.pkg_.zip"
   name "rekordbox"
@@ -11,12 +11,11 @@ cask "rekordbox" do
     url "https://rekordbox.com/en/download/"
     regex(%r{data-url=.*?/(\d+)/Install[._-]rekordbox[._-]v?(\d+(?:[._]\d+)+)[^"'< ]+\.zip}i)
     strategy :page_match do |page, regex|
-      page.scan(regex).map { |match| "#{match.second.tr("_", ".")},#{match.first}" }
+      page.scan(regex).map { |match| "#{match[1].tr("_", ".")},#{match[0]}" }
     end
   end
 
   auto_updates true
-  depends_on macos: ">= :catalina"
 
   pkg "Install_rekordbox_#{version.csv.first.dots_to_underscores}.pkg"
 

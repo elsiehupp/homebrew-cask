@@ -1,9 +1,9 @@
 cask "balenaetcher" do
   arch arm: "arm64", intel: "x64"
 
-  version "1.19.21"
-  sha256 arm:   "fa7aa1f41f2bb3aebf9e9a61b526dc3297f85f3cbd9eff8f5cb3c4d1e5200c9b",
-         intel: "028123c9b839574025d918ede39b9c62a1fa7a4fbb859e31fc538ab811a2db6f"
+  version "2.1.4"
+  sha256 arm:   "6196813482f3fe8c329002a46610c7623a7ab8d0e48cdeca21d9dc05eb668dc9",
+         intel: "52d9d20d6e1929f1032d3625361cf46d37d42e928df077746a238abeec412254"
 
   url "https://github.com/balena-io/etcher/releases/download/v#{version}/balenaEtcher-#{version}-#{arch}.dmg",
       verified: "github.com/balena-io/etcher/"
@@ -16,14 +16,13 @@ cask "balenaetcher" do
     strategy :github_latest
   end
 
-  depends_on macos: ">= :catalina"
-
   app "balenaEtcher.app"
 
   uninstall quit: "io.balena.etcher.*"
 
   zap trash: [
-    "~/Library/Application Support/balena-etcher",
+    "~/Library/Application Support/balenaEtcher",
+    "~/Library/Application Support/com.apple.sharedfilelist/com.apple.LSSharedFileList.ApplicationRecentDocuments/io.balena.etcher.sfl*",
     "~/Library/Preferences/io.balena.etcher.helper.plist",
     "~/Library/Preferences/io.balena.etcher.plist",
     "~/Library/Saved Application State/io.balena.etcher.savedState",

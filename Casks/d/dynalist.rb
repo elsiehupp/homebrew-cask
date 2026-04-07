@@ -8,6 +8,7 @@ cask "dynalist" do
   homepage "https://dynalist.io/"
 
   deprecate! date: "2024-07-29", because: :unmaintained
+  disable! date: "2025-07-29", because: :unmaintained
 
   app "Dynalist.app"
 

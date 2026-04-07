@@ -1,6 +1,6 @@
 cask "quit-all" do
-  version "1.3.3"
-  sha256 "abe4cb071b1bed88b83e1458f5307f7a9d680fe159ad2e52cfe01641fa3e3067"
+  version "1.3.6"
+  sha256 "e5c5e797b4b1e35bbc24f9fce495efce9f48d4507f10dddd16295e737e1e12f8"
 
   url "https://amicoapps.com/wp-content/updates/quitall-#{version}.zip"
   name "QuitAll"
@@ -11,8 +11,6 @@ cask "quit-all" do
     url "https://amicoapps.com/wp-content/updates/quitall.xml"
     strategy :sparkle, &:short_version
   end
-
-  depends_on macos: ">= :catalina"
 
   app "QuitAll.app"
 

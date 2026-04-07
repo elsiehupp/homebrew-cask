@@ -1,9 +1,9 @@
 cask "logos" do
   arch arm: "-arm"
 
-  version "36.0.0.0733"
-  sha256 arm:   "24a0211f6e276e5918869f74d30c696f0e18bbdbf348658d39c6795b47d5d65e",
-         intel: "d0d6e93dc6bef209d2e4d5146dc60ddbe3b7ee99506b51b169cc59aa61a0fe32"
+  version "49.0.0.0144"
+  sha256 arm:   "5775ff1ca8648287b415ae917b5c807477fa38407a5ad7d59a389888c3bad607",
+         intel: "b82e2ff929abd9ea356f1ca995d56e0d8c05bed848c8ef985b6e0a834ecbf07a"
 
   url "https://downloads.logoscdn.com/LBS10/Installer/#{version}/LogosMac#{arch}.dmg",
       verified: "downloads.logoscdn.com/"
@@ -13,11 +13,13 @@ cask "logos" do
 
   livecheck do
     url "https://clientservices.logos.com/update/v1/feed/logos10-mac/stable.xml"
-    regex(%r{<logos:version[^>]*>(\d+(?:\.\d+)+)</logos:version>}i)
+    strategy :xml do |xml|
+      xml.get_elements("//logos:version")&.map { |item| item.text&.strip }
+    end
   end
 
   auto_updates true
-  depends_on macos: ">= :monterey"
+  depends_on macos: ">= :sonoma"
 
   app "Logos.app"
 
@@ -25,8 +27,7 @@ cask "logos" do
             quit:      "com.logos.Logos"
 
   zap trash: [
-    "~/Library/Preferences/com.logos.Logos.plist",
-    "~/Library/Preferences/com.logos.LogosCEF.plist",
-    "~/Library/Preferences/com.logos.LogosIndexer.plist",
+    "~/Library/LaunchAgents/com.logos.desktop.logosindexer.plist",
+    "~/Library/Preferences/com.logos.*.plist",
   ]
 end

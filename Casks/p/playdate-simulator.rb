@@ -1,6 +1,6 @@
 cask "playdate-simulator" do
-  version "2.5.0"
-  sha256 "a9d38657d6bf830a57ca8b1c90f7db460e39838a9567c51e647c5c217c885cf4"
+  version "3.0.3"
+  sha256 "bdc1a79c47aa3a18908e89d93740007b0a3081b47f60909f077bb6fc4b672112"
 
   url "https://download-cdn.panic.com/playdate_sdk/PlaydateSDK-#{version}.zip",
       verified: "download-cdn.panic.com/playdate_sdk/"
@@ -12,8 +12,6 @@ cask "playdate-simulator" do
     url "https://download.panic.com/playdate_sdk/PlaydateSDK-latest.zip"
     strategy :header_match
   end
-
-  depends_on macos: ">= :catalina"
 
   pkg "PlaydateSDK.pkg"
 

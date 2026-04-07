@@ -6,6 +6,8 @@ cask "font-zed-sans" do
   name "Zed Sans"
   homepage "https://github.com/zed-industries/zed-fonts"
 
+  deprecate! date: "2026-04-04", because: :discontinued
+
   font "zed-sans-bold.ttf"
   font "zed-sans-bolditalic.ttf"
   font "zed-sans-boldoblique.ttf"

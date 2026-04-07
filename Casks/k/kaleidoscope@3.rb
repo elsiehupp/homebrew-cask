@@ -7,28 +7,14 @@ cask "kaleidoscope@3" do
   desc "Spot and merge differences in text and image files or folders"
   homepage "https://kaleidoscope.app/"
 
-  # Upstream also includes the newest version across all major versions, so we
-  # have to omit items with a different major version.
   livecheck do
-    url "https://updates.kaleidoscope.app/v#{version.major}/prod/appcast"
-    regex(/Kaleidoscope[._-]v?(\d+(?:\.\d+)+)[._-](\d+)\.app\.zip/i)
-    strategy :sparkle do |items, regex|
-      items.map do |item|
-        next if item.short_version&.split(".")&.first != version.major
-
-        match = item.url.match(regex)
-        next if match.blank?
-
-        "#{match[1]},#{match[2]}"
-      end
-    end
+    skip "Legacy version"
   end
 
   auto_updates true
   conflicts_with cask: %w[
     kaleidoscope
     kaleidoscope@2
-    ksdiff
   ]
   depends_on macos: ">= :big_sur"
 

@@ -1,17 +1,16 @@
 cask "synologyassistant" do
-  version "7.0.5,50070"
-  sha256 "760e70deb917f580598eb83b2e3f8185cdd1b7591d70aca04c69e20f240fdf41"
+  version "7.0.6,50085"
+  sha256 "b2bf2d6f1cb711cb136d6aba7927cd4c4efd9ab312a8556017c63702f1f856ad"
 
-  url "https://global.download.synology.com/download/Utility/Assistant/#{version.csv.first}-#{version.csv.second}/Mac/synology-assistant-#{version.csv.first}-#{version.csv.second}.dmg"
+  url "https://global.download.synology.com/download/Utility/Assistant/#{version.tr(",", "-")}/Mac/synology-assistant-#{version.tr(",", "-")}.dmg"
   name "Synology Assistant"
   desc "Tool to manage Synology NAS's across a LAN"
   homepage "https://www.synology.com/"
 
   livecheck do
-    url "https://www.synology.com/en-us/releaseNote/Assistant"
-    regex(/Version:\s+(\d+(?:\.\d+)+)-(\d+)/i)
-    strategy :page_match do |page, regex|
-      page.scan(regex).map { |match| "#{match[0]},#{match[1]}" }
+    url "https://www.synology.com/api/releaseNote/findChangeLog?identify=Assistant&lang=en-us"
+    strategy :json do |json|
+      json.dig("info", "versions", "", "all_versions")&.map { |item| item["version"]&.tr("-", ",") }
     end
   end
 

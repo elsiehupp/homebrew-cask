@@ -1,6 +1,6 @@
 cask "parallels@18" do
-  version "18.3.2-53621"
-  sha256 "98f113662088fe2eb1277fa8ba8b8329a570ac0c4ae5cafa2fa035ea812022a9"
+  version "18.3.4-53630"
+  sha256 "a53ff243c2d8030bcc0954aefa209e02db0a099a7294bcea4a5ced27c7b4c615"
 
   url "https://download.parallels.com/desktop/v#{version.major}/#{version}/ParallelsDesktop-#{version}.dmg"
   name "Parallels Desktop"
@@ -8,24 +8,26 @@ cask "parallels@18" do
   homepage "https://www.parallels.com/products/desktop/"
 
   livecheck do
-    url "https://kb.parallels.com/129060"
-    regex(/<h2[^>]*?>[^<]*?(\d+(?:\.\d+)+)(?:\s*|&nbsp;)\((\d+)\)/i)
-    strategy :page_match do |page, regex|
-      page.scan(regex).map { |match| "#{match[0]}-#{match[1]}" }
+    url "https://update.parallels.com/desktop/v#{version.major}/parallels/parallels_updates.xml"
+    regex(/ParallelsDesktop[._-]v?(\d+(?:[.-]\d+)+)\.dmg/i)
+    strategy :xml do |xml, regex|
+      url = xml.elements["//FilePath"]&.text&.strip
+      match = url.match(regex) if url
+      next if match.blank?
+
+      match[1]
     end
   end
 
   auto_updates true
   conflicts_with cask: [
     "parallels",
-    "parallels@12",
-    "parallels@13",
     "parallels@14",
     "parallels@15",
     "parallels@16",
     "parallels@17",
+    "parallels@19",
   ]
-  depends_on macos: ">= :mojave"
 
   app "Parallels Desktop.app"
 

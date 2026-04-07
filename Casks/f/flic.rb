@@ -13,7 +13,10 @@ cask "flic" do
     regex(/Flic\.(\d+(?:\.\d+)+)\.zip/i)
   end
 
-  depends_on macos: ">= :sierra"
-
   app "Flic.app"
+
+  zap trash: [
+    "~/Library/Application Scripts/com.shortcutlabs.FlicMac",
+    "~/Library/Containers/com.shortcutlabs.FlicMac",
+  ]
 end

@@ -8,6 +8,7 @@ cask "fontplop" do
   homepage "https://github.com/matthewgonzalez/fontplop"
 
   deprecate! date: "2024-07-10", because: :unmaintained
+  disable! date: "2025-07-10", because: :unmaintained
 
   app "fontplop.app"
 

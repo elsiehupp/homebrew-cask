@@ -1,9 +1,8 @@
 cask "xattred" do
-  version "1.5,2023.05"
-  sha256 "044fdd02921e867a4dd78b3979c55d8efacbd526ea4fcc5bc560523d58bc66b6"
+  version "1.7,2025.12"
+  sha256 "74ef7894a18bd6ea828a300fb8b3ca583826ce99e3b54939ec87a3d56a5ba803"
 
-  url "https://eclecticlightdotcom.files.wordpress.com/#{version.csv.second.major}/#{version.csv.second.minor}/xattred#{version.csv.first.no_dots}.zip",
-      verified: "eclecticlightdotcom.files.wordpress.com/"
+  url "https://eclecticlight.co/wp-content/uploads/#{version.csv.second.major}/#{version.csv.second.minor}/xattred#{version.csv.first.no_dots}.zip"
   name "xattred"
   desc "Extended attribute editor"
   homepage "https://eclecticlight.co/xattred-sandstrip-xattr-tools/"
@@ -15,15 +14,16 @@ cask "xattred" do
       item = xml.elements["//dict[key[text()='AppName']/following-sibling::*[1][text()='xattred']]"]
       next unless item
 
-      version = item.elements["key[text()='Version']"]&.next_element&.text&.strip
-      match = item.elements["key[text()='URL']"]&.next_element&.text&.strip&.match(regex)
+      version = item.elements["key[text()='Version']"]&.next_element&.text
+      url = item.elements["key[text()='URL']"]&.next_element&.text
+      match = url.strip.match(regex) if url
       next if version.blank? || match.blank?
 
-      "#{version},#{match[1]}.#{match[2]}"
+      "#{version.strip},#{match[1]}.#{match[2]}"
     end
   end
 
-  depends_on macos: ">= :high_sierra"
+  depends_on macos: ">= :big_sur"
 
   app "xattred#{version.csv.first.major}#{version.csv.first.minor}/xattred.app"
 

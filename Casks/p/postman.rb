@@ -1,9 +1,9 @@
 cask "postman" do
   arch arm: "osx_arm64", intel: "osx64"
 
-  version "11.10.0"
-  sha256 arm:   "9607e5b37d1b9747e4b357c383989c8d280c1904f4983d1bc9176004a40f65d5",
-         intel: "bed8c82d51d31727a51f25ff406ab2377d1b67a04525b0666d0758bb09be149d"
+  version "12.5.2"
+  sha256 arm:   "046de25eb58b5fafdde940586907b88a95d8cb657c7cf01741f8d51926fe36ef",
+         intel: "774096b639d0be975fdb2835570a76e17640aaa94ab460856edcbe9f7ad0acaf"
 
   url "https://dl.pstmn.io/download/version/#{version}/#{arch}",
       verified: "dl.pstmn.io/download/version/"
@@ -23,7 +23,7 @@ cask "postman" do
   end
 
   auto_updates true
-  depends_on macos: ">= :high_sierra"
+  depends_on macos: ">= :big_sur"
 
   app "Postman.app"
 

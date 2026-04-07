@@ -8,6 +8,7 @@ cask "continuity-activation-tool" do
   homepage "https://github.com/dokterdok/Continuity-Activation-Tool/"
 
   deprecate! date: "2024-07-06", because: :unmaintained
+  disable! date: "2025-07-06", because: :unmaintained
 
   app "Continuity-Activation-Tool-master/Continuity Activation Tool.app"
 end

@@ -1,20 +1,16 @@
 cask "sq-mixpad" do
-  version "1.5.1"
-  sha256 "99eaf53e1ca0b63cfde57d9d97a5d7628da20d317c4803b51ba2fdcbf225bfb2"
+  version "1.6.0,1.6,2025,02"
+  sha256 "5e3e4d86c016ea1de457c78e89e0c5352e2a56e81fed2b32c3fb29c81d562243"
 
-  url "https://www.allen-heath.com/content/uploads/2023/05/SQ-MixPad-#{version}.zip"
+  url "https://www.allen-heath.com/content/uploads/#{version.csv.third}/#{version.csv.fourth}/SQ-MixPad-#{version.csv.second}-Mac-Installer.zip",
+      user_agent: :browser
   name "SQ MixPad"
   desc "Remote control for Allen & Heath SQ audio consoles"
   homepage "https://www.allen-heath.com/hardware/sq/sq-mixpad/"
 
-  livecheck do
-    url "https://www.allen-heath.com/hardware/sq/sq-mixpad"
-    regex(/href=.*?SQ[._-]MixPad[._-]v?(\d+(?:\.\d+)+)\.zip/i)
-  end
+  disable! date: "2025-09-15", because: :unreachable
 
-  depends_on macos: ">= :sierra"
-
-  app "SQ MixPad #{version}.app"
+  app "SQ MixPad #{version.csv.first}.app"
 
   zap trash: "~/Library/Preferences/com.allen-heath.SQ-MixPad*.plist"
 

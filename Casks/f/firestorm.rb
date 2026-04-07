@@ -1,15 +1,20 @@
 cask "firestorm" do
-  version "7.1.9.74745"
-  sha256 "d888c9c2b9170ece9060fc500b70d3008609f43b72e50709d86c66e22cdf3432"
+  version "7.2.3.80036"
+  sha256 "22677ce38d50215e875e25d4754c7dde2af4f945612545a96cffe65ea8b11d4c"
 
-  url "https://downloads.firestormviewer.org/release/mac/Phoenix-Firestorm-Releasex64-#{version.dots_to_hyphens}.dmg"
+  url "https://downloads.firestormviewer.org/release/mac/Phoenix-Firestorm-Releasex64_AVX2-#{version.dots_to_hyphens}.dmg"
   name "Phoenix Firestorm viewer for Second Life"
   desc "Viewer for accessing Virtual Worlds"
   homepage "https://www.firestormviewer.org/"
 
+  # The upstream download page links to the latest dmg file but Cloudflare
+  # protections prevent us from fetching it, so it must be checked manually:
+  # https://www.firestormviewer.org/mac/
   livecheck do
-    skip "No version information available"
+    skip "Cannot be fetched due to Cloudflare protections"
   end
+
+  depends_on macos: ">= :big_sur"
 
   app "Firestorm-Releasex64.app"
 
@@ -19,8 +24,4 @@ cask "firestorm" do
     "~/Library/Logs/DiagnosticReports/Firestorm*",
     "~/Library/Preferences/Firestorm.plist",
   ]
-
-  caveats do
-    requires_rosetta
-  end
 end

@@ -1,14 +1,17 @@
 cask "siyuan" do
   arch arm: "-arm64"
 
-  version "3.1.4"
-  sha256 arm:   "f6c1c96dd6dc36ebbea91f63826d9b173d22ea3635c7ed22c9a0fef70068b1d1",
-         intel: "41da9dfe992f407d53a4f0043381820c860cb9918f730596670fdcb7b4c9f1ab"
+  version "3.6.3"
+  sha256 arm:   "3426f50f00ea5c1445523b355cb89eddd50ed106dc7248380977658fb2bb9d3c",
+         intel: "519b867b0c7413c3a9bd420eb16b4697c47f78b22c82f65235503fcac7a848df"
 
   url "https://github.com/siyuan-note/siyuan/releases/download/v#{version}/siyuan-#{version}-mac#{arch}.dmg"
   name "SiYuan"
   desc "Local-first personal knowledge management system"
   homepage "https://github.com/siyuan-note/siyuan"
+
+  auto_updates true
+  depends_on macos: ">= :big_sur"
 
   app "SiYuan.app"
 

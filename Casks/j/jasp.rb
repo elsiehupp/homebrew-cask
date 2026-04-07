@@ -2,11 +2,12 @@ cask "jasp" do
   arch arm: "arm64", intel: "x86_64"
   livecheck_folder = on_arch_conditional arm: "-apple-silicon"
 
-  version "0.19.0.0,"
-  sha256 arm:   "df72c602f6bd12f8904e537510052bfca65fbc093ec7f3b995282aefc053bbe6",
-         intel: "b6df9ec477beafaf62624eedfcc1396df5d7544143e1d318d0e57c51d56bca89"
+  version "0.96.0.0"
+  sha256 arm:   "3e7f6b2a1cb8805030e35fea9c365877cc7d44aea6dcebf7d614b55729271c7a",
+         intel: "5e68810615325ea35f13528217a31440272c9c8071db5d33fd45c4d04da84936"
 
-  url "https://static.jasp-stats.org/JASP-#{version.csv.first}-macOS-#{arch}#{"_#{version.csv.second}" if version.csv.second}.dmg"
+  url "https://github.com/jasp-stats/jasp-desktop/releases/download/v#{version.csv.first.major_minor_patch}/JASP-#{version.csv.first}-macOS-#{arch}.dmg",
+      verified: "github.com/jasp-stats/jasp-desktop/"
   name "JASP"
   desc "Statistical analysis application"
   homepage "https://jasp-stats.org/"
@@ -16,7 +17,7 @@ cask "jasp" do
     regex(/href=.*?JASP[._-]v?(\d+(?:\.\d+)+)[._-]macOS[._-]#{arch}(?:_(\d+))?\.dmg/i)
     strategy :page_match do |page, regex|
       page.scan(regex).map do |match|
-        (match.length > 1) ? "#{match[0]},#{match[1]}" : match[0]
+        match[1] ? "#{match[0]},#{match[1]}" : match[0]
       end
     end
   end

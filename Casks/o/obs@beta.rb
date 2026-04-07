@@ -2,9 +2,9 @@ cask "obs@beta" do
   arch arm: "apple", intel: "intel"
   livecheck_folder = on_arch_conditional arm: "arm64", intel: "x86_64"
 
-  version "30.2.0-rc1"
-  sha256 arm:   "c4478865860efa21dc3f9db38224b3a40f77819b431ce151fdbb8fd6cbd1289f",
-         intel: "3d4a205a897af9d0487db3f03d48466f88b3320cdcdf0c3be2a027e72993432e"
+  version "32.1.0-rc4"
+  sha256 arm:   "129597da2c4184ae26acf54ee5afc4fa80bce913c61135fab6e035d8e945bc3a",
+         intel: "e2bce0c859694ac9968316d1844f1a0ce76fe5ac1197363496db2f3d52cf7260"
 
   url "https://cdn-fastly.obsproject.com/downloads/obs-studio-#{version}-macos-#{arch}.dmg"
   name "OBS"
@@ -15,13 +15,17 @@ cask "obs@beta" do
     url "https://obsproject.com/osx_update/updates_#{livecheck_folder}_v2.xml"
     regex(/obs[._-]studio[._-](\d+(?:[.-]\d+)+(?:(?:-beta)|(?:-rc))\d+)[._-]macos/i)
     strategy :sparkle do |items, regex|
-      items.find { |item| item.channel == "beta" }&.url&.scan(regex)&.flatten
+      items.map do |item|
+        next if item.channel != "beta"
+
+        item.url&.[](regex, 1)
+      end
     end
   end
 
   auto_updates true
   conflicts_with cask: "obs"
-  depends_on macos: ">= :big_sur"
+  depends_on macos: ">= :monterey"
 
   app "OBS.app"
   # shim script (https://github.com/Homebrew/homebrew-cask/issues/18809)

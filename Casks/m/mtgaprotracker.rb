@@ -9,6 +9,7 @@ cask "mtgaprotracker" do
   homepage "https://mtgarena.pro/mtga-pro-tracker/"
 
   deprecate! date: "2024-07-27", because: :discontinued
+  disable! date: "2025-07-27", because: :discontinued
 
   app "mtgaprotracker.app"
 

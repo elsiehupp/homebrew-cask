@@ -6,6 +6,8 @@ cask "font-gentium-basic" do
   name "Gentium Basic"
   homepage "https://software.sil.org/gentium/"
 
+  deprecate! date: "2025-06-23", because: :discontinued
+
   font "GentiumBasic_#{version.no_dots}/GenBasB.ttf"
   font "GentiumBasic_#{version.no_dots}/GenBasBI.ttf"
   font "GentiumBasic_#{version.no_dots}/GenBasI.ttf"

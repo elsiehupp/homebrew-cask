@@ -1,10 +1,10 @@
 cask "jbrowse" do
-  version "2.14.0"
-  sha256 "6da8c9d4f7def5aff8080f0c77b2aba2c890f7c448eec8faff7d861f508d6123"
+  version "4.1.15"
+  sha256 "5e03fe017bf6ca62495ca5872b451fa3ef8479bd83de3142a1218db86cbac511"
 
   url "https://github.com/GMOD/jbrowse-components/releases/download/v#{version}/jbrowse-desktop-v#{version}-mac.dmg",
       verified: "github.com/GMOD/jbrowse-components/"
-  name "jbrowse"
+  name "JBrowse"
   desc "Genome browser"
   homepage "https://jbrowse.org/"
 
@@ -13,13 +13,13 @@ cask "jbrowse" do
     strategy :github_latest
   end
 
-  depends_on macos: ">= :catalina"
+  depends_on macos: ">= :monterey"
 
-  app "JBrowse #{version.major}.app"
+  app "JBrowse 2.app"
 
   zap trash: [
     "~/Library/Application Support/@jbrowse",
-    "~/Library/Application Support/com.apple.sharedfilelist/com.apple.LSSharedFileList.ApplicationRecentDocuments/org.jbrowse#{version.major}.app.sfl*",
-    "~/Library/Preferences/org.jbrowse#{version.major}.app.plist",
+    "~/Library/Application Support/com.apple.sharedfilelist/com.apple.LSSharedFileList.ApplicationRecentDocuments/org.jbrowse*.app.sfl*",
+    "~/Library/Preferences/org.jbrowse*.app.plist",
   ]
 end

@@ -1,6 +1,6 @@
 cask "twingate" do
-  version "2024.238.6943"
-  sha256 "a5d3a96fa4ab5339f411c60bc72b56cbbfd8dbbaed25b7be3f509e41e61bf35a"
+  version "2026.85.23872"
+  sha256 "a7e0a6afea03c3d1902b526ccdc403bccd41a9a3565f258c97f972848ba4f28e"
 
   url "https://binaries.twingate.com/client/macos/#{version}/Twingate.pkg"
   name "Twingate"
@@ -23,8 +23,9 @@ cask "twingate" do
             pkgutil:    "com.twingate.macos"
 
   zap script: {
-        executable: "networksetup",
-        args:       ["-deletepppoeservice", "Twingate"],
+        executable:   "networksetup",
+        args:         ["-deletepppoeservice", "Twingate"],
+        must_succeed: false,
       },
       trash:  [
         "~/Library/Application Scripts/6GX8KVTR9H.com.twingate",

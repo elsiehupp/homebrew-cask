@@ -1,6 +1,6 @@
 cask "gpxsee" do
-  version "13.23"
-  sha256 "89fb0697f25534e1319e12387de1ffcd1b3088cd996d0cbc849c6bbe6d1cd806"
+  version "16.2"
+  sha256 "b82faf34c2cdf32aebbe12a72feb4a6df65169eb1cf2a8519b424a39dddd0bec"
 
   url "https://downloads.sourceforge.net/gpxsee/Mac%20OS%20X/GPXSee-#{version}.dmg",
       verified: "sourceforge.net/gpxsee/Mac%20OS%20X/"
@@ -13,7 +13,9 @@ cask "gpxsee" do
     regex(%r{url=.*?/GPXSee[._-]v?(\d+(?:\.\d+)+)\.dmg}i)
   end
 
-  depends_on macos: ">= :high_sierra"
+  disable! date: "2026-09-01", because: :fails_gatekeeper_check
+
+  depends_on macos: ">= :ventura"
 
   app "GPXSee.app"
 
@@ -21,8 +23,4 @@ cask "gpxsee" do
     "~/Library/Caches/GPXSee",
     "~/Library/Preferences/com.gpxsee.GPXSee.plist",
   ]
-
-  caveats do
-    requires_rosetta
-  end
 end

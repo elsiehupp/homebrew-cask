@@ -8,6 +8,7 @@ cask "menubar-colors" do
   homepage "https://github.com/nvzqz/Menubar-Colors"
 
   deprecate! date: "2024-07-27", because: :unmaintained
+  disable! date: "2025-07-27", because: :unmaintained
 
   app "Menubar Colors.app"
 

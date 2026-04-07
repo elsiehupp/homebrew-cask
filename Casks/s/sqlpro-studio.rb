@@ -1,6 +1,6 @@
 cask "sqlpro-studio" do
-  version "2024.21"
-  sha256 "31cca0ea0b283f77cb8ec47234a7080f5eadf73dc2fbb04497b504d2669e1dd8"
+  version "2026.07"
+  sha256 "085cdcf2883e9eea923ceaaafdda25149b7630ed952a79b01067bbf97001e0dc"
 
   url "https://d3fwkemdw8spx3.cloudfront.net/studio/SQLProStudio.#{version}.app.zip",
       verified: "d3fwkemdw8spx3.cloudfront.net/studio/"
@@ -12,6 +12,8 @@ cask "sqlpro-studio" do
     url "https://www.sqlprostudio.com/download.php"
     strategy :header_match
   end
+
+  depends_on macos: ">= :ventura"
 
   app "SQLPro Studio.app"
 

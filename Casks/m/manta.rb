@@ -9,6 +9,7 @@ cask "manta" do
   homepage "https://getmanta.app/"
 
   deprecate! date: "2024-07-27", because: :unmaintained
+  disable! date: "2025-07-27", because: :unmaintained
 
   app "Manta.app"
 

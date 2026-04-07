@@ -1,6 +1,6 @@
 cask "securesafe" do
-  version "2.23.0"
-  sha256 "eda8392c5bb4fb07e0ba9983bc8398aa7b1630bf816895da0d2d90cbb9ee5972"
+  version "2.25.0"
+  sha256 "d3f813723e48e49f56f097095bf6de35215b399939e1ece09c82df5ce6bb68f8"
 
   url "https://app.securesafe.com/app/download/securesafe-#{version}.pkg"
   name "SecureSafe"
@@ -11,8 +11,6 @@ cask "securesafe" do
     url "https://www.securesafe.com/en/downloads"
     regex(/securesafe-(\d+(?:\.\d+)+)\.pkg/i)
   end
-
-  depends_on macos: ">= :mojave"
 
   pkg "securesafe-#{version}.pkg"
 

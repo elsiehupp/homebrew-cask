@@ -8,6 +8,7 @@ cask "criptext" do
   homepage "https://criptext.com/"
 
   deprecate! date: "2024-07-27", because: :unmaintained
+  disable! date: "2025-07-27", because: :unmaintained
 
   app "Criptext.app"
 

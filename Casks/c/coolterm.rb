@@ -1,6 +1,6 @@
 cask "coolterm" do
-  version "2.2.0.3.0.1327"
-  sha256 "000bbb5d82edafd26d6778a0a1b893a2b3a527d7ecfc3e7bc00bf14c66840d47"
+  version "2.4.0.3.0.1425"
+  sha256 "190a1f67d0362ce7ae4b531552925ef28e40004052c3be1fe9bf653e0678cddd"
 
   url "https://freeware.the-meiers.org/previous/CoolTermMac#{version.major_minor_patch.no_dots}.dmg"
   name "CoolTerm"
@@ -12,7 +12,7 @@ cask "coolterm" do
     regex(/^\s*v?(\d+(?:\.\d+)+)\s*$/i)
   end
 
-  depends_on macos: ">= :mojave"
+  disable! date: "2026-09-01", because: :fails_gatekeeper_check
 
   app "CoolTerm.app"
 

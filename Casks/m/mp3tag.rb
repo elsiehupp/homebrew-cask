@@ -1,6 +1,6 @@
 cask "mp3tag" do
-  version "1.8.23"
-  sha256 "5936d0e88fd46a60b0c5a793ee396c92b56abeb2e6da187af5f1cf9000d29970"
+  version "1.12.0"
+  sha256 "3b5f6d0654b54ec83db700089b7280b22f6eabae88332681fc9a9b76563a4cab"
 
   url "https://updates.mp3tag.app/Mp3tag-#{version}.zip"
   name "Mp3tag"
@@ -11,8 +11,6 @@ cask "mp3tag" do
     url "https://mp3tag.app/get/"
     regex(/href=.*?Mp3tag[._-]?(\d+(?:\.\d+)+)\.zip/i)
   end
-
-  depends_on macos: ">= :mojave"
 
   app "Mp3tag.app"
 

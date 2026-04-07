@@ -1,50 +1,25 @@
 cask "blender@lts" do
   arch arm: "arm64", intel: "x64"
 
-  version "4.2.1"
-  sha256 arm:   "6d97bcc4a265c16f9376be31e178ab72768c6d18f405edfeb48dbeee49d8d3e4",
-         intel: "d73ed3cea20a48e589c3cc29928392e0977f777c7c1d935b6eb76a730cddabf9"
+  version "4.5.8"
+  sha256 arm:   "d0fc2638b0fcbe6742ca7de30f56e700cfe641c69206260f00e8686282de8ed6",
+         intel: "b73378af13eb1d1539f7a6d0fb9a598031d20e1e697b30d8c8c683b90b395a84"
 
   url "https://download.blender.org/release/Blender#{version.major_minor}/blender-#{version}-macos-#{arch}.dmg"
-  name "Blender"
-  desc "Free and open-source 3D creation suite"
+  name "Blender LTS"
+  desc "3D creation suite"
   homepage "https://www.blender.org/"
 
-  # NOTE: The download page contents may change once the newest version is no
-  # longer an LTS version (i.e. 3.4 instead of 3.3 LTS) requiring further
-  # changes to this setup.
+  # The upstream LTS page (https://www.blender.org/download/lts/) cannot be
+  # fetched due to Cloudflare protections and we can't tell which versions are
+  # LTS simply from the version number, so this will have to be manually
+  # checked.
   livecheck do
-    url "https://www.blender.org/download/"
-    regex(%r{href=.*?/blender[._-]v?(\d+(?:\.\d+)+)-macos-#{arch}\.dmg}i)
-    strategy :page_match do |page, regex|
-      # Match major/minor versions from LTS "download" page URLs
-      lts_page = Homebrew::Livecheck::Strategy.page_content("https://www.blender.org/download/lts/")
-      next if lts_page[:content].blank?
-
-      lts_versions =
-        lts_page[:content].scan(%r{href=["'].*/download/(?:lts|releases)/(\d+(?:[.-]\d+)+)/["' >]}i)
-                          .flatten
-                          .uniq
-                          .map { |v| Version.new(v) }
-      next if lts_versions.blank?
-
-      version_page = Homebrew::Livecheck::Strategy.page_content("https://www.blender.org/download/lts/#{lts_versions.max}/")
-      next [] if version_page[:content].blank?
-
-      # If the version page has a download link, return it as the livecheck version
-      matched_versions = version_page[:content].scan(regex).flatten
-      next matched_versions if matched_versions.present?
-
-      # If the version page doesn't have a download link, check the download page
-      # Ensure we only match LTS versions on the download page
-      page.scan(regex)
-          .flatten
-          .select { |v| lts_versions.include?(Version.new(v).major_minor) }
-    end
+    skip "Cannot be fetched due to Cloudflare protections"
   end
 
   conflicts_with cask: "blender"
-  depends_on macos: ">= :high_sierra"
+  depends_on macos: ">= :big_sur"
 
   app "Blender.app"
   # shim script (https://github.com/Homebrew/homebrew-cask/issues/18809)

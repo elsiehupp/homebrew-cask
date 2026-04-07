@@ -7,11 +7,7 @@ cask "navicat-data-modeler-essentials" do
   desc "Database design tool"
   homepage "https://www.navicat.com/products/navicat-data-modeler"
 
-  livecheck do
-    cask "navicat-data-modeler"
-  end
-
-  depends_on macos: ">= :mojave"
+  deprecate! date: "2026-02-23", because: :discontinued
 
   app "Navicat Data Modeler Essentials.app"
 

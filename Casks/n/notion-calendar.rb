@@ -1,29 +1,23 @@
 cask "notion-calendar" do
   arch arm: "arm64", intel: "x64"
 
-  version "1.122.0,240425z72rc39q3"
-  sha256 arm:   "2c2cf471499f22e5af2828786cad1826a9364c763544f340ea7ebb0c263446a2",
-         intel: "1784817f63f259f18aa1a50971d4423117071fa340a745db27b7cf2675a57b4f"
+  version "1.132.0"
+  sha256 arm:   "2c336bde3e3ab22a9ac2d2cbbe942947200db874a65a3837bf85c25ddb806371",
+         intel: "4b8315cb09b102dfde681837d1d9008cb5769a99ea27891ce15c2fcaefb305a7"
 
-  url "https://download.todesktop.com/210303leazlircz/Notion%20Calendar%20#{version.csv.first}%20-%20Build%20#{version.csv.second}-#{arch}-mac.zip",
-      verified: "download.todesktop.com/210303leazlircz/"
+  url "https://calendar-desktop-release.notion-static.com/Notion%20Calendar-darwin-#{arch}-#{version}.zip",
+      verified: "calendar-desktop-release.notion-static.com/"
   name "Notion Calendar"
   desc "Calendar for professionals and teams"
-  homepage "https://www.notion.so/product/calendar"
+  homepage "https://www.notion.com/product/calendar"
 
   livecheck do
-    url "https://download.todesktop.com/210303leazlircz/latest-mac.yml"
-    regex(/Build[ ._-]([^-]+)[._-]/i)
-    strategy :electron_builder do |item, regex|
-      build = item["files"].first["url"][regex, 1]
-      next if build.blank?
-
-      "#{item["version"]},#{build}"
-    end
+    url "https://calendar-desktop-release.notion-static.com/latest-mac.yml"
+    strategy :electron_builder
   end
 
   auto_updates true
-  depends_on macos: ">= :catalina"
+  depends_on macos: ">= :big_sur"
 
   app "Notion Calendar.app"
 

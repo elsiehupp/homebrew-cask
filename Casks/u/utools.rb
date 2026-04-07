@@ -1,18 +1,17 @@
 cask "utools" do
   arch arm: "-arm64"
 
-  version "5.2.1"
-  sha256 arm:   "a880b39399265383f034dde1ea580baee0ab40f16e2d237c59a484ae8894e38c",
-         intel: "5f5e7ed00f664ad37adf34d2b9ffe08e4616dcccd53e0622faa2c574b14d7baa"
+  version "7.7.0"
+  sha256 arm:   "c2b274590011e5df038311261093c051fc6aa2252473e03d9a6583946e2b76b5",
+         intel: "46a505ea8513684b800f54c034f8dd177f6afdab5455347d5fc87e6bb85cab0b"
 
-  url "https://publish.u-tools.cn/version2/uTools-#{version}#{arch}.dmg",
-      verified: "publish.u-tools.cn/"
+  url "https://open.u-tools.cn/download/uTools-#{version}#{arch}.dmg"
   name "uTools"
   desc "Plug-in productivity tool set"
-  homepage "https://u.tools/index.html"
+  homepage "https://www.u-tools.cn/"
 
   livecheck do
-    url "https://u.tools/download/"
+    url "https://www.u-tools.cn/download/"
     regex(/uTools[._-]v?(\d+(?:\.\d+)+)\.dmg/i)
   end
 

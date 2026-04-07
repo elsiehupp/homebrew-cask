@@ -9,6 +9,7 @@ cask "drop-to-gif" do
   homepage "https://mortenjust.github.io/droptogif/"
 
   deprecate! date: "2024-07-10", because: :unmaintained
+  disable! date: "2025-07-10", because: :unmaintained
 
   zap trash: [
     "~/Library/Preferences/com.mortenjust.Drop-to-GIF.plist",

@@ -7,6 +7,7 @@ cask "droidid" do
   homepage "https://www.suyashsrijan.com/droidid/"
 
   deprecate! date: "2024-07-10", because: :unmaintained
+  disable! date: "2025-07-10", because: :unmaintained
 
   app "DroidID.app"
 

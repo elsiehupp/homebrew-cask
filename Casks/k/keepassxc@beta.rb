@@ -1,9 +1,9 @@
 cask "keepassxc@beta" do
   arch arm: "arm64", intel: "x86_64"
 
-  version "2.7.9"
-  sha256 arm:   "66259a7c020c60a6e842ed8a263b1aea0c5b43c894497d03576266fda9c1f577",
-         intel: "a10c5bf17a8107dcae9d19a36a06f5ef7b1cf4ee88046a16cc1073dc84c7f45e"
+  version "2.7.12"
+  sha256 arm:   "65f4f63607180c0a15794b4a4068f85e99ed5391c87c1fb9312648f1b36fed40",
+         intel: "f55737bf759b7ea622967ae979e8fd0ef06a8133104124c24861fd11a3fe14b5"
 
   url "https://github.com/keepassxreboot/keepassxc/releases/download/#{version}/KeePassXC-#{version}-#{arch}.dmg",
       verified: "github.com/keepassxreboot/keepassxc/"
@@ -16,11 +16,16 @@ cask "keepassxc@beta" do
     strategy :github_latest
   end
 
-  conflicts_with cask: "keepassxc"
-  depends_on macos: ">= :high_sierra"
+  conflicts_with cask: [
+    "keepassxc",
+    "keepassxc@snapshot",
+  ]
+  depends_on macos: ">= :monterey"
 
   app "KeePassXC.app"
   binary "#{appdir}/KeePassXC.app/Contents/MacOS/keepassxc-cli"
+  manpage "#{appdir}/KeePassXC.app/Contents/Resources/man/man1/keepassxc.1"
+  manpage "#{appdir}/KeePassXC.app/Contents/Resources/man/man1/keepassxc-cli.1"
 
   uninstall quit: "org.keepassxc.keepassxc"
 
@@ -30,6 +35,7 @@ cask "keepassxc@beta" do
     "~/Library/Application Support/keepassxc",
     "~/Library/Caches/org.keepassx.keepassxc",
     "~/Library/Logs/DiagnosticReports/KeePassXC_*.crash",
+    "~/Library/Preferences/keepassxc.keepassxc.plist",
     "~/Library/Preferences/org.keepassx.keepassxc.plist",
     "~/Library/Saved Application State/org.keepassx.keepassxc.savedState",
   ]

@@ -8,6 +8,7 @@ cask "joinme" do
   homepage "https://www.join.me/"
 
   deprecate! date: "2024-07-16", because: :discontinued
+  disable! date: "2025-07-16", because: :discontinued
 
   app "join.me.app"
 

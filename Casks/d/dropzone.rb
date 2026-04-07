@@ -1,6 +1,6 @@
 cask "dropzone" do
-  version "4.80.18"
-  sha256 "3392ebc54d300a3cf83bee84b5955f38ba75dabf4d050e1f565fbb18f3bae34a"
+  version "4.80.75"
+  sha256 "fb844a3c917f0ecff1e0af71b93c4859ac05f933eb438c09d6a6689d056dcceb"
 
   url "https://aptonic.com/releases/Dropzone-#{version}.zip"
   name "Dropzone"
@@ -13,7 +13,7 @@ cask "dropzone" do
   end
 
   auto_updates true
-  depends_on macos: ">= :catalina"
+  depends_on macos: ">= :big_sur"
 
   app "Dropzone #{version.major}.app"
 

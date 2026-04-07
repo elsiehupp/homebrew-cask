@@ -1,29 +1,33 @@
 cask "onlyoffice" do
   arch arm: "arm", intel: "x86_64"
 
-  version "8.1.1"
-  sha256 arm:   "0c7203de5e4cce8f6f920bfd696663f59e50b8c0b70deec57c6d99e9378a58f7",
-         intel: "0ca53ebbf4b0c624d2b830056f26ac2f4638240c17ee46a8882bc35ad586bec1"
+  version "9.3.1"
+  sha256 arm:   "c7c17bd32eaa86f2a33cf2e7f5de85d58d65d022ff3667bcf3cf1eed69eed511",
+         intel: "17b56778cd6a13d622d532d1cbb61195a2db4fe69034cf705086d07043a4433e"
 
-  url "https://github.com/ONLYOFFICE/DesktopEditors/releases/download/v#{version}/ONLYOFFICE-#{arch}.dmg",
-      verified: "github.com/ONLYOFFICE/DesktopEditors/"
+  url "https://download.onlyoffice.com/install/desktop/editors/mac/#{arch}/updates/ONLYOFFICE-#{arch}-#{version}.zip"
   name "ONLYOFFICE"
   desc "Document editor"
   homepage "https://www.onlyoffice.com/"
 
+  # Older items in the Sparkle feed may have a newer pubDate, so it's necessary
+  # to work with all of the items in the feed (not just the newest one).
   livecheck do
-    url :url
-    regex(/(\d+(?:\.\d+)+)/i)
-    strategy :github_latest
+    url "https://download.onlyoffice.com/install/desktop/editors/mac/#{arch}/onlyoffice.xml"
+    strategy :sparkle do |items|
+      items.map(&:short_version)
+    end
   end
 
   auto_updates true
-  depends_on macos: ">= :sierra"
+  depends_on macos: ">= :big_sur"
 
   app "ONLYOFFICE.app"
 
   zap trash: [
     "~/Library/Application Support/asc.onlyoffice.ONLYOFFICE",
+    "~/Library/Application Support/com.apple.sharedfilelist/com.apple.LSSharedFileList.ApplicationRecentDocuments/asc.onlyoffice.onlyoffice.sfl*",
+    "~/Library/HTTPStorages/asc.onlyoffice.ONLYOFFICE",
     "~/Library/Preferences/asc.onlyoffice.editors-helper-renderer.plist",
     "~/Library/Preferences/asc.onlyoffice.ONLYOFFICE.plist",
   ]

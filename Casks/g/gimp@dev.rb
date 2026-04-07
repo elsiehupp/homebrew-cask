@@ -1,33 +1,46 @@
 cask "gimp@dev" do
   arch arm: "arm64", intel: "x86_64"
 
-  version "2.99.18"
-  sha256 arm:   "bb042d5647413ea5d374ac82092e3b6aa1602d72d7c8822d31c25c0a4b6bdf15",
-         intel: "196582ee69a8b3fdc075ff4aaf01bc1bc6975adac89650da12f80087b642e9ee"
+  version "3.2.0-RC3"
+  sha256 arm:   "93baffa8e41517b2cb6902176a851a7a473f2957aa3eadfcc38b9dd361fa6601",
+         intel: "3b69163e475f8aee71565f2df8dbc35fde730f18ff6b9fde98b726ff41f2ab32"
 
-  url "https://download.gimp.org/pub/gimp/v#{version.major_minor}/osx/gimp-#{version}-#{arch}.dmg"
+  url "https://download.gimp.org/gimp/v#{version.major_minor}/macos/gimp-#{version.csv.first}-#{arch}#{"-#{version.csv.second}" if version.csv.second}.dmg"
   name "GIMP development version"
   desc "Free and open-source image editor"
   homepage "https://www.gimp.org/"
 
   livecheck do
-    url "https://www.gimp.org/downloads/devel/"
-    regex(%r{href=.*?/gimp[._-]v?(\d+(?:[.-]\d+)+)[._-]#{arch}\.dmg}i)
+    url "https://www.gimp.org/gimp_versions.json"
+    strategy :json do |json|
+      json["DEVELOPMENT"]&.map do |release|
+        release["macos"]&.map do |build|
+          next unless build["filename"]&.match?(/#{arch}/i)
+          next release["version"] unless build["revision"]
+
+          "#{release["version"]},#{build["revision"]}"
+        end
+      end&.flatten
+    end
   end
 
   conflicts_with cask: "gimp"
-  depends_on macos: ">= :high_sierra"
+  depends_on macos: ">= :big_sur"
 
   app "GIMP.app"
-  binary "#{appdir}/GIMP.app/Contents/MacOS/gimp"
+  shimscript = "#{staged_path}/gimp.wrapper.sh"
+  binary shimscript, target: "gimp"
 
-  postflight do
-    set_permissions "#{appdir}/GIMP.app/Contents/MacOS/gimp", "a+rx"
+  preflight do
+    File.write shimscript, <<~EOS
+      #!/bin/sh
+      "#{appdir}/GIMP.app/Contents/MacOS/gimp" "$@"
+    EOS
   end
 
   zap trash: [
     "~/Library/Application Support/Gimp",
-    "~/Library/Preferences/org.gimp.gimp-#{version.major_minor}:.plist",
-    "~/Library/Saved Application State/org.gimp.gimp-#{version.major_minor}:.savedState",
+    "~/Library/Preferences/org.gimp.gimp-#{version.major_minor}.plist",
+    "~/Library/Saved Application State/org.gimp.gimp-#{version.major_minor}.savedState",
   ]
 end

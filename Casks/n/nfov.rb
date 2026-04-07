@@ -7,6 +7,9 @@ cask "nfov" do
   desc "ASCII / ANSI art viewer"
   homepage "https://github.com/nrlquaker/nfov"
 
+  deprecate! date: "2024-09-08", because: :unmaintained
+  disable! date: "2025-09-09", because: :unmaintained
+
   app "nfov.app"
 
   zap trash: [

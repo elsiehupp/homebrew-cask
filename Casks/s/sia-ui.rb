@@ -8,6 +8,7 @@ cask "sia-ui" do
   homepage "https://sia.tech/"
 
   deprecate! date: "2024-06-26", because: :discontinued
+  disable! date: "2025-06-26", because: :discontinued
 
   app "Sia-UI.app"
 end

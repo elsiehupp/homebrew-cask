@@ -1,6 +1,6 @@
 cask "discord@ptb" do
-  version "0.0.130"
-  sha256 "98b7de331e5d40da682d4ca83920a3f17b4dc568ec069556745bf5a1bb4725a9"
+  version "0.0.228"
+  sha256 "a0cee8a0f274d6a561b9152e02a2c28283560d80db20a62118a28780896dd970"
 
   url "https://dl-ptb.discordapp.net/apps/osx/#{version}/DiscordPTB.dmg",
       verified: "dl-ptb.discordapp.net/apps/osx/"
@@ -14,7 +14,7 @@ cask "discord@ptb" do
   end
 
   auto_updates true
-  depends_on macos: ">= :catalina"
+  depends_on macos: ">= :big_sur"
 
   app "Discord PTB.app"
 

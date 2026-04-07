@@ -1,11 +1,18 @@
 cask "copyq" do
-  arch arm: "12-m1", intel: "10"
+  arch arm: "12-m1", intel: "13"
 
-  version "9.0.0"
-  sha256 arm:   "0012d88c6d8e5bac29308eee5ee76433c3181100516f16c67019b68a2b8dff4c",
-         intel: "8ce763cb7ad4b3249d16361ee5d2adb9b7283651b6b44a768a268e251cede48e"
+  version "14.0.0"
+  sha256 arm:   "d7863011c1801f030db884656fbe8c5435e19dfbcec25529203ebc88c3f10663",
+         intel: "4d51fbbba91d680a64a52dc50937eb644b7cd4b8be48b30f93ecaae966efbb6d"
 
-  url "https://github.com/hluk/CopyQ/releases/download/v#{version}/CopyQ-macos-#{arch}.dmg.zip",
+  on_arm do
+    depends_on macos: ">= :monterey"
+  end
+  on_intel do
+    depends_on macos: ">= :ventura"
+  end
+
+  url "https://github.com/hluk/CopyQ/releases/download/v#{version}/CopyQ-#{version}-macos-#{arch}.dmg",
       verified: "github.com/hluk/CopyQ/"
   name "CopyQ"
   desc "Clipboard manager with advanced features"
@@ -16,7 +23,7 @@ cask "copyq" do
     strategy :github_latest
   end
 
-  depends_on macos: ">= :catalina"
+  disable! date: "2026-09-01", because: :fails_gatekeeper_check
 
   app "CopyQ.app"
 

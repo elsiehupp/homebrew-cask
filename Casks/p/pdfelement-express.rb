@@ -8,11 +8,11 @@ cask "pdfelement-express" do
   homepage "https://pdf.wondershare.com/pdfelement-express-mac.html"
 
   livecheck do
-    url "https://cbs.wondershare.com/go.php?m=upgrade_info&pid=4133"
-    regex(/<Version>(\d+(?:\.\d+)+)</i)
+    url "https://cbs.wondershare.com/go.php?m=upgrade_info&pid=4133&version=latest"
+    strategy :xml do |xml|
+      xml.get_elements("//Version").map { |item| item.text&.strip }
+    end
   end
-
-  depends_on macos: ">= :sierra"
 
   app "PDFelement Express.app"
 

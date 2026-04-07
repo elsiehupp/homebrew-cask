@@ -1,9 +1,9 @@
 cask "dropbox@beta" do
   arch arm: "&arch=arm64"
 
-  version "207.3.5664"
-  sha256 arm:   "f952d7a2fbac1ec1617bbd8f57c58b511dfaa01d7e5b99cc3f66c4aeeb22247d",
-         intel: "5ffce050180c820a67623128707e2c2e35efb2fdae9ba0ba4e4fbade6f058e77"
+  version "248.3.3501"
+  sha256 arm:   "852b3c925cd2d497ccb39a12862b41235894910a6c623395fcfdfead8d8a8469",
+         intel: "a376c759083deea604b012e5f360267226efb123bbc90062a4b633975d934e44"
 
   url "https://www.dropbox.com/download?build=#{version}&plat=mac&rtoken=&type=full#{arch}",
       verified: "dropbox.com/"
@@ -18,7 +18,6 @@ cask "dropbox@beta" do
 
   auto_updates true
   conflicts_with cask: "dropbox"
-  depends_on macos: ">= :high_sierra"
 
   app "Dropbox.app"
 

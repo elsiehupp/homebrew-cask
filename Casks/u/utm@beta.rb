@@ -1,6 +1,6 @@
 cask "utm@beta" do
-  version "4.5.4"
-  sha256 "1b3c2890afeaf12dfc95b39584680d6aa6c3000af21c9f5e0400161a9b8e40e1"
+  version "5.0.2"
+  sha256 "e4f61e6a7a317fe85d855715a2845264ead3751e56cda808af8dc8e0156ed1b9"
 
   url "https://github.com/utmapp/UTM/releases/download/v#{version}/UTM.dmg",
       verified: "github.com/utmapp/UTM/"
@@ -11,9 +11,9 @@ cask "utm@beta" do
   # This uses the `GithubReleases` strategy and includes releases marked as
   # "pre-release", so this will use both unstable and stable releases.
   livecheck do
-    url :stable
+    url :url
     regex(/^v?(\d+(?:\.\d+)+.*)$/i)
-    strategy :github_releases do |json|
+    strategy :github_releases do |json, regex|
       json.map do |release|
         next if release["draft"]
 

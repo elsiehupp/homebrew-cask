@@ -8,8 +8,7 @@ cask "menubar-countdown" do
   homepage "https://github.com/kristopherjohnson/MenubarCountdown"
 
   deprecate! date: "2024-07-27", because: :unmaintained
-
-  depends_on macos: ">= :mojave"
+  disable! date: "2025-07-27", because: :unmaintained
 
   app "Menubar Countdown.app"
 

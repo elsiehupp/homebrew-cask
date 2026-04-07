@@ -1,6 +1,6 @@
 cask "multipass" do
-  version "1.14.0"
-  sha256 "eb3f864071782e99c5368b5714626bc9247addf8ef3b609a92840e6cdd0ca2bc"
+  version "1.16.1"
+  sha256 "758d10dc1b71872b0ee7a17070b93fc788dba5ba45c36b980e42fd895d273489"
 
   on_arm do
     postflight do
@@ -18,8 +18,6 @@ cask "multipass" do
     url :url
     strategy :github_latest
   end
-
-  depends_on macos: ">= :mojave"
 
   pkg "multipass-#{version}+mac-Darwin.pkg"
 

@@ -7,6 +7,9 @@ cask "servpane" do
   desc "Launchd menu bar app"
   homepage "https://github.com/aderyabin/ServPane"
 
+  deprecate! date: "2024-12-30", because: :unmaintained
+  disable! date: "2026-01-05", because: :unmaintained
+
   app "ServPane.app"
 
   caveats do

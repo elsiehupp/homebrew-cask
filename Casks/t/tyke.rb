@@ -7,10 +7,8 @@ cask "tyke" do
   desc "Scratch paper that lives on your menu bar"
   homepage "https://tyke.app/"
 
-  livecheck do
-    url :url
-    strategy :extract_plist
-  end
+  deprecate! date: "2024-10-27", because: :unmaintained
+  disable! date: "2025-10-27", because: :unmaintained
 
   app "tyke.app"
 

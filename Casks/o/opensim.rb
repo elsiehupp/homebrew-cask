@@ -7,6 +7,9 @@ cask "opensim" do
   desc "Open-source alternative to SimPholders, written in Swift"
   homepage "https://github.com/luosheng/OpenSim/"
 
+  deprecate! date: "2025-03-01", because: :unmaintained
+  disable! date: "2026-03-01", because: :unmaintained
+
   app "OpenSim.app"
 
   caveats do

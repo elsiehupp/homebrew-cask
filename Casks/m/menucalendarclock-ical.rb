@@ -6,10 +6,8 @@ cask "menucalendarclock-ical" do
   name "MenuCalendarClock"
   homepage "http://www.objectpark.net/en/mcc.html"
 
-  livecheck do
-    url "http://www.objectpark.net/appcasts/MCC3.xml"
-    strategy :sparkle
-  end
+  deprecate! date: "2024-10-12", because: :unmaintained
+  disable! date: "2025-10-12", because: :unmaintained
 
   app "MenuCalendarClock iCal.app"
 

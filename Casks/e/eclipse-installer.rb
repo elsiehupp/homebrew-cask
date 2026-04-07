@@ -1,9 +1,9 @@
 cask "eclipse-installer" do
   arch arm: "mac-aarch64", intel: "mac64"
 
-  version "4.31.0,2024-06"
-  sha256 arm:   "550eb253d260c5b74c3b4f39314d75391a8c0486bbbbc9bc4b8b6daa61459dd7",
-         intel: "539e2e1d9e0010b11ba8983a5a74bb33b7057eff077d779da8efd0ff52cde387"
+  version "4.39,2026-03"
+  sha256 arm:   "ffd6345617a06d85d48376c326d3479cd0a665fe35e613a1fe444050048c99d0",
+         intel: "a1fdab77ff3749750cf80bac2e6933f2d8415dc2b6e5be9b81df9e181daa3513"
 
   url "https://www.eclipse.org/downloads/download.php?file=/oomph/epp/#{version.csv.second}/R/eclipse-inst-jre-#{arch}.dmg&r=1"
   name "Eclipse Installer"
@@ -14,6 +14,8 @@ cask "eclipse-installer" do
   livecheck do
     cask "eclipse-ide"
   end
+
+  depends_on macos: ">= :big_sur"
 
   app "Eclipse Installer.app"
 

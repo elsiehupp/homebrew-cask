@@ -1,6 +1,6 @@
 cask "eaglefiler" do
-  version "1.9.15"
-  sha256 "82ce6bca5fab9a4b059367433786cb90cd870d6665fcbac1262965464e3675b4"
+  version "1.9.20"
+  sha256 "a994f5eecd004dfa822dc3cad1db7f3f1a14561a6415b2576fe72f47cabeb25f"
 
   url "https://c-command.com/downloads/EagleFiler-#{version}.dmg"
   name "EagleFiler"
@@ -8,11 +8,19 @@ cask "eaglefiler" do
   homepage "https://c-command.com/eaglefiler/"
 
   livecheck do
-    url :homepage
-    regex(%r{href=.*?/EagleFiler[._-]v?(\d+(?:\.\d+)+)\.dmg}i)
+    url "https://c-command.com/versions.plist"
+    strategy :xml do |xml|
+      item = xml.elements["//key[text()='com.c-command.EagleFiler']"]&.next_element
+      next unless item
+
+      version = item.elements["key[text()='Version']"]&.next_element&.text
+      next if version.blank?
+
+      version.strip
+    end
   end
 
-  depends_on macos: ">= :high_sierra"
+  auto_updates true
 
   app "EagleFiler.app"
 

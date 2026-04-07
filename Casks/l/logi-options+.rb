@@ -21,16 +21,29 @@ cask "logi-options+" do
       skip "Legacy version"
     end
   end
-  on_monterey :or_newer do
-    version "1.80.601141"
+  on_monterey do
+    version "1.93.755983"
+    sha256 "297ead81044da4876fe6b1830f39b38769d5f1bca8b7dae8c1768ea42909f482"
+
+    url "https://download01.logi.com/web/ftp/pub/techsupport/optionsplus/logioptionsplus_installer_#{version}.zip",
+        verified: "download01.logi.com/web/ftp/pub/techsupport/optionsplus/"
+
+    livecheck do
+      skip "Legacy version"
+    end
+  end
+  on_ventura :or_newer do
+    version "2.1.854976"
     sha256 :no_check
 
     url "https://download01.logi.com/web/ftp/pub/techsupport/optionsplus/logioptionsplus_installer.zip",
         verified: "download01.logi.com/web/ftp/pub/techsupport/optionsplus/"
 
     livecheck do
-      url "https://support.logi.com/hc/en-gb/articles/1500005516462"
-      regex(/version\D*?(\d+(?:\.\d+)+)/i)
+      url "https://updates.optionsplus.logitechg.com/pipeline/v2/update/optionsplus4/osx/public/update.json"
+      strategy :json do |json|
+        json["version"]
+      end
     end
   end
 
@@ -39,7 +52,9 @@ cask "logi-options+" do
   homepage "https://www.logitech.com/en-us/software/logi-options-plus.html"
 
   auto_updates true
-  depends_on macos: ">= :catalina"
+
+  # The installer path can be inconsistent between versions/systems without notice
+  rename "Logi Options+ Installer.app", "logioptionsplus_installer.app"
 
   # see https://prosupport.logi.com/hc/en-us/articles/6046882446359
   installer script: {
@@ -52,6 +67,8 @@ cask "logi-options+" do
               "com.logi.cp-dev-mgr",
               "com.logi.optionsplus",
               "com.logi.optionsplus.updater",
+              "com.logitech.LogiRightSight",
+              "com.logitech.LogiRightSight.Agent",
             ],
             quit:      [
               "com.logi.cp-dev-mgr",
@@ -61,9 +78,11 @@ cask "logi-options+" do
               "com.logitech.FirmwareUpdateTool",
               "com.logitech.logiaipromptbuilder",
             ],
+            pkgutil:   "com.logitech.LogiRightSightForWebcams.pkg",
             delete:    [
               "/Applications/logioptionsplus.app",
               "/Applications/Utilities/Logi Options+ Driver Installer.bundle",
+              "/Library/Application Support/Logi",
               "/Library/Application Support/Logitech.localized/LogiOptionsPlus",
             ],
             rmdir:     "/Library/Application Support/Logitech.localized"
@@ -71,11 +90,16 @@ cask "logi-options+" do
   zap trash: [
     "/Users/Shared/logi",
     "/Users/Shared/LogiOptionsPlus",
-    "~/Library/Application Support/com.apple.sharedfilelist/com.apple.LSSharedFileList.ApplicationRecentDocuments/com.logi.optionsplus*.sfl*",
+    "~/Library/Application Support/com.apple.sharedfilelist/com.apple.LSSharedFileList.ApplicationRecentDocuments/com.logi.*.sfl*",
+    "~/Library/Application Support/Logi",
     "~/Library/Application Support/LogiOptionsPlus",
+    "~/Library/HTTPStorages/LogiPluginServiceNative",
+    "~/Library/Logs/xlog_logitech",
     "~/Library/Preferences/com.logi.cp-dev-mgr.plist",
+    "~/Library/Preferences/com.logi.lps.settings.plist",
     "~/Library/Preferences/com.logi.optionsplus.driverhost.plist",
     "~/Library/Preferences/com.logi.optionsplus.plist",
+    "~/Library/Preferences/com.logi.pluginservice.plist",
     "~/Library/Saved Application State/com.logi.optionsplus.savedState",
   ]
 

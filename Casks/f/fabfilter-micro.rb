@@ -1,6 +1,6 @@
 cask "fabfilter-micro" do
-  version "1.29"
-  sha256 "c5cc658925ce085a62d330be20e9042ddf48afa0e3e8b0bb1f9d8677a51097b5"
+  version "1.31"
+  sha256 "51bbf80b9e7e5e2b27300e10acc3ccaadac4e68e11d3009bb951dc0cc2152d99"
 
   url "https://cdn-b.fabfilter.com/downloads/ffmicro#{version.no_dots}.dmg"
   name "FabFilter Micro"
@@ -9,15 +9,8 @@ cask "fabfilter-micro" do
 
   livecheck do
     url "https://www.fabfilter.com/download"
-    strategy :page_match do |page|
-      match = page.match(/ffmicro(\d)(\d+)\.dmg/i)
-      next if match.blank?
-
-      "#{match[1]}.#{match[2]}"
-    end
+    regex(/FabFilter\s+Micro.*?v?(\d+(?:\.\d+)+)/im)
   end
-
-  depends_on macos: ">= :sierra"
 
   pkg "FabFilter Micro #{version} Installer.pkg"
 

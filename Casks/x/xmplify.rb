@@ -1,6 +1,6 @@
 cask "xmplify" do
-  version "1.11.4"
-  sha256 "cea327e8d06c8807f05f87b1f9f555a00874e4a053d1536821e5a774f69587bd"
+  version "1.11.11"
+  sha256 "ed2bbb1f77bf83fd64f209ad487495cb03c05d7f61512e40e2e6b98dc93910ee"
 
   url "https://xmplifyapp.com/releases/Xmplify-#{version}.dmg"
   name "Xmplify"
@@ -11,8 +11,6 @@ cask "xmplify" do
     url "https://xmplifyapp.com/appcast.xml"
     strategy :sparkle
   end
-
-  depends_on macos: ">= :sierra"
 
   app "Xmplify.app"
 

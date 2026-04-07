@@ -1,9 +1,14 @@
 cask "ovito" do
   arch arm: "arm64", intel: "intel"
 
-  version "3.10.6"
-  sha256 arm:   "ee0d1a5684aaf42ae141d1bdb10b6da2ba34edc34640f2ef8611eb2e3bccbd8f",
-         intel: "18981c487f66a500532cc05e18ca1230c26e57a0912865d0082084fabeed126e"
+  on_arm do
+    version "3.15.2"
+    sha256 "31e757530cf9f0a287657b19d5e8c76fcb03b6076e8aa1333f00a8602e3f8317"
+  end
+  on_intel do
+    version "3.12.0"
+    sha256 "735b7f1388ddd1a895308c943f3808bdec3c070bab9ef177e5f106cc6cca293e"
+  end
 
   url "https://www.ovito.org/download/master/ovito-basic-#{version}-macos-#{arch}.dmg"
   name "OVITO"
@@ -11,13 +16,12 @@ cask "ovito" do
   homepage "https://www.ovito.org/"
 
   livecheck do
-    url :homepage
+    url "https://www.ovito.org/download_history/"
     regex(/href=.*?ovito[._-]basic[._-]v?(\d+(?:\.\d+)+)(?:[._-]macos)?[._-]#{arch}\.dmg/i)
   end
 
   auto_updates true
   conflicts_with cask: "ovito-pro"
-  depends_on macos: ">= :mojave"
 
   app "Ovito.app"
 

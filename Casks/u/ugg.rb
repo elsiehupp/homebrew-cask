@@ -14,7 +14,6 @@ cask "ugg" do
   end
 
   auto_updates true
-  depends_on macos: ">= :catalina"
 
   app "U.GG.app"
 
@@ -25,4 +24,8 @@ cask "ugg" do
     "~/Library/Preferences/com.electron.u.gg.plist",
     "~/Library/Saved Application State/com.electron.u.gg.savedState",
   ]
+
+  caveats do
+    requires_rosetta
+  end
 end

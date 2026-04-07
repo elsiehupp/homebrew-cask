@@ -10,6 +10,7 @@ cask "zeronet" do
 
   # see https://github.com/HelloZeroNet/ZeroNet/issues/2847
   deprecate! date: "2024-06-17", because: :unmaintained
+  disable! date: "2025-06-17", because: :unmaintained
 
   app "ZeroNet-dist-mac/ZeroNet.app"
 

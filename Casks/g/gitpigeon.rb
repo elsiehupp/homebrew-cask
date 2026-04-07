@@ -7,8 +7,7 @@ cask "gitpigeon" do
   homepage "https://www.gitpigeon.com/"
 
   deprecate! date: "2024-04-10", because: :unmaintained
-
-  depends_on macos: ">= :mojave"
+  disable! date: "2025-04-22", because: :unmaintained
 
   app "GitPigeon.app"
 

@@ -1,6 +1,6 @@
 cask "videofusion" do
-  version "6.3.0.10627"
-  sha256 "67ea1aa5d45ae080b0ecf90dfdc74a3bddcee4f099f7dd4a9d36b0b29b956c2f"
+  version "10.3.0.12521"
+  sha256 "37c60d69559d868623fa8355a1a010bc1140e86570c5caaed9be65c6de6903a5"
 
   url "https://lf3-package.vlabstatic.com/obj/faceu-packages/Jianying_#{version.dots_to_underscores}_jianyingpro_0_creatortool.dmg",
       verified: "lf3-package.vlabstatic.com/obj/faceu-packages/"
@@ -14,6 +14,7 @@ cask "videofusion" do
     url "https://lv-api-hl.ulikecam.com/service/settings/v3/?&aid=3704&rom_version=9965&version_code=328960&channel=jianyingpro_0&device_platform=mac"
     regex(/Jianying[._-]v?(\d+(?:[._]\d+)+).+?\.dmg/i)
     strategy :json do |json, regex|
+      # `lastest_stable_url` is an upstream typo of `latest_stable_url`
       url = json.dig("data", "settings", "update_reminder", "lastest_stable_url")
       next if url.blank?
 
@@ -25,7 +26,6 @@ cask "videofusion" do
   end
 
   auto_updates true
-  depends_on macos: ">= :mojave"
 
   app "VideoFusion-macOS.app"
 

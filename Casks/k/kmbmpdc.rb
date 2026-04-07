@@ -8,9 +8,9 @@ cask "kmbmpdc" do
   homepage "https://github.com/arttuperala/kmbmpdc"
 
   deprecate! date: "2024-07-17", because: :unmaintained
+  disable! date: "2025-07-17", because: :unmaintained
 
   auto_updates true
-  depends_on macos: ">= :el_capitan"
 
   app "kmbmpdc.app"
 

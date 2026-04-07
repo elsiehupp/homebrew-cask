@@ -1,6 +1,6 @@
 cask "purei-play" do
-  version "0.65"
-  sha256 "721d1574f8e262b6a75a035730c5436c9138d9b8cd7bbcddbfba2d0b4573b2fa"
+  version "0.72"
+  sha256 "ad9e03164a5bfe79c99e6d9d8c04db7b706a749eba29b33bef39bb7db2a36f36"
 
   url "https://purei.org/downloads/play/stable/#{version}/Play.dmg"
   name "Play!"
@@ -11,8 +11,6 @@ cask "purei-play" do
     url "https://purei.org/downloads/play/stable/"
     regex(/href=.*?v?(\d+(?:\.\d+)+)/i)
   end
-
-  depends_on macos: ">= :catalina"
 
   app "Play.app"
 

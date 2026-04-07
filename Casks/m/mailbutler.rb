@@ -1,6 +1,6 @@
 cask "mailbutler" do
-  version "7922,3492428"
-  sha256 "5af006ada5d857a1db0444054e4d72849b4d3571ee354b3721a18c031b7c6bf9"
+  version "8226,3630918"
+  sha256 "f35bdef1eb14bd7320535ec725e9e953424d6dc6b70974cf8b599a0db961c9e9"
 
   url "https://downloads.mailbutler.io/sparkle/public/new-horizons/Mailbutler_#{version.csv.first}-#{version.csv.second}.pkg"
   name "Mailbutler"
@@ -13,7 +13,6 @@ cask "mailbutler" do
   end
 
   auto_updates true
-  depends_on macos: ">= :high_sierra"
 
   pkg "Mailbutler_#{version.csv.first}-#{version.csv.second}.pkg"
 

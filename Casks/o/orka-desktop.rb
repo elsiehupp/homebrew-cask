@@ -1,9 +1,9 @@
 cask "orka-desktop" do
-  version "3.0.0-beta.1"
-  sha256 "73979664b53c186e28ce83962639151a63c50be3fdddad2348c7a634bdfd85d8"
+  version "3.1.0"
+  sha256 "9c3389511bc9fae3572a79c08f6a8dfaeb21f4b5ed79f7a0b428554659d44c51"
 
   url "https://github.com/macstadium/orka-desktop/releases/download/#{version}/OrkaDesktop-#{version}.dmg"
-  name "Orka Desktop (Beta)"
+  name "Orka Desktop"
   desc "Run macOS virtual machines locally and build images for use with Orka"
   homepage "https://github.com/macstadium/orka-desktop"
 
@@ -17,5 +17,11 @@ cask "orka-desktop" do
 
   app "Orka Desktop.app"
 
-  zap trash: "~/orka-toolkit/"
+  zap trash: [
+    "~/.local/state/orka",
+    "~/Library/Caches/com.macstadium.OrkaDesktop/",
+    "~/Library/HTTPStorages/com.macstadium.OrkaDesktop",
+    "~/Library/Preferences/com.macstadium.OrkaDesktop.plist",
+    "~/orka-toolkit",
+  ]
 end

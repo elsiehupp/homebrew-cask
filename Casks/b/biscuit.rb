@@ -1,18 +1,18 @@
 cask "biscuit" do
   arch arm: "-arm64"
 
-  version "1.2.30"
-  sha256 arm:   "0545a92dce24a2a5758250ddd3b8e58a26b1219ca61fd316872adbc154eb27bf",
-         intel: "c3ab3a00589046167bce909eb7fc9d080c6a2205e312890b36ba568f0358881d"
+  version "1.2.35"
+  sha256 arm:   "bdf14210f4b7aa9c96eed6257e72b6dcf0e65c892ceae80c0eee3b7964bcc49c",
+         intel: "ea2b285266272cf21d33b2d1388a7d068970b1311f955e53a3a379655f1454f0"
 
-  url "https://github.com/agata/dl.biscuit/releases/download/v#{version}/Biscuit-#{version}#{arch}.dmg",
+  url "https://github.com/agata/dl.biscuit/releases/download/#{version}/Biscuit-#{version}#{arch}.dmg",
       verified: "github.com/agata/dl.biscuit/"
   name "Biscuit"
   desc "Browser to organise apps"
   homepage "https://eatbiscuit.com/"
 
   auto_updates true
-  depends_on macos: ">= :high_sierra"
+  depends_on macos: ">= :monterey"
 
   app "Biscuit.app"
 

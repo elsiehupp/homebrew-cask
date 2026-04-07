@@ -1,6 +1,6 @@
 cask "electron-cash" do
-  version "4.4.1"
-  sha256 "2a2bbbe682a87859283b03229af416b88fc5cb369ba98fc3c1d21fb82cc9f1be"
+  version "4.4.3"
+  sha256 "14c627c6fd1819833dd4ce242c29bc5b502e0d3d75030a8a49540160740ee8db"
 
   url "https://electroncash.org/downloads/#{version.major_minor_patch}/mac/Electron-Cash-#{version}-macosx.dmg"
   name "Electron Cash"
@@ -11,8 +11,6 @@ cask "electron-cash" do
     url :homepage
     regex(/href=.*?Electron[._-]Cash[._-]v?(\d+(?:\.\d+)+)[._-]macosx\.dmg/i)
   end
-
-  depends_on macos: ">= :mojave"
 
   app "Electron-Cash.app"
 

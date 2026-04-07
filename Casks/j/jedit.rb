@@ -8,7 +8,15 @@ cask "jedit" do
   desc "Text editor"
   homepage "https://www.jedit.org/"
 
+  disable! date: "2026-09-01", because: :fails_gatekeeper_check
+
   app "jEdit.app"
+
+  zap trash: [
+    "~/Library/jEdit",
+    "~/Library/Preferences/org.gjt.sp.jedit.plist",
+    "~/Library/Saved Application State/org.gjt.sp.jedit.savedState",
+  ]
 
   caveats do
     depends_on_java "11+"

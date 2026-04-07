@@ -1,15 +1,17 @@
 cask "responsively" do
   arch arm: "-arm64"
 
-  version "1.14.0"
-  sha256 arm:   "52ae7dba4069cb59923df648b0f4d6c4b889aa41ea97f4b4ec223528bb7f124b",
-         intel: "5bf6c3f058d29e855f1e0e50901083633895919fa3ea42886df5f4ff5eb49140"
+  version "1.18.0"
+  sha256 arm:   "870ef97ae7b23758411841f0c35058ddd36ba2dce51b1f8a48063664dc12d92b",
+         intel: "580a2f680bf438456901d5664ddea08bc3291c3ce0ded67ce64234444c1c9f6b"
 
   url "https://github.com/responsively-org/responsively-app-releases/releases/download/v#{version}/ResponsivelyApp-#{version}#{arch}.dmg",
       verified: "github.com/responsively-org/responsively-app-releases/"
   name "Responsively"
   desc "Modified browser that helps in responsive web development"
   homepage "https://responsively.app/"
+
+  auto_updates true
 
   app "ResponsivelyApp.app"
 

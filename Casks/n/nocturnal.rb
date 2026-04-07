@@ -8,8 +8,7 @@ cask "nocturnal" do
   homepage "https://github.com/HarshilShah/Nocturnal"
 
   deprecate! date: "2024-07-27", because: :unmaintained
-
-  depends_on macos: ">= :mojave"
+  disable! date: "2025-07-27", because: :unmaintained
 
   app "Nocturnal.app"
 

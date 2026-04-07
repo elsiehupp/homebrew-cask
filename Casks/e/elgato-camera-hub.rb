@@ -1,8 +1,8 @@
 cask "elgato-camera-hub" do
-  version "1.10.2.3481"
-  sha256 "0f355438a81eb606f6e0784f2d6d07de8eec6897cc5e12d64988653d9feb793f"
+  version "2.2.1.6945"
+  sha256 "1d87d17ba63ba3334a1f728b13307a9c80734147733e1186284eab52d553d84f"
 
-  url "https://edge.elgato.com/egc/macos/echm/#{version.major_minor_patch}/Camera_Hub_#{version}.pkg"
+  url "https://edge.elgato.com/egc/macos/echm/#{version.major_minor_patch}/CameraHub_#{version}.pkg"
   name "Elgato Camera Hub"
   desc "Elgato FACECAM configuration tool"
   homepage "https://www.elgato.com/ww/en/s/downloads"
@@ -16,12 +16,17 @@ cask "elgato-camera-hub" do
 
   depends_on macos: ">= :big_sur"
 
-  pkg "Camera_Hub_#{version}.pkg"
+  pkg "CameraHub_#{version}.pkg"
 
-  uninstall launchctl: "com.elgato.CameraHub",
+  uninstall launchctl: [
+              "com.displaylink.loginscreen",
+              "com.displaylink.XpcService",
+              "com.elgato.CameraHub",
+            ],
             quit:      "com.displaylink.DisplayLinkUserAgent",
             signal:    ["TERM", "com.elgato.CameraHub"],
             pkgutil:   [
+              "com.displaylink.displaylinkloginscreenext",
               "com.displaylink.displaylinkmanagerapp",
               "com.elgato.CameraHub.Installer",
             ],

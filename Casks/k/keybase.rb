@@ -1,31 +1,29 @@
 cask "keybase" do
-  arch arm: "arm64-"
+  arch arm: "-arm64"
+
+  sha256 :no_check
 
   on_arm do
-    version "6.4.0,20240816154159,3212f60cc5"
-    sha256 "e018a466d07710d6b4bb0a8524c1a12648c54be72314f1ab1ba5137e1f4a1acb"
+    version "6.6.0,20260305145732,79477565ce"
   end
   on_intel do
-    version "6.4.0,20240816152607,3212f60cc5"
-    sha256 "4ea632f766d7533b52900679cf76459ad97e8ce992ba0bfea44fd51a542e8da0"
+    version "6.6.0,20260305143645,79477565ce"
   end
 
-  url "https://prerelease.keybase.io/darwin-#{arch}updates/Keybase-#{version.csv.first}-#{version.csv.second}%2B#{version.csv.third}.zip"
+  url "https://prerelease.keybase.io/Keybase#{arch}.dmg"
   name "Keybase"
   desc "End-to-end encryption software"
   homepage "https://keybase.io/"
 
   livecheck do
-    url "https://prerelease.keybase.io/update-darwin-#{arch}prod-v2.json"
-    strategy :page_match do |page|
-      match = page.match(/Keybase[._-]v?(\d+(?:\.\d+)+)[._-](\d+)%2B([0-9a-f]+)\.zip/i)
-      next if match.blank?
-
-      "#{match[1]},#{match[2]},#{match[3]}"
+    url "https://prerelease.keybase.io/update-darwin#{arch}-prod-v2.json"
+    strategy :json do |json|
+      json["version"]&.tr("-+", ",")
     end
   end
 
   auto_updates true
+  depends_on macos: ">= :monterey"
 
   app "Keybase.app"
 
@@ -51,9 +49,11 @@ cask "keybase" do
             ]
 
   zap trash: [
+        "~/Library/Application Support/com.apple.sharedfilelist/com.apple.LSSharedFileList.ApplicationRecentDocuments/keybase.*.sfl*",
         "~/Library/Application Support/Keybase",
         "~/Library/Caches/Keybase",
         "~/Library/Group Containers/keybase",
+        "~/Library/LaunchAgents/keybase.*.plist",
         "~/Library/Logs/Keybase*",
         "~/Library/Preferences/keybase*",
       ],

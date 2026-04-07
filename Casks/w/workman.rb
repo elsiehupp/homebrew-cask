@@ -9,6 +9,7 @@ cask "workman" do
   homepage "https://workmanlayout.org/"
 
   deprecate! date: "2024-06-21", because: :unmaintained
+  disable! date: "2025-06-21", because: :unmaintained
 
   keyboard_layout "Workman-master/mac/Workman.bundle"
 

@@ -1,6 +1,6 @@
 cask "workflowy" do
-  version "4.0.2408281239"
-  sha256 "726931a6e2a19647e4b372c0b6d61b0429726bfbe944e697632318712e41022a"
+  version "4.3.2604021353"
+  sha256 "17de6fb152e235f94b7dd6394734b936c547b14bcdbba7fb1cbf09f3e69ca52f"
 
   url "https://github.com/workflowy/desktop/releases/download/v#{version}/WorkFlowy.zip",
       verified: "github.com/workflowy/desktop/"
@@ -14,6 +14,7 @@ cask "workflowy" do
   end
 
   auto_updates true
+  depends_on macos: ">= :monterey"
 
   app "WorkFlowy.app"
 

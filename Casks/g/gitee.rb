@@ -8,6 +8,7 @@ cask "gitee" do
   homepage "https://github.com/Nightonke/Gitee"
 
   deprecate! date: "2024-07-11", because: :unmaintained
+  disable! date: "2025-07-11", because: :unmaintained
 
   app "Gitee.app"
 

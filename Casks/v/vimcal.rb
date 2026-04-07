@@ -2,9 +2,9 @@ cask "vimcal" do
   arch arm: "-arm64"
   host_suffix = on_arch_conditional arm: "m1", intel: "production"
 
-  version "1.0.31"
-  sha256 arm:   "8591360b7d8209454ea894af784d2f8e6491bcc56a53c4f99f72600cb9a2f560",
-         intel: "a3f764b1d0829f214caa04bb0f9aff803b109c02b28d74f66522f1d81994e3a9"
+  version "1.0.46"
+  sha256 arm:   "5317ff903de1e2f3958298b55824cf9cf848511c416ff5b3a7a3b798a2a44fb6",
+         intel: "8bfbb3a9f41060cbf0865ccc2d52a4fff5c49048ada74bfb076f9a37eb6d790d"
 
   url "https://vimcal-#{host_suffix}.s3.amazonaws.com/Vimcal-#{version}#{arch}.dmg",
       verified: "vimcal-#{host_suffix}.s3.amazonaws.com/"
@@ -18,7 +18,7 @@ cask "vimcal" do
   end
 
   auto_updates true
-  depends_on macos: ">= :catalina"
+  depends_on macos: ">= :monterey"
 
   app "Vimcal.app"
 

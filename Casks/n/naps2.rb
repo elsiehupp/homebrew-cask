@@ -2,9 +2,9 @@ cask "naps2" do
   # NOTE: "2" is not a version number, but an intrinsic part of the product name
   arch arm: "arm64", intel: "x64"
 
-  version "7.5.1"
-  sha256 arm:   "839e42574fc5abf26768038f28caf5ca57223be28fc2ca75a00b31f98ff7f210",
-         intel: "4b8f30cdf0fb0f9e87cfc92930457af00667eaf6398f9f6e71dc591deecd5b10"
+  version "8.2.1"
+  sha256 arm:   "4a40e0d1a717714bf12615325acbb938737962c076fc6d83007d973f3b241a4f",
+         intel: "305d6976d8c07de18ff3475de416868680e34734959d2e86399a53c0805aea1d"
 
   url "https://github.com/cyanfish/naps2/releases/download/v#{version}/naps2-#{version}-mac-#{arch}.pkg",
       verified: "github.com/cyanfish/naps2/"
@@ -12,7 +12,10 @@ cask "naps2" do
   desc "Document scanning application"
   homepage "https://www.naps2.com/"
 
-  depends_on macos: ">= :catalina"
+  livecheck do
+    url :url
+    strategy :github_latest
+  end
 
   pkg "naps2-#{version}-mac-#{arch}.pkg"
 

@@ -1,9 +1,9 @@
 cask "intellij-idea@eap" do
   arch arm: "-aarch64"
 
-  version "2024.2.1,242.21829.15"
-  sha256 arm:   "08b13ed907c1970e2a9d48085baab2a1a9f241b99c800e678c30aedd0a6fe150",
-         intel: "25d0bf97b81ad4b50114f027f70629f2a9faf0087ccaddb62fbf31b9651e13ca"
+  version "2026.1,261.22158.121"
+  sha256 arm:   "46beb97bed0594f38fe20f21954e2bfda2d64e6f34a2fd43cb0873b02fb6c749",
+         intel: "f68b075c00ee4b6f6ab5be0e812e06bac5522b62bc5467e039ae5d2642b9011d"
 
   url "https://download.jetbrains.com/idea/ideaIU-#{version.csv.second}#{arch}.dmg"
   name "IntelliJ IDEA EAP"
@@ -11,17 +11,23 @@ cask "intellij-idea@eap" do
   homepage "https://www.jetbrains.com/idea/nextversion"
 
   livecheck do
-    url "https://data.services.jetbrains.com/products/releases?code=IIU&release.type=eap"
+    url "https://data.services.jetbrains.com/products/releases?code=IIU&latest=true&type=eap"
     strategy :json do |json|
-      json["IIU"].map do |release|
-        "#{release["version"]},#{release["build"]}"
+      json["IIU"]&.map do |release|
+        version = release["version"]
+        build = release["build"]
+        next if version.blank? || build.blank?
+
+        "#{version},#{build}"
       end
     end
   end
 
   auto_updates true
   conflicts_with cask: "intellij-idea"
-  depends_on macos: ">= :high_sierra"
+
+  # The application path is often inconsistent between version
+  rename "IntelliJ IDEA*.app", "IntelliJ IDEA.app"
 
   app "IntelliJ IDEA.app"
   binary "#{appdir}/IntelliJ IDEA.app/Contents/MacOS/idea"

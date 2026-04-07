@@ -6,10 +6,8 @@ cask "shrinkit" do
   name "ShrinkIt"
   homepage "https://panic.com/blog/shrinkit-1-2/"
 
-  livecheck do
-    url :homepage
-    regex(%r{href=.*?/ShrinkIt%20(\d+(?:\.\d+)*)\.zip}i)
-  end
+  deprecate! date: "2024-10-10", because: :unmaintained
+  disable! date: "2025-10-11", because: :unmaintained
 
   app "ShrinkIt.app"
 

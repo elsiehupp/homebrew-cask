@@ -1,6 +1,6 @@
 cask "fabfilter-pro-ds" do
-  version "1.24"
-  sha256 "853364c2e73c6a8103331549957018e3b71654bc6add69414d312cd208335ebe"
+  version "1.31"
+  sha256 "7ad88d49103af961c0daa9787697677fe3f98d020c7e37519ca1edff238f2d65"
 
   url "https://cdn-b.fabfilter.com/downloads/ffprods#{version.no_dots}.dmg"
   name "FabFilter Pro-DS"
@@ -9,15 +9,8 @@ cask "fabfilter-pro-ds" do
 
   livecheck do
     url "https://www.fabfilter.com/download"
-    strategy :page_match do |page|
-      match = page.match(/ffprods(\d)(\d+)\.dmg/i)
-      next if match.blank?
-
-      "#{match[1]}.#{match[2]}"
-    end
+    regex(/FabFilter\s+Pro-DS.*?v?(\d+(?:\.\d+)+)/im)
   end
-
-  depends_on macos: ">= :sierra"
 
   pkg "FabFilter Pro-DS #{version} Installer.pkg"
 

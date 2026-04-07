@@ -1,6 +1,6 @@
 cask "yes24-ebook" do
-  version "1.0.1.14"
-  sha256 "f966cae98dbf802a48894ecc3efc0fd2287d8dc84f753581e0827c18a49563ac"
+  version "1.0.1.27"
+  sha256 "63a282ce4bdfe70ff4d2996deacdbaf1ba77aa5272e2589ad1124c9b702e752d"
 
   url "https://ebookcdn.yes24.com/UPGRADE/PC_CREMA/mac/#{version}/YES24eBook.dmg"
   name "YES24eBook"
@@ -10,6 +10,13 @@ cask "yes24-ebook" do
   livecheck do
     url "https://cremaupdate.k-epub.com/sv_update.aspx?usrid=&old=0"
     regex(%r{/v?(\d+(?:\.\d+)+)/YES24eBook\.dmg}i)
+    strategy :xml do |xml, regex|
+      url = xml.elements["//PATH"]&.text&.strip
+      match = url.match(regex) if url
+      next if match.blank?
+
+      match[1]
+    end
   end
 
   auto_updates true

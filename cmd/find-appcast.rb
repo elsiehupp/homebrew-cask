@@ -5,7 +5,6 @@ require "English"
 require "abstract_command"
 require "formula"
 require "open3"
-require "pathname"
 require "yaml"
 require "net/http"
 require "uri"
@@ -32,7 +31,7 @@ module Homebrew
       end
 
       sig { params(appcast_type: String, urls: T.any(String, T::Array[String])).returns(T::Boolean) }
-      def verify_appcast(appcast_type, *urls)
+      def verify_appcast!(appcast_type, *urls)
         print "Looking for #{appcast_type} appcast: "
         urls.flatten.each do |url|
           next unless url_exist?(url)
@@ -67,7 +66,7 @@ module Homebrew
         url = Open3.capture3("defaults", "read", plist.to_path, "SUFeedURL").first.strip
         return false if url.empty?
 
-        verify_appcast("Sparkle", url)
+        verify_appcast!("Sparkle", url)
       end
 
       sig { params(app: Pathname).returns(T::Boolean) }
@@ -106,7 +105,7 @@ module Homebrew
         if possible_appcasts.empty?
           false
         else
-          verify_appcast("Electron Builder", *possible_appcasts)
+          verify_appcast!("Electron Builder", *possible_appcasts)
         end
       end
     end

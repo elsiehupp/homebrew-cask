@@ -9,6 +9,7 @@ cask "mcedit" do
   homepage "https://www.mcedit.net/"
 
   deprecate! date: "2024-07-27", because: :unmaintained
+  disable! date: "2025-07-27", because: :unmaintained
 
   app "mcedit.app"
 

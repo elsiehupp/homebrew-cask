@@ -7,6 +7,7 @@ cask "disk-arbitrator" do
   homepage "https://github.com/aburgh/Disk-Arbitrator"
 
   deprecate! date: "2024-07-09", because: :unmaintained
+  disable! date: "2025-07-09", because: :unmaintained
 
   app "Disk Arbitrator.app"
 

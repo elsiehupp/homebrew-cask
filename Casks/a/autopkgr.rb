@@ -8,9 +8,22 @@ cask "autopkgr" do
   desc "Install and configure AutoPkg"
   homepage "https://www.lindegroup.com/autopkgr"
 
-  depends_on macos: ">= :high_sierra"
+  livecheck do
+    url "https://raw.githubusercontent.com/lindegroup/autopkgr/appcast/appcast.xml"
+    strategy :sparkle, &:short_version
+  end
+
+  auto_updates true
 
   app "AutoPkgr.app"
+
+  zap trash: [
+    "~/Library/Application Support/AutoPkgr",
+    "~/Library/Caches/com.lindegroup.AutoPkgr",
+    "~/Library/HTTPStorages/com.lindegroup.AutoPkgr",
+    "~/Library/HTTPStorages/com.lindegroup.AutoPkgr.binarycookies",
+    "~/Library/Preferences/com.lindegroup.AutoPkgr.plist",
+  ]
 
   caveats do
     requires_rosetta

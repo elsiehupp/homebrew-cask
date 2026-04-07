@@ -9,8 +9,7 @@ cask "icons8" do
   homepage "https://icons8.com/"
 
   deprecate! date: "2024-07-17", because: :discontinued
-
-  depends_on macos: ">= :high_sierra"
+  disable! date: "2025-07-17", because: :discontinued
 
   app "Icons8.app"
 

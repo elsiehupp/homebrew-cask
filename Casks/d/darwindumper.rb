@@ -10,9 +10,11 @@ cask "darwindumper" do
   livecheck do
     url "https://bytebucket.org/blackosx/darwindumper/wiki/DD_AppCast.xml"
     strategy :sparkle do |item|
-      item.short_version.delete_prefix("r").to_s
+      item.short_version.delete_prefix("r")
     end
   end
+
+  disable! date: "2026-09-01", because: :fails_gatekeeper_check
 
   app "DarwinDumper.app"
 

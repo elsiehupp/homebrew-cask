@@ -1,6 +1,6 @@
 cask "zerotier-one" do
-  version "1.14.0"
-  sha256 "7094abcd9525bd30d6682184e4cc955c58dfb3db0dae80e33130bff19aaa67ad"
+  version "1.16.1"
+  sha256 "726a83e725061974089d5eae9aa68a16dfb24df2289a044c414dcad22a517546"
 
   url "https://download.zerotier.com/RELEASES/#{version}/dist/ZeroTier%20One.pkg"
   name "ZeroTier One"
@@ -8,11 +8,9 @@ cask "zerotier-one" do
   homepage "https://www.zerotier.com/"
 
   livecheck do
-    url "https://www.zerotier.com/download/"
-    regex(/Latest\s+Version[\s:|]+?v?(\d+(?:\.\d+)+)/i)
+    url "https://download.zerotier.com/RELEASES/"
+    regex(%r{href=["']?v?(\d+(?:\.\d+)+)/?["' >]}i)
   end
-
-  depends_on macos: ">= :high_sierra"
 
   pkg "ZeroTier One.pkg"
 

@@ -11,7 +11,8 @@ cask "recipeui" do
   desc "API discovery, testing and sharing tool"
   homepage "https://recipeui.com/"
 
-  deprecate! date: "2024-06-23", because: :repo_archived
+  deprecate! date: "2024-06-23", because: :discontinued
+  disable! date: "2025-06-23", because: :discontinued
 
   auto_updates true
 

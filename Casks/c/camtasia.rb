@@ -1,21 +1,25 @@
 cask "camtasia" do
-  version "2024.0.6"
-  sha256 "25a9d7a408893726bb3e60fa53d7646e31f555d99edc29d50c43a1f694ef7236"
+  version "26.0.7"
+  sha256 "e5bbf9500bef6d3caac3a58eebf54695784af6bf5c04548dd6320a5c728da74d"
 
-  url "https://download.techsmith.com/camtasiamac/releases/#{version.major[-2..]}#{version.minor_patch.no_dots}/Camtasia.dmg"
+  url "https://download.techsmith.com/camtasiamac/releases/#{version.no_dots}/Camtasia.dmg"
   name "Camtasia"
   desc "Screen recorder and video editor"
   homepage "https://www.techsmith.com/video-editor.html"
 
   livecheck do
-    url "https://support.techsmith.com/api/v2/help_center/en-us/articles/115006624748"
-    regex(/Camtasia\s*(\d+(?:\.\d+)+)/i)
+    url "https://www.techsmith.com/api/v/1/products/getallversions/9"
+    strategy :json do |json|
+      json.map do |item|
+        "#{item["Major"]}.#{item["Minor"]}.#{item["Maintenance"]}"
+      end
+    end
   end
 
   auto_updates true
-  depends_on macos: ">= :monterey"
+  depends_on macos: ">= :sonoma"
 
-  app "Camtasia #{version.major}.app"
+  app "Camtasia.app"
 
   zap trash: [
     "/Users/Shared/TechSmith/Camtasia",

@@ -1,6 +1,6 @@
 cask "slicer" do
-  version "5.6.2,660fa2e930e435b0e355f67c"
-  sha256 "1b2f8700607f40b03973ad35ce5d2195b931907c6ed0d5ec71a9b24f5447584b"
+  version "5.10.0,6911c75fac7b1c95e7934d1b"
+  sha256 "369ad4d450ea0c7891da6dcf3b036485e96ade1d784207830760a00b555a826c"
 
   url "https://slicer-packages.kitware.com/api/v1/item/#{version.csv.second}/download",
       verified: "slicer-packages.kitware.com/"
@@ -9,17 +9,20 @@ cask "slicer" do
   homepage "https://www.slicer.org/"
 
   livecheck do
-    url "https://download.slicer.org"
+    url "https://download.slicer.org/?os=macosx&stability=release"
     regex(%r{href=.*?/bitstream/(\h+)["' >].+?["']header["'][^>]*?>\s*v?(\d+(?:\.\d+)+)}im)
     strategy :page_match do |page, regex|
-      match = page.scan(regex)
-      next if match.length < 2
+      match = page.match(regex)
+      next if match.blank?
 
-      "#{match[1][1]},#{match[1][0]}"
+      "#{match[2]},#{match[1]}"
     end
   end
 
+  disable! date: "2026-09-01", because: :fails_gatekeeper_check
+
   conflicts_with cask: "slicer@preview"
+  depends_on macos: ">= :ventura"
 
   app "Slicer.app"
 

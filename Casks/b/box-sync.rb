@@ -9,6 +9,7 @@ cask "box-sync" do
   homepage "https://www.box.com/"
 
   deprecate! date: "2024-07-26", because: :discontinued
+  disable! date: "2025-07-26", because: :discontinued
 
   conflicts_with cask: "box-drive"
 

@@ -8,6 +8,7 @@ cask "pngyu" do
   homepage "https://nukesaq88.github.io/Pngyu/"
 
   deprecate! date: "2024-07-28", because: :unmaintained
+  disable! date: "2025-07-28", because: :unmaintained
 
   app "Pngyu.app"
 

@@ -1,9 +1,9 @@
 cask "caprine" do
   arch arm: "-arm64"
 
-  version "2.60.1"
-  sha256 arm:   "fc2ae78afb4e7b4e9dbac3e3626402e8530423fe1d225f6115bd7f2d85e7e7be",
-         intel: "df389cd803ade6ab3bb1e106054255536b8dcfdf4624d9e05b3538aac21daee2"
+  version "2.61.0"
+  sha256 arm:   "44a2e53abeed1ecdb44d1c7c6128423fbe7fdb1e81a22288d5ad6fb10e2dfe38",
+         intel: "7cddf99f2cec4ef9d5baf039606e46c2126eb297cb5e00173b3ca33db9972ad4"
 
   url "https://github.com/sindresorhus/caprine/releases/download/v#{version}/Caprine-#{version}#{arch}.dmg"
   name "Caprine"
@@ -15,8 +15,9 @@ cask "caprine" do
     strategy :github_latest
   end
 
+  disable! date: "2026-09-01", because: :fails_gatekeeper_check
+
   auto_updates true
-  depends_on macos: ">= :catalina"
 
   app "Caprine.app"
 

@@ -8,8 +8,8 @@ cask "genymotion" do
     end
   end
   on_ventura :or_newer do
-    version "3.7.1"
-    sha256 "ef5ee78f32139496b733e270c0520b7055129e072536e4c5d36ed2b3538cf152"
+    version "3.10.0"
+    sha256 "38516b5ffd4b5e66990277e40537cd71b3c096260edc448033dfdd816770d35e"
 
     livecheck do
       url "https://www.genymotion.com/product-desktop/download/"

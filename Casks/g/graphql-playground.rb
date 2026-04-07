@@ -8,6 +8,7 @@ cask "graphql-playground" do
   homepage "https://github.com/prisma/graphql-playground"
 
   deprecate! date: "2024-07-11", because: :unmaintained
+  disable! date: "2025-07-11", because: :unmaintained
 
   app "GraphQL Playground.app"
 

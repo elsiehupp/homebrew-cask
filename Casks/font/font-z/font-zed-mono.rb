@@ -6,6 +6,8 @@ cask "font-zed-mono" do
   name "Zed Mono"
   homepage "https://github.com/zed-industries/zed-fonts"
 
+  deprecate! date: "2026-04-04", because: :discontinued
+
   font "zed-mono-bold.ttf"
   font "zed-mono-bolditalic.ttf"
   font "zed-mono-boldoblique.ttf"

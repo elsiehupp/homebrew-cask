@@ -1,6 +1,6 @@
 cask "bose-updater" do
-  version "7.1.13.5238"
-  sha256 "8a2190385a37973b623f8bd52551ea8da8bb382ae01fe6a110e66f37a29ea8df"
+  version "7.1.13.5399"
+  sha256 "134c700d5a32f1cc1f50ca8c8553c917b74258e075fb1be600db9d72b5e3c32f"
 
   url "https://downloads.bose.com/ced/boseupdater/mac/BoseUpdater_#{version}.dmg"
   name "Bose Device Updater"
@@ -8,8 +8,10 @@ cask "bose-updater" do
   homepage "https://btu.bose.com/"
 
   livecheck do
-    url "https://btu.bose.com/data/MUV.xml"
-    regex(/ROOT\sMUV="(\d+(?:.\d+)*)"/i)
+    url "https://btu.bose.com/prod/iot-btu-fe-core/muv.json"
+    strategy :json do |json|
+      json["MUV"]
+    end
   end
 
   app "Bose Updater.app"

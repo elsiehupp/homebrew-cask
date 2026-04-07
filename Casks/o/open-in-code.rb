@@ -8,6 +8,7 @@ cask "open-in-code" do
   homepage "https://github.com/sozercan/OpenInCode"
 
   deprecate! date: "2024-07-27", because: :unmaintained
+  disable! date: "2025-07-27", because: :unmaintained
 
   app "Open in Code.app"
 

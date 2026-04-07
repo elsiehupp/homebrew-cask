@@ -8,6 +8,7 @@ cask "gitnote" do
   homepage "https://gitnoteapp.com/"
 
   deprecate! date: "2024-07-11", because: :unmaintained
+  disable! date: "2025-07-11", because: :unmaintained
 
   app "GitNote.app"
 

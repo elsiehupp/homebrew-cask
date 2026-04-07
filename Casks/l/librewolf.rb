@@ -1,30 +1,28 @@
 cask "librewolf" do
   arch arm: "arm64", intel: "x86_64"
 
-  on_arm do
-    version "129.0.2,1"
-    sha256 "e317f830f0824a166ff81e92eeafddc0a8767c3659d61369dac6b877f12ca9e5"
-  end
-  on_intel do
-    version "129.0.2,1"
-    sha256 "3e1fd7eebde352b244999c807695ca4630e2313bb772b2e48b4185f8778c95d5"
-  end
+  version "149.0,1"
+  sha256 arm:   "4917854fcc9b79f12e71d17f936e551f4e17d6810c21afb2a60d8921566712c3",
+         intel: "e196833ed519b9c1380ed700136034a50ff74594faa25e8a1560a5e8f1038224"
 
-  url "https://gitlab.com/api/v4/projects/44042130/packages/generic/librewolf/#{version.csv.first}-#{version.csv.second}/librewolf-#{version.csv.first}-#{version.csv.second}-macos-#{arch}-package.dmg",
-      verified: "gitlab.com/api/v4/projects/44042130/packages/generic/librewolf/"
+  url "https://codeberg.org/api/packages/librewolf/generic/librewolf/#{version.tr(",", "-")}/librewolf-#{version.tr(",", "-")}-macos-#{arch}-package.dmg",
+      verified: "codeberg.org/api/packages/librewolf/generic/librewolf/"
   name "LibreWolf"
   desc "Web browser"
   homepage "https://librewolf.net/"
 
+  # There can be a notable gap between when a version is tagged and a
+  # corresponding release is created, so we check the "latest" release instead
+  # of the Git tags.
   livecheck do
-    url "https://gitlab.com/api/v4/projects/44042130/releases"
-    regex(/librewolf[._-]v?(\d+(?:\.\d+)+)[._-](\d+)[._-]macos[._-]#{arch}[._-]package\.dmg/i)
-    strategy :page_match do |page, regex|
-      page.scan(regex).map do |match|
-        "#{match[0]},#{match[1]}"
-      end
+    url "https://codeberg.org/api/v1/repos/librewolf/bsys6/releases/latest"
+    regex(/^v?(\d+(?:[.-]\d+)+)$/i)
+    strategy :json do |json, regex|
+      json["tag_name"]&.[](regex, 1)&.tr("-", ",")
     end
   end
+
+  disable! date: "2026-09-01", because: :fails_gatekeeper_check
 
   app "LibreWolf.app"
   # shim script (https://github.com/Homebrew/homebrew-cask/issues/18809)

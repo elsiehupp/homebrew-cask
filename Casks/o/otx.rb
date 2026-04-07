@@ -8,6 +8,7 @@ cask "otx" do
   homepage "https://github.com/x43x61x69/otx"
 
   deprecate! date: "2024-07-27", because: :unmaintained
+  disable! date: "2025-07-27", because: :unmaintained
 
   auto_updates true
 

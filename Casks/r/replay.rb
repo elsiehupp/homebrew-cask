@@ -8,8 +8,7 @@ cask "replay" do
   homepage "https://replay.io/"
 
   deprecate! date: "2024-07-24", because: :discontinued
-
-  depends_on macos: ">= :sierra"
+  disable! date: "2025-07-24", because: :discontinued
 
   app "Replay.app"
 

@@ -1,8 +1,15 @@
 cask "defold@alpha" do
   arch arm: "arm64", intel: "x86_64"
 
-  version "1.9.3"
+  version "1.12.4"
   sha256 :no_check # required as upstream package is updated in-place
+
+  on_arm do
+    depends_on macos: ">= :big_sur"
+  end
+  on_intel do
+    depends_on macos: ">= :catalina"
+  end
 
   url "https://github.com/defold/defold/releases/download/#{version}-alpha/Defold-#{arch}-macos.dmg",
       verified: "github.com/defold/defold/"
@@ -10,20 +17,10 @@ cask "defold@alpha" do
   desc "Game engine for development of desktop, mobile and web games"
   homepage "https://defold.com/"
 
-  # The `GithubReleases` strategy omits releases marked as pre-release, so we
-  # have to use a `strategy` block to work with unstable versions.
   livecheck do
-    url :url
-    regex(/^v?(\d+(?:\.\d+)+)[._-]alpha$/i)
-    strategy :github_releases do |json, regex|
-      json.map do |release|
-        next if release["draft"]
-
-        match = release["tag_name"]&.match(regex)
-        next if match.blank?
-
-        match[1]
-      end
+    url "https://d.defold.com/alpha/info.json"
+    strategy :json do |json|
+      json["version"]
     end
   end
 

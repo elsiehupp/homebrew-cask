@@ -1,6 +1,6 @@
 cask "principle" do
-  version "6.35"
-  sha256 "c61103b4af2034b16cd79287ae5fc0805b0ced135af75ce7eaa2e30d3d40052d"
+  version "6.42"
+  sha256 "2f5a4f46d9fc5151ebf14dd8c2f4807bd1dd47023b3e41489c6ac9571beaa290"
 
   url "https://principleformac.com/download/Principle_#{version.dots_to_underscores}.zip"
   name "Principle"
@@ -11,6 +11,8 @@ cask "principle" do
     url "https://principleformac.com/update2.xml"
     strategy :sparkle, &:short_version
   end
+
+  auto_updates true
 
   app "Principle.app"
 

@@ -1,9 +1,9 @@
 cask "restfox" do
   arch arm: "arm64", intel: "x64"
 
-  version "0.24.0"
-  sha256 arm:   "d8b5c67d3b2f5a752cbfc02675b13715c605ec4c9c2030a17e6430a241fef88e",
-         intel: "bee39318073cdd59f14b9054b07c2d09e619b7c66a8266bc6815397892677de6"
+  version "0.40.0"
+  sha256 arm:   "09d35033e323a9bae998643116dfbc391bcdf6f2128b6c98224c604e07982c56",
+         intel: "f5b45cbf3de8125edaee7c3d61442173183ed869c116d0672171c4f9edf03e08"
 
   url "https://github.com/flawiddsouza/Restfox/releases/download/v#{version}/Restfox-darwin-#{arch}-#{version}.zip",
       verified: "github.com/flawiddsouza/Restfox/releases/download/"
@@ -12,7 +12,6 @@ cask "restfox" do
   homepage "https://restfox.dev/"
 
   auto_updates true
-  depends_on macos: ">= :catalina"
 
   app "Restfox.app"
 

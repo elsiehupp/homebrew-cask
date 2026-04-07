@@ -9,6 +9,7 @@ cask "playback" do
   homepage "https://mafintosh.github.io/playback/"
 
   deprecate! date: "2024-07-28", because: :unmaintained
+  disable! date: "2025-07-28", because: :unmaintained
 
   app "Playback.app"
 

@@ -8,8 +8,7 @@ cask "overkill" do
   homepage "https://github.com/KrauseFx/overkill-for-mac"
 
   deprecate! date: "2024-07-27", because: :unmaintained
-
-  depends_on macos: ">= :sierra"
+  disable! date: "2025-07-27", because: :unmaintained
 
   app "Overkill.app"
 

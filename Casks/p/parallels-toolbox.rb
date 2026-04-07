@@ -1,6 +1,6 @@
 cask "parallels-toolbox" do
-  version "6.7.0-5122"
-  sha256 "c8767473862cc12accf447415e89ac315c5f4353c1031eb82be727312feffc34"
+  version "7.1.0-5405"
+  sha256 "5bca464f4d082e6b0839fad043cf66f48fe8d5dd780c7133018c0fe2d8c538f9"
 
   url "https://download.parallels.com/toolbox/v#{version.major}/#{version}/ParallelsToolbox-#{version}.dmg"
   name "Parallels Toolbox"
@@ -13,7 +13,6 @@ cask "parallels-toolbox" do
   end
 
   auto_updates true
-  depends_on macos: ">= :sierra"
 
   installer manual: "Install Parallels Toolbox.app"
 

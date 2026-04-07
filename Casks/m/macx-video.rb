@@ -8,6 +8,7 @@ cask "macx-video" do
   homepage "https://www.videoproc.com/macxvideo/"
 
   deprecate! date: "2024-07-15", because: :discontinued
+  disable! date: "2025-07-15", because: :discontinued
 
   app "macXvideo.app"
 

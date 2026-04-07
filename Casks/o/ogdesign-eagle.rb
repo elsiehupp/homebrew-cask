@@ -1,12 +1,11 @@
 cask "ogdesign-eagle" do
   arch arm: "arm64", intel: "x64"
 
-  version "4.0,2"
-  sha256 arm:   "a852b1b927d137bd3f913e72b4f45ae243d94ecbe62d55c8aba231399328ff10",
-         intel: "29a5c91e377acbbc166c1e71c4790540c6d62cd20d05dd0f58c7716d2d5dd64a"
+  version "4.0,23"
+  sha256 arm:   "899cf880a15a17bb1fe54939110ec56a6a9f8af4a321de0d55c1670c6bee5377",
+         intel: "aa8ad2e62726ea1252fd63f802050d519b5728c2eb6ad2dc608938d9589a12a1"
 
-  url "https://eaglefile.oss-cn-shenzhen.aliyuncs.com/releases/Eagle-#{version.csv.first}-#{arch}-build#{version.csv.second}.dmg",
-      verified: "eaglefile.oss-cn-shenzhen.aliyuncs.com/releases/"
+  url "https://r2-app.eagle.cool/releases/Eagle-#{version.csv.first}-#{arch}-build#{version.csv.second}.dmg"
   name "Eagle"
   desc "Organise all your reference images in one place"
   homepage "https://eagle.cool/"
@@ -23,7 +22,6 @@ cask "ogdesign-eagle" do
   end
 
   auto_updates true
-  depends_on macos: ">= :high_sierra"
 
   app "Eagle.app"
 

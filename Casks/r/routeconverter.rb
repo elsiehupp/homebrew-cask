@@ -1,6 +1,6 @@
 cask "routeconverter" do
-  version "3.1"
-  sha256 "1d9b18f8cb7d20e4276ccec6bf3ae793ff62deafe96489d9a33d2cfcd3d385f6"
+  version "3.3"
+  sha256 "56c618af397e4ac3a42d060b012dbb7943f5d9c61baf0d2950fa4aff14ed22da"
 
   url "https://static.routeconverter.com/download/previous-releases/#{version}/RouteConverterMacOpenSource.app.zip"
   name "RouteConverter"
@@ -11,6 +11,8 @@ cask "routeconverter" do
     url "https://static.routeconverter.com/download/previous-releases/"
     regex(/href=.*?v?(\d+(?:\.\d+)+)/i)
   end
+
+  disable! date: "2026-09-01", because: :fails_gatekeeper_check
 
   auto_updates true
 

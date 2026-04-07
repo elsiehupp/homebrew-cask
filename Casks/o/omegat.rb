@@ -1,6 +1,6 @@
 cask "omegat" do
-  version "6.0.0"
-  sha256 "97bfd2b57bfd953d74bae303f9a13b015873d6c40d1131320de9cd6f3a1b9d8a"
+  version "6.0.1"
+  sha256 "458cfd1508cfe7e73fc193b800f40c533a3191adddc3336769ee4e44fc50b3ae"
 
   url "https://downloads.sourceforge.net/omegat/OmegaT%20-%20Standard/OmegaT%20#{version.major_minor_patch}/OmegaT_#{version}_Mac.zip",
       verified: "downloads.sourceforge.net/omegat/"
@@ -11,6 +11,8 @@ cask "omegat" do
   livecheck do
     url "https://sourceforge.net/projects/omegat/rss?path=/OmegaT%20-%20Standard"
   end
+
+  disable! date: "2026-09-01", because: :fails_gatekeeper_check
 
   conflicts_with cask: "omegat@latest"
 

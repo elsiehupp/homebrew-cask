@@ -1,6 +1,6 @@
 cask "topcat" do
-  version "4.10"
-  sha256 "0f4b1adb996a01402e8030a03815354da6ff2b7660af101a33b2c5949ef542b8"
+  version "4.10-5"
+  sha256 "b678b64cb2d8b0df0707d94ba1ddef9fd7fab734f55b940a82fc7167b8d52d1e"
 
   url "https://www.star.bristol.ac.uk/mbt/releases/topcat/v#{version}/topcat-all.dmg"
   name "TOPCAT"
@@ -11,6 +11,8 @@ cask "topcat" do
     url :homepage
     regex(/Version\s*(\d+(?:\.\d+)*(?:-\d+)?)\s*released/i)
   end
+
+  disable! date: "2026-09-01", because: :fails_gatekeeper_check
 
   app "TOPCAT.app"
   binary "#{appdir}/TOPCAT.app/Contents/Resources/app/topcat"

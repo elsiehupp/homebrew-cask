@@ -10,6 +10,10 @@ cask "xit" do
     end
 
     app "Xit.app"
+
+    caveats do
+      requires_rosetta
+    end
   end
   on_monterey :or_newer do
     arch arm: "-arm"
@@ -25,6 +29,8 @@ cask "xit" do
       regex(/^v?(\d+(?:\.\d+)+(?:b\d+)?)$/i)
     end
 
+    disable! date: "2026-09-01", because: :fails_gatekeeper_check
+
     app "Xit#{arch} #{version}/Xit.app"
   end
 
@@ -32,7 +38,7 @@ cask "xit" do
   desc "GUI for the git version control system"
   homepage "https://github.com/Uncommon/Xit"
 
-  depends_on macos: ">= :mojave"
+  depends_on macos: ">= :big_sur"
 
   zap trash: [
     "~/Library/Application Support/com.apple.sharedfilelist/com.apple.LSSharedFileList.ApplicationRecentDocuments/com.uncommonplace.xit.sfl*",

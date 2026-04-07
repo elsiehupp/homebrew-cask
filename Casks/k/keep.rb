@@ -8,6 +8,7 @@ cask "keep" do
   homepage "https://github.com/tmcinerney/keep/"
 
   deprecate! date: "2024-07-17", because: :unmaintained
+  disable! date: "2025-07-17", because: :unmaintained
 
   app "Keep.app"
 

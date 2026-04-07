@@ -1,9 +1,9 @@
 cask "bookwright" do
-  version "3.1.0"
-  sha256 "beeb1f6e35cc6a2d8eef426d1284c82df35b46fd83edf71a87af898a50f1d575"
+  version "3.4.0"
+  sha256 "54cb91fe7d7e09a23d17f12278c8134a823065621d77a561d1fb9e39e799213e"
 
   url "https://software.blurb.com/bookwright_v2/#{version}/BookWright.dmg"
-  name "bookwright"
+  name "BookWright"
   desc "Make a book with this tool and the Blurb printing service"
   homepage "https://www.blurb.com/bookwright"
 
@@ -15,8 +15,6 @@ cask "bookwright" do
       json["versions"]&.map { |version| version["version"] }
     end
   end
-
-  depends_on macos: ">= :high_sierra"
 
   app "BookWright.app"
 

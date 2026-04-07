@@ -8,8 +8,7 @@ cask "muse" do
   homepage "https://github.com/xzzz9097/Muse"
 
   deprecate! date: "2024-07-27", because: :unmaintained
-
-  depends_on macos: ">= :sierra"
+  disable! date: "2025-07-27", because: :unmaintained
 
   app "Muse.app"
 

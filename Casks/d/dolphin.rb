@@ -1,6 +1,6 @@
 cask "dolphin" do
-  version "2407"
-  sha256 "bc9e4646c71f653874b2c17c0261475f0caaae8b50886300927c521c2843694c"
+  version "2603a"
+  sha256 "2b7ddd8b18e0b0e8b492cfd5385da28014a5497061dc2d807222bb3cc4575dfd"
 
   url "https://dl.dolphin-emu.org/releases/#{version}/dolphin-#{version}-universal.dmg"
   name "Dolphin"
@@ -8,20 +8,21 @@ cask "dolphin" do
   homepage "https://dolphin-emu.org/"
 
   livecheck do
-    url "https://dolphin-emu.org/download/"
-    regex(/href=.*?dolphin[._-]v?(\d+(?:\.\d+)*[a-z]?)(?:[._-]universal)?\.dmg/i)
+    url "https://dolphin-emu.org/update/latest/beta/"
+    strategy :json do |json|
+      json["shortrev"]
+    end
   end
 
-  conflicts_with cask: [
-    "dolphin@beta",
-    "dolphin@dev",
-  ]
-  depends_on macos: ">= :catalina"
+  auto_updates true
+  conflicts_with cask: "dolphin@dev"
+  depends_on macos: ">= :big_sur"
 
   app "Dolphin.app"
 
   zap trash: [
     "~/Library/Application Support/Dolphin",
     "~/Library/Preferences/org.dolphin-emu.dolphin.plist",
+    "~/Library/Saved Application State/org.dolphin-emu.dolphin.savedState",
   ]
 end

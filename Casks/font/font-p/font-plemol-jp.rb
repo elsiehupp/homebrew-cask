@@ -1,6 +1,6 @@
 cask "font-plemol-jp" do
-  version "1.7.1"
-  sha256 "6aab0c223b60e90470d58b7bf7a1dfb4280d9a47112cefadf6d35bc92e0f534d"
+  version "3.0.0"
+  sha256 "757de5ab50fe4f44bb3a3bffcbffec24f18af33dca9bd4e5d7949158fa84533e"
 
   url "https://github.com/yuru7/PlemolJP/releases/download/v#{version}/PlemolJP_v#{version}.zip"
   name "PlemolJP"
@@ -10,6 +10,7 @@ cask "font-plemol-jp" do
   font "PlemolJP_v#{version}/PlemolJP/PlemolJP-BoldItalic.ttf"
   font "PlemolJP_v#{version}/PlemolJP/PlemolJP-ExtraLight.ttf"
   font "PlemolJP_v#{version}/PlemolJP/PlemolJP-ExtraLightItalic.ttf"
+  font "PlemolJP_v#{version}/PlemolJP/PlemolJP-Italic.ttf"
   font "PlemolJP_v#{version}/PlemolJP/PlemolJP-Light.ttf"
   font "PlemolJP_v#{version}/PlemolJP/PlemolJP-LightItalic.ttf"
   font "PlemolJP_v#{version}/PlemolJP/PlemolJP-Medium.ttf"

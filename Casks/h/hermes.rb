@@ -9,6 +9,7 @@ cask "hermes" do
   homepage "https://hermesapp.org/"
 
   deprecate! date: "2024-07-12", because: :unmaintained
+  disable! date: "2025-07-12", because: :unmaintained
 
   auto_updates true
 

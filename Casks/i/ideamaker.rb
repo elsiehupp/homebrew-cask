@@ -1,21 +1,17 @@
 cask "ideamaker" do
   arch arm: "-arm64"
 
-  version "5.0.6.8380"
-  sha256 arm:   "11d2f2a8af237e047cdd1c28875dc59f5643d41d8314dda27d34185fe6a8eb7a",
-         intel: "06e9d37f1a2b7d24da7652bd21f41170c44ba73ce73e79d724aa5b85acc5d9cb"
+  version "5.3.2.8640"
+  sha256 arm:   "23e8b7ae8e654e6c420b6f6861f6f168b7ec6e9b4a25b014858f84057b58b33a",
+         intel: "4966355964e614d94da85a16fb33e3ea2145d8dd9a0019f84a139221ce012213"
 
   url "https://downcdn.raise3d.com/ideamaker/release/#{version.major_minor_patch}/install_ideaMaker_#{version}#{arch}.dmg"
   name "ideaMaker"
   desc "FDM 3D Printing Slicer by Raise3D"
   homepage "https://www.raise3d.com/ideamaker/"
 
-  livecheck do
-    url "https://www.raise3d.com/download/"
-    regex(%r{href=.*?/install[._-]ideaMaker[._-]v?(\d+(?:\.\d+)+)\.dmg}i)
-  end
-
-  depends_on macos: ">= :catalina"
+  # Download url is unreachable due to Cloudflare protections
+  disable! date: "2026-01-23", because: :unreachable
 
   app "ideaMaker.app"
 

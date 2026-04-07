@@ -1,23 +1,24 @@
 cask "double-commander" do
   arch arm: "aarch64", intel: "x86_64"
 
-  version "1.1.17"
-  sha256 arm:   "8d0bd7f8f314a82a91699c481afc7d6114b63e1bbb6f13a7f3b4607baaba66c5",
-         intel: "46773925ed05ad4c8889b7eed2ebf53d5c8dcc08fc02e6b384ddaa04000efcac"
+  version "1.1.32"
+  sha256 arm:   "dfbf339a2ef78e2346ad2a874a9961f5b725c2a8d8b32c33bc7751348488792b",
+         intel: "f2b39a06bcd4da63768db3f21cc36395223b9b289671479439adb6f66c594c15"
 
-  url "https://downloads.sourceforge.net/doublecmd/doublecmd-#{version.tr(",", "-")}.cocoa.#{arch}.dmg",
-      verified: "downloads.sourceforge.net/doublecmd/"
+  url "https://github.com/doublecmd/doublecmd/releases/download/v#{version}/doublecmd-#{version}.cocoa.#{arch}.dmg",
+      verified: "github.com/doublecmd/doublecmd/releases/"
   name "Double Commander"
   desc "File manager with two panels"
   homepage "https://doublecmd.sourceforge.io/"
 
   livecheck do
-    url "https://sourceforge.net/projects/doublecmd/rss?path=/macOS"
-    regex(%r{url=.*?/doublecmd[._-](\d+(?:[.-]\d+)+)[^"' ]*?\.dmg}i)
-    strategy :sourceforge do |page, regex|
-      page.scan(regex).map { |match| match[0].tr("-", ",") }
-    end
+    url :url
+    strategy :github_latest
   end
+
+  disable! date: "2026-09-01", because: :fails_gatekeeper_check
+
+  depends_on macos: ">= :big_sur"
 
   app "Double Commander.app"
 

@@ -1,11 +1,11 @@
 cask "spyder" do
-  arch arm: "_arm64"
+  arch arm: "arm64", intel: "x86_64"
 
-  version "5.5.6"
-  sha256 arm:   "e3b87830e32b6c0585c8973acb38db005b57a37088f3f0c50143d6a5b16c7690",
-         intel: "022afd6c59a3f0831950f0546be82238a8372a7d97360a8b5da0c932dabe8f41"
+  version "6.1.4"
+  sha256 arm:   "f79f77566a5c2089b9484560b86960cf7620095513ec51c74e520bc3da986637",
+         intel: "9265a2d25e24b0450ae0985c50bc73564a4e1ae0d8cc4fdf6a29342d0a6fefd3"
 
-  url "https://github.com/spyder-ide/spyder/releases/download/v#{version}/Spyder#{arch}.dmg",
+  url "https://github.com/spyder-ide/spyder/releases/download/v#{version}/Spyder-macOS-#{arch}.pkg",
       verified: "github.com/spyder-ide/spyder/"
   name "Spyder"
   desc "Scientific Python IDE"
@@ -16,9 +16,19 @@ cask "spyder" do
     strategy :github_latest
   end
 
+  auto_updates true
   depends_on macos: ">= :big_sur"
 
-  app "Spyder.app"
+  pkg "Spyder-macOS-#{arch}.pkg"
+
+  uninstall quit:    "org.spyder-ide.Spyder-#{version.major}",
+            pkgutil: "org.spyder-ide.Spyder.pkg*",
+            delete:  [
+              "/Applications/REQUIRED.app",
+              "/Applications/Spyder #{version.major} Uninstaller.app",
+              "/Applications/Spyder #{version.major}.app",
+              "/Library/spyder-#{version.major}",
+            ]
 
   zap trash: [
     "~/.spyder-py3",

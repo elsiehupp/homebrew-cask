@@ -2,15 +2,15 @@ cask "timeular" do
   arch arm: "-m1-arm64"
   livecheck_folder = on_arch_conditional arm: "m1", intel: "latest"
 
-  version "6.8.4"
-  sha256 arm:   "c0369be276a794ba260c42722d9892794263ebb36093e502122a6ceede9d6926",
-         intel: "8f13ee33e958fea89a182d40fc5d68963a10b636ba6a808728afaa6bd824d9c6"
+  version "6.9.5"
+  sha256 arm:   "b40fc8a340522986f789e3ba0c137a927403f434f2e8ee7b77e697935d1aceb6",
+         intel: "20bc25ce6e2a7f9929cfdeb288f50c600a85457b4d7aef7c3befe6a33020ae6f"
 
-  url "https://timeular-desktop-packages.s3.amazonaws.com/mac/production/Timeular-#{version}#{arch}.dmg",
+  url "https://timeular-desktop-packages.s3.amazonaws.com/mac/production/EARLY-#{version}#{arch}.dmg",
       verified: "timeular-desktop-packages.s3.amazonaws.com/"
   name "Timeular"
   desc "Time tracking aided by a physical device"
-  homepage "https://timeular.com/"
+  homepage "https://early.app/"
 
   livecheck do
     url "https://timeular-desktop-packages.s3.amazonaws.com/mac/production/#{livecheck_folder}-mac.yml"
@@ -20,6 +20,7 @@ cask "timeular" do
   end
 
   auto_updates true
+  depends_on macos: ">= :big_sur"
 
   app "Timeular.app"
 

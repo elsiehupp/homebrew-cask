@@ -7,29 +7,18 @@ cask "parallels@14" do
   desc "Desktop virtualization software"
   homepage "https://www.parallels.com/products/desktop/"
 
-  livecheck do
-    url "https://kb.parallels.com/124521"
-    regex(/(\d+(?:\.\d+)+)(?:\s*|&nbsp;)\((\d+)\)/i)
-    strategy :page_match do |page, regex|
-      page.scan(regex).map { |match| "#{match[0]}-#{match[1]}" }
-    end
-  end
+  deprecate! date: "2024-09-11", because: :discontinued
+  disable! date: "2025-09-11", because: :discontinued
 
   auto_updates true
   conflicts_with cask: [
     "parallels",
-    "parallels@12",
-    "parallels@13",
     "parallels@15",
     "parallels@16",
     "parallels@17",
     "parallels@18",
-  ]
-  depends_on macos: [
-    :el_capitan,
-    :sierra,
-    :high_sierra,
-    :mojave,
+    "parallels@19",
+    "parallels@20",
   ]
   # This .dmg cannot be extracted normally
   # Original discussion: https://github.com/Homebrew/homebrew-cask/pull/67202

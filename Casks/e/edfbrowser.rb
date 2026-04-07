@@ -9,6 +9,7 @@ cask "edfbrowser" do
   homepage "https://www.teuniz.net/edfbrowser"
 
   deprecate! date: "2024-07-17", because: :unmaintained
+  disable! date: "2025-07-17", because: :unmaintained
 
   app "EDFbrowser.app"
 

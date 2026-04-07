@@ -1,6 +1,6 @@
 cask "fbreader" do
-  version "2.1.1"
-  sha256 "8db0455434db6586add4928b517dc28548d31282f41e2d6bf48a48b16b82916e"
+  version "2.1.5"
+  sha256 "27c05006a1b16be5219fec9aeb364d4470ffee665ea5a9d185748801d8782b73"
 
   url "https://fbreader.org/static/packages/macos/FBReader-#{version}.dmg"
   name "FBReader"
@@ -13,6 +13,8 @@ cask "fbreader" do
       json["version"]
     end
   end
+
+  depends_on macos: ">= :monterey"
 
   pkg "FBReader.pkg"
 

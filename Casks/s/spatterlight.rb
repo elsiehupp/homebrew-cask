@@ -1,6 +1,6 @@
 cask "spatterlight" do
-  version "1.2.5"
-  sha256 "e392f54e3cbb0d2ca7ba2119227765704d5e6f4303a6880bedf402f34efad6c7"
+  version "1.4.9"
+  sha256 "73ec13f400485567b3333dedee49caa46ed2a8c883c7c5a3c50e2cb233eaeabf"
 
   url "https://github.com/angstsmurf/spatterlight/releases/download/v#{version}/Spatterlight.zip",
       verified: "github.com/angstsmurf/spatterlight/"
@@ -12,8 +12,6 @@ cask "spatterlight" do
     url :url
     strategy :github_latest
   end
-
-  depends_on macos: ">= :catalina"
 
   app "Spatterlight.app"
 

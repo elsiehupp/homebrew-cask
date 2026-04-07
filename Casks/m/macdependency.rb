@@ -7,6 +7,7 @@ cask "macdependency" do
   homepage "https://github.com/kwin/macdependency"
 
   deprecate! date: "2024-07-27", because: :unmaintained
+  disable! date: "2025-07-27", because: :unmaintained
 
   app "MacDependency.app"
 

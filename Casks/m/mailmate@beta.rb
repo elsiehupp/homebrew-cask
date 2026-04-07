@@ -1,5 +1,5 @@
 cask "mailmate@beta" do
-  version "5937"
+  version "6272"
   sha256 :no_check
 
   url "https://updates.mailmate-app.com/archives/MailMateBeta.tbz",
@@ -14,7 +14,6 @@ cask "mailmate@beta" do
   end
 
   conflicts_with cask: "mailmate"
-  depends_on macos: ">= :sierra"
 
   app "MailMate.app"
   binary "#{appdir}/MailMate.app/Contents/Resources/emate"

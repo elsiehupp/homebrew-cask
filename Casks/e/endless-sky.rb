@@ -1,6 +1,6 @@
 cask "endless-sky" do
-  version "0.10.8"
-  sha256 "b6aa67ae5757d4d02ddb12e3e562d5c77b48e6c747d43e6b152bc7bd17f29be3"
+  version "0.10.16"
+  sha256 "09b999ecc91e8dd9778b711749f291be618d8da623b0cb614e5300c0caab49b6"
 
   url "https://github.com/endless-sky/endless-sky/releases/download/v#{version}/Endless-Sky-v#{version}.dmg",
       verified: "github.com/endless-sky/endless-sky/"
@@ -12,6 +12,8 @@ cask "endless-sky" do
     url :url
     strategy :github_latest
   end
+
+  disable! date: "2026-09-01", because: :fails_gatekeeper_check
 
   app "Endless Sky.app"
 

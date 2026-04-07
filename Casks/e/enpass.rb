@@ -1,6 +1,6 @@
 cask "enpass" do
-  version "6.11.2.1753"
-  sha256 "bfd4c88dfdbdcfd3c0ce77e2441c9ca71974e368e09795bc506b800bee0f3229"
+  version "6.11.20.2229"
+  sha256 "a382070deba83ad67a82fbdfc6b3c55c2a2ed2790b3a970c9e2a7ff9fe9e5645"
 
   url "https://dl.enpass.io/stable/mac/package/#{version}/Enpass.pkg"
   name "Enpass"
@@ -11,8 +11,6 @@ cask "enpass" do
     url "https://www.enpass.io/download/macos/website/stable"
     strategy :header_match
   end
-
-  depends_on macos: ">= :sierra"
 
   pkg "Enpass.pkg"
 

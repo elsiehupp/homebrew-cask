@@ -1,9 +1,8 @@
 cask "tuta-mail" do
-  version "240.240816.0"
-  sha256 "ae71fb5d91ce352412267620536d2aef155e826b7d2afc6616bbfef59fa245df"
+  version "340.260326.1"
+  sha256 :no_check
 
-  url "https://github.com/tutao/tutanota/releases/download/tutanota-desktop-release-#{version}/tutanota-desktop-mac.dmg",
-      verified: "github.com/tutao/tutanota/"
+  url "https://app.tuta.com/desktop/tutanota-desktop-mac.dmg"
   name "Tuta Mail"
   desc "Email client"
   homepage "https://tuta.com/"
@@ -14,7 +13,7 @@ cask "tuta-mail" do
   end
 
   auto_updates true
-  depends_on macos: ">= :catalina"
+  depends_on macos: ">= :monterey"
 
   app "Tuta Mail.app"
 

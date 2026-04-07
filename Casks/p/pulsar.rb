@@ -2,11 +2,11 @@ cask "pulsar" do
   arch arm: "Silicon", intel: "Intel"
   arch_suffix = on_arch_conditional arm: "-arm64"
 
-  version "1.120.0"
-  sha256 arm:   "c3453904671def3baf5622914570bac4fe2d9126dd3daa263a95b06481aa4da1",
-         intel: "30a5190870f771cc54ed37f36447f36f3514277711d8f05ed06290f46f773053"
+  version "1.131.3"
+  sha256 arm:   "d1ed2b911f99d614b9461cfc4f739a7ca2806b2f95f4c307b0912ea0070b4268",
+         intel: "61f7d9ae35ff652ef4eb79c306e300d089a64de18277564a166b1eae169c6379"
 
-  url "https://github.com/pulsar-edit/pulsar/releases/download/v#{version}/#{arch}.Mac.Pulsar-#{version}#{arch_suffix}-mac.zip",
+  url "https://github.com/pulsar-edit/pulsar/releases/download/v#{version}/#{arch}.Mac.Pulsar-#{version}#{arch_suffix}.dmg",
       verified: "github.com/pulsar-edit/pulsar/"
   name "Pulsar"
   desc "Text editor"
@@ -18,7 +18,7 @@ cask "pulsar" do
   end
 
   app "Pulsar.app"
-  binary "#{appdir}/Pulsar.app/Contents/Resources/app/ppm/bin/apm", target: "ppm"
+  binary "#{appdir}/Pulsar.app/Contents/Resources/app/ppm/bin/ppm"
   binary "#{appdir}/Pulsar.app/Contents/Resources/pulsar.sh", target: "pulsar"
 
   zap trash: [

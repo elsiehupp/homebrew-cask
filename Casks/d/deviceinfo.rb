@@ -8,8 +8,7 @@ cask "deviceinfo" do
   homepage "https://github.com/CoreNion/DeviceInfo/"
 
   deprecate! date: "2024-07-10", because: :unmaintained
-
-  depends_on macos: ">= :sierra"
+  disable! date: "2025-07-10", because: :unmaintained
 
   app "DeviceInfo.app"
 

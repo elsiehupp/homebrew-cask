@@ -1,9 +1,9 @@
 cask "poe" do
   arch arm: "arm64", intel: "x64"
 
-  version "1.1.21"
-  sha256 arm:   "32cf5c8a501e17eb94146064896b26645406f6d8eb34ffd484ef94f78c4299d7",
-         intel: "64638411482a2ce74b9c2a9c02b549c06bae257d2ea6d06cea2e7da72fbc3303"
+  version "1.1.40"
+  sha256 arm:   "fe0460de6ee7755d8a12ba694ea07fe1f8ba932c200db154e0f93cc1c95d3b78",
+         intel: "5285e1955d34be27a2ca5ddae018ea4f17b72fdfa4a1da1ad882af1120a92160"
 
   url "https://desktop-app.poecdn.net/updates/darwin_#{arch}/#{version}.zip",
       verified: "desktop-app.poecdn.net/updates/"
@@ -12,10 +12,17 @@ cask "poe" do
   homepage "https://poe.com/"
 
   livecheck do
-    skip "No version information available"
+    url "https://updater.poe.com/darwin_#{arch}/0.0.0"
+    regex(/v?(\d+(?:\.\d+)+)\.zip/i)
+    strategy :json do |json|
+      match = json["url"]&.match(regex)
+      next if match.blank?
+
+      match[1]
+    end
   end
 
-  depends_on macos: ">= :high_sierra"
+  depends_on macos: ">= :big_sur"
 
   app "Poe.app"
 

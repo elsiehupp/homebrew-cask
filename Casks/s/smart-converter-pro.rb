@@ -1,6 +1,6 @@
 cask "smart-converter-pro" do
-  version "3.1.5"
-  sha256 "7387468462738ec23ee7bdb9baa87575c74204f14ef646f14efa267a9d81a67e"
+  version "3.1.6"
+  sha256 "11dd10462c6823a63e46f935817f86e8e263c1e9a6a43c64a8dca56344b45b66"
 
   url "https://download.shedworx.com/scp#{version.major}/SmartConverterPro-#{version}.dmg"
   name "Smart Converter Pro"
@@ -8,11 +8,10 @@ cask "smart-converter-pro" do
   homepage "https://shedworx.com/smart-converter-pro"
 
   livecheck do
-    url "https://shedworx.com/download/?product=scp3"
+    url "https://shedworx.com/download/?product=scp3",
+        user_agent: :browser
     regex(/href=.*?SmartConverterPro[._-]v?(\d+(?:\.\d+)+)\.dmg/i)
   end
-
-  depends_on macos: ">= :high_sierra"
 
   app "Smart Converter Pro #{version.major}.app"
 

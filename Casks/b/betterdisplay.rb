@@ -16,12 +16,14 @@ cask "betterdisplay" do
     end
   end
   on_ventura :or_newer do
-    version "3.0.4"
-    sha256 "e432a061c53341a48549240b2e3383ba2f06d50bd431e2f930c9265e5b23ab8e"
+    version "4.2.3"
+    sha256 "91e26474c0cedb5dc3525d8b015aadc758e8026714a54df7e938fc025742a0aa"
 
     livecheck do
-      url :url
-      strategy :github_latest
+      url "https://betterdisplay.pro/betterdisplay/sparkle/appcast.xml"
+      strategy :sparkle do |items|
+        items.find { |item| item.channel.nil? }&.short_version
+      end
     end
   end
 
@@ -32,16 +34,27 @@ cask "betterdisplay" do
   homepage "https://betterdisplay.pro/"
 
   auto_updates true
-  depends_on macos: ">= :mojave"
 
   app "BetterDisplay.app"
+  # shim script (https://github.com/Homebrew/homebrew-cask/issues/18809)
+  shimscript = "#{staged_path}/betterdisplay.wrapper.sh"
+  binary shimscript, target: "betterdisplaycli"
 
-  uninstall quit: "pro.betterdisplay.BetterDisplay"
+  preflight do
+    File.write shimscript, <<~EOS
+      #!/bin/bash
+      exec '#{appdir}/BetterDisplay.app/Contents/MacOS/BetterDisplay' "$@"
+    EOS
+  end
+
+  uninstall quit:       "pro.betterdisplay.BetterDisplay",
+            login_item: "BetterDisplay"
 
   zap trash: [
     "~/Library/Application Support/BetterDisplay",
     "~/Library/Application Support/BetterDummy",
     "~/Library/Caches/pro.betterdisplay.BetterDisplay",
+    "~/Library/Caches/SentryCrash/BetterDisplay",
     "~/Library/HTTPStorages/pro.betterdisplay.BetterDisplay",
     "~/Library/HTTPStorages/pro.betterdisplay.BetterDisplay.binarycookies",
     "~/Library/Preferences/pro.betterdisplay.BetterDisplay.plist",

@@ -9,6 +9,7 @@ cask "freenettray" do
   homepage "https://freenetproject.org/"
 
   deprecate! date: "2024-07-10", because: :unmaintained
+  disable! date: "2025-07-10", because: :unmaintained
 
   app "FreenetTray.app"
 
